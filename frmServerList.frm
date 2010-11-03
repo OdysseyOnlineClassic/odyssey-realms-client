@@ -170,42 +170,42 @@ Private Sub btnPlay_Click()
         Case 2 'Tales of Destiny
             ServerDescription = "Tales of Destiny"
             CacheDirectory = GetCachePath + "\talesofdestiny"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5752
         Case 3 'Condemned
             ServerDescription = "Condemned"
             CacheDirectory = GetCachePath + "\condemned"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5753
         Case 4 'Ethia
             ServerDescription = "Ethia"
             CacheDirectory = GetCachePath + "\ethia"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5754
         Case 5 'Fankenstein
             ServerDescription = "Fankenstein"
             CacheDirectory = GetCachePath + "\fankenstein"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5755
         Case 6 'Relentless
             ServerDescription = "Relentless"
             CacheDirectory = GetCachePath + "\relentless"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5756
         Case 7 'REDRUM PK
             ServerDescription = "REDRUM PK"
             CacheDirectory = GetCachePath + "\redrumpk"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5757
         Case 8 'Greta
             ServerDescription = "Greta"
             CacheDirectory = GetCachePath + "\greta"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5758
         Case 9 'Odyssey Adventures
             ServerDescription = "Odyssey Adventures"
             CacheDirectory = GetCachePath + "\odysseyadventures"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5759
         Case 10 '127.0.0.1
             ServerDescription = "Local Host"
@@ -299,42 +299,42 @@ Private Sub Form_Load()
     sckPing(1).connect
     
     'Tales of Destiny
-    sckPing(2).RemoteHost = "libertyarchives.info"
+    sckPing(2).RemoteHost = "odysseyclassic.info"
     sckPing(2).RemotePort = 5752
     sckPing(2).connect
     
     'Condemned
-    sckPing(3).RemoteHost = "libertyarchives.info"
+    sckPing(3).RemoteHost = "odysseyclassic.info"
     sckPing(3).RemotePort = 5753
     sckPing(3).connect
     
     'Ethia
-    sckPing(4).RemoteHost = "libertyarchives.info"
+    sckPing(4).RemoteHost = "odysseyclassic.info"
     sckPing(4).RemotePort = 5754
     sckPing(4).connect
     
     'Fankenstein
-    sckPing(5).RemoteHost = "libertyarchives.info"
+    sckPing(5).RemoteHost = "odysseyclassic.info"
     sckPing(5).RemotePort = 5755
     sckPing(5).connect
 
     'Relentless
-    sckPing(6).RemoteHost = "libertyarchives.info"
+    sckPing(6).RemoteHost = "odysseyclassic.info"
     sckPing(6).RemotePort = 5756
     sckPing(6).connect
     
     'REDRUM PK
-    sckPing(7).RemoteHost = "libertyarchives.info"
+    sckPing(7).RemoteHost = "odysseyclassic.info"
     sckPing(7).RemotePort = 5757
     sckPing(7).connect
     
     'Greta
-    sckPing(8).RemoteHost = "libertyarchives.info"
+    sckPing(8).RemoteHost = "odysseyclassic.info"
     sckPing(8).RemotePort = 5758
     sckPing(8).connect
     
     'Odyssey Adventures
-    sckPing(9).RemoteHost = "libertyarchives.info"
+    sckPing(9).RemoteHost = "odysseyclassic.info"
     sckPing(9).RemotePort = 5759
     sckPing(9).connect
     
