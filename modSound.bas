@@ -8,8 +8,8 @@ Sub InitSound()
 
     Dim i As Long
     For i = 1 To 9
-        If Exists(SOUNDPATH + "sound" + CStr(i) + ".wav") Then
-            snd(i) = FSOUND_Sample_Load(FSOUND_FREE, SOUNDPATH + "sound" + CStr(i) + ".wav", FSOUND_LOOP_OFF, 0, 0)
+        If Exists(GetSoundPath + "sound" + CStr(i) + ".wav") Then
+            snd(i) = FSOUND_Sample_Load(FSOUND_FREE, GetSoundPath + "sound" + CStr(i) + ".wav", FSOUND_LOOP_OFF, 0, 0)
         End If
     Next i
 End Sub
@@ -17,7 +17,7 @@ End Sub
 Sub UnloadSound()
     Dim i As Long
     For i = 1 To 9
-        If Exists(SOUNDPATH + "sound" + CStr(i) + ".wav") Then
+        If Exists(GetSoundPath + "sound" + CStr(i) + ".wav") Then
             If snd(i) > 0 Then
                 FSOUND_Sample_Free snd(i)
             End If
@@ -27,7 +27,7 @@ Sub UnloadSound()
 End Sub
 
 Sub PlayWav(number As Long)
-    If options.Wav = True Then
+    If Options.Wav = True Then
         If (number > 0 And number < 10) Then
             If snd(number) > 0 Then
                 FSOUND_SetSFXMasterVolume 100
