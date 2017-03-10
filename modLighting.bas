@@ -122,7 +122,7 @@ Function FreeLight() As Byte
 End Function
 
 Sub AddPlayerLight(index As Long)
-    If options.DisablePlayerLights = True Then Exit Sub
+    If Options.DisablePlayerLights = True Then Exit Sub
     Dim i As Byte
     i = FreeLight
     If i > 0 Then
