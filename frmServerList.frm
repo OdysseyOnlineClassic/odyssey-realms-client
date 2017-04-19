@@ -4,7 +4,7 @@ Begin VB.Form frmServerList
    BackColor       =   &H0061514B&
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Odyssey - Select Server"
-   ClientHeight    =   3645
+   ClientHeight    =   4590
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   3615
@@ -13,9 +13,25 @@ Begin VB.Form frmServerList
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3645
+   ScaleHeight     =   4590
    ScaleWidth      =   3615
    StartUpPosition =   2  'CenterScreen
+   Begin VB.TextBox txtPort 
+      Height          =   285
+      Left            =   2520
+      TabIndex        =   3
+      ToolTipText     =   "Custom Port"
+      Top             =   3360
+      Width           =   975
+   End
+   Begin VB.TextBox txtHost 
+      Height          =   285
+      Left            =   120
+      TabIndex        =   2
+      ToolTipText     =   "Custom Server Host"
+      Top             =   3360
+      Width           =   2295
+   End
    Begin MSWinsockLib.Winsock sckPing 
       Index           =   6
       Left            =   840
@@ -93,6 +109,25 @@ Begin VB.Form frmServerList
       Top             =   120
       Width           =   3375
    End
+   Begin VB.Label lblCustom 
+      BackColor       =   &H0044342E&
+      Caption         =   "Custom Server"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   12
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   375
+      Left            =   120
+      TabIndex        =   4
+      Top             =   3000
+      Width           =   3375
+   End
    Begin VB.Label btnPlay 
       Alignment       =   2  'Center
       Appearance      =   0  'Flat
@@ -112,7 +147,7 @@ Begin VB.Form frmServerList
       Height          =   375
       Left            =   960
       TabIndex        =   1
-      Top             =   3120
+      Top             =   3960
       Width           =   1695
    End
 End
@@ -157,6 +192,11 @@ Private Sub btnPlay_Click()
             CacheDirectory = App.Path + "\fankenstein"
             ServerIP = "libertyarchives.info"
             ServerPort = 5751
+        Case 6 'Custom
+            ServerDescription = "Custom"
+            CacheDirectory = App.Path + "\" + txtHost.Text + txtPort.Text
+            ServerIP = txtHost.Text
+            ServerPort = GetInt(txtPort.Text)
     End Select
     
     On Error Resume Next
@@ -202,6 +242,7 @@ Private Sub Form_Load()
     lstServers.AddItem "God Sandbox"
     lstServers.AddItem "Condemned"
     lstServers.AddItem "Fankenstein"
+    lstServers.AddItem "Custom..."
        
        
     'Classic
