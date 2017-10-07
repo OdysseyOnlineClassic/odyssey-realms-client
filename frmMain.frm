@@ -702,11 +702,12 @@ Begin VB.Form frmMain
          Begin VB.Label lblSellPrice 
             BackColor       =   &H0044342E&
             ForeColor       =   &H009AADC2&
-            Height          =   255
-            Left            =   720
+            Height          =   735
+            Left            =   650
             TabIndex        =   104
-            Top             =   1440
+            Top             =   1580
             Width           =   1695
+		    WordWrap        =   -1  'True
          End
          Begin VB.Label cptSellPrice 
             AutoSize        =   -1  'True
@@ -716,17 +717,18 @@ Begin VB.Form frmMain
             Height          =   195
             Left            =   120
             TabIndex        =   103
-            Top             =   1440
+            Top             =   1560
             Width           =   405
          End
          Begin VB.Label lblSellName 
             BackColor       =   &H0044342E&
             ForeColor       =   &H009AADC2&
-            Height          =   255
-            Left            =   720
+            Height          =   480
+            Left            =   645
             TabIndex        =   102
-            Top             =   1080
+            Top             =   975
             Width           =   1695
+		    WordWrap        =   -1  'True
          End
          Begin VB.Label cptSellName 
             AutoSize        =   -1  'True
@@ -736,7 +738,7 @@ Begin VB.Form frmMain
             Height          =   195
             Left            =   120
             TabIndex        =   101
-            Top             =   1080
+            Top             =   960
             Width           =   465
          End
       End
@@ -766,21 +768,23 @@ Begin VB.Form frmMain
       Begin VB.Label lblSellNPCTalk 
          BackColor       =   &H0044342E&
          ForeColor       =   &H009AADC2&
-         Height          =   2295
+         Height          =   2055
          Left            =   2760
          TabIndex        =   106
-         Top             =   480
+         Top             =   720
          Width           =   2175
+		 WordWrap        =   -1  'True
       End
       Begin VB.Label lblSellNPCName 
          Alignment       =   2  'Center
          BackColor       =   &H0044342E&
          ForeColor       =   &H009AADC2&
-         Height          =   255
+         Height          =   495
          Left            =   2760
          TabIndex        =   105
          Top             =   120
          Width           =   2175
+		 WordWrap		 =   -1  'True
       End
       Begin VB.Label lblMenu 
          Alignment       =   2  'Center

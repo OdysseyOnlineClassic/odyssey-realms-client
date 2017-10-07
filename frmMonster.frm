@@ -246,10 +246,10 @@ Begin VB.Form frmMonster
       EndProperty
       Height          =   375
       Left            =   1200
-      MaxLength       =   15
+      MaxLength       =   35
       TabIndex        =   0
       Top             =   600
-      Width           =   2895
+      Width           =   4215
    End
    Begin VB.CommandButton btnCancel 
       Cancel          =   -1  'True
@@ -821,4 +821,10 @@ Private Sub sclStrength_Scroll()
     sclStrength_Change
 End Sub
 
-
+Private Sub cmbObject_Click(Index As Integer)
+    If Len(cmbObject(Index).Text) > 12 Then
+        cmbObject(Index).ToolTipText = cmbObject(Index).Text
+    Else
+        cmbObject(Index).ToolTipText = ""
+    End If
+End Sub
