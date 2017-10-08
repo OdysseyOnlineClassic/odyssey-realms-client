@@ -19,11 +19,11 @@ Begin VB.Form frmNewGuild
       BackColor       =   &H0044342E&
       ForeColor       =   &H009AADC2&
       Height          =   375
-      Left            =   1440
-      MaxLength       =   15
+      Left            =   1200
+      MaxLength       =   25
       TabIndex        =   0
       Top             =   120
-      Width           =   3135
+      Width           =   3375
    End
    Begin VB.Label btnOk 
       Alignment       =   2  'Center

@@ -1,6 +1,11 @@
 Attribute VB_Name = "modAPI"
 Option Explicit
 
+Public Type MouseLoc
+	X As Long
+	Y As Long
+End Type
+
 'Odyssey DLL functions
 Public Declare Function EncryptDataFile Lib "odysseydll" (ByRef File As Any, ByVal XorValue As Byte) As Long
 Public Declare Function EncryptDataString Lib "odysseydll" (ByRef File As Any, ByVal XorValue As Byte) As Long
@@ -38,9 +43,11 @@ Declare Function WaitForSingleObject Lib "kernel32" (ByVal hHandle As Long, ByVa
 Public Declare Function CallWindowProc Lib "user32" Alias "CallWindowProcA" (ByVal lpPrevWndFunc As Long, ByVal hwnd As Long, ByVal Msg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long
 Public Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal hwnd As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long
 
-'SendMessage
+'Interface
 Public Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 Public Declare Function ReleaseCapture Lib "user32" () As Long
+Public Declare Function GetCursorPos Lib "user32" (lpPoint As MouseLoc) As Long
+Public Declare Function ScreenToClient Lib "user32" (ByVal hWnd As Long, lpPoint As MouseLoc) As Long
 
 'FindWindow
 Public Declare Function GetParent Lib "user32.dll" (ByVal hwnd As Long) As Long
@@ -57,3 +64,12 @@ Public Declare Function IsWindowVisible Lib "user32" (ByVal hwnd As Long) As Lon
 Public Declare Function GetCurrentProcess Lib "kernel32" () As Long
 Public Declare Function SetPriorityClass Lib "kernel32" (ByVal hProcess As Long, ByVal dwPriorityClass As Long) As Long
 Public Declare Function GetPriorityClass Lib "kernel32" (ByVal hProcess As Long) As Long
+
+Public Function GetCursorIndex(ListHandle As Long) As Long
+    Dim Cursor As MouseLoc
+    Dim iIndex As Long
+    
+    Call GetCursorPos(Cursor)
+    Call ScreenToClient(ListHandle, Cursor)
+    GetCursorIndex = SendMessage(ListHandle, &H1A9, 0&, ByVal ((Cursor.X And &HFF) Or (&H10000 * (Cursor.Y And &HFF))))
+End Function
