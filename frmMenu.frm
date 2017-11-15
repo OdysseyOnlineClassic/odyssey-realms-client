@@ -13,9 +13,30 @@ Begin VB.Form frmMenu
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
+   Picture         =   "frmMenu.frx":1CFA
    ScaleHeight     =   4260
    ScaleWidth      =   4485
    StartUpPosition =   2  'CenterScreen
+   Begin VB.Label Label1 
+      Alignment       =   2  'Center
+      BackStyle       =   0  'Transparent
+      Caption         =   "Main Menu"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Left            =   1680
+      TabIndex        =   13
+      Top             =   240
+      Width           =   1335
+   End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
       Appearance      =   0  'Flat
@@ -306,10 +327,10 @@ Begin VB.Form frmMenu
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   255
-      Left            =   120
+      Left            =   2880
       TabIndex        =   0
-      Top             =   240
-      Width           =   4215
+      Top             =   420
+      Width           =   1575
    End
 End
 Attribute VB_Name = "frmMenu"
@@ -320,7 +341,7 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Sub Form_GotFocus()
-    lblCurrentServer = "Main Menu"
+    lblCurrentServer = ServerDescription
 End Sub
 
 Private Sub Form_Load()
@@ -392,11 +413,10 @@ Private Sub lblMenu_MouseUp(index As Integer, Button As Integer, Shift As Intege
             sDirectory = 0&
             RunShellExecute sTopic, sFile, sParams, sDirectory, 1
         Case 9    'Server List
-            sTopic = "Open"
-            sFile = "ody.exe"
-            sParams = 0&
-            sDirectory = 0&
-            RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+            Me.Hide
+            Load frmServerList
+            frmServerList.Show
+            frmServerList.Refresh
         Case 10    'Updater
             sTopic = "Open"
             sFile = "updater.exe"
