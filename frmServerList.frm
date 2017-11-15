@@ -128,7 +128,7 @@ Private Sub btnPlay_Click()
     Select Case lstServers.ListIndex
 
         Case 0 'Classic
-            ServerDescription = "Odyssey Realms - Classic"
+            ServerDescription = "Odyssey Realms"
             CacheDirectory = App.Path + "\classic"
             ServerIP = "libertyarchives.info"
             ServerPort = 5756
@@ -169,7 +169,8 @@ Private Sub btnPlay_Click()
     On Error GoTo 0
     
     Unload Me
-    InitializeGame
+    Load frmMenu
+    frmMenu.Show
 End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -179,7 +180,7 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
         ServerPort = 5750
         CacheDirectory = App.Path + "\localhost"
         Unload Me
-        InitializeGame
+        frmMenu.Show
     End If
 End Sub
 
@@ -235,6 +236,10 @@ Private Sub Form_Load()
     sckPing(5).connect
     
     lstServers.ListIndex = 0
+End Sub
+
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
+    If UnloadMode = 0 Then blnEnd = True
 End Sub
 
 Private Sub sckPing_Connect(index As Integer)
