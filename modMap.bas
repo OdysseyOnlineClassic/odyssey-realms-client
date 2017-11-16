@@ -21,7 +21,7 @@ Sub LoadEditMap(TheMapData As String)
         With EditMap
             MapData = TheMapData
             MapDataLoadingArray() = StrConv(MapData, vbFromUnicode)
-            .name = ClipString$(Mid$(MapData, 1, 30))
+            .Name = ClipString$(Mid$(MapData, 1, 30))
             .Version = Asc(Mid$(MapData, 31, 1)) * 16777216 + Asc(Mid$(MapData, 32, 1)) * 65536 + Asc(Mid$(MapData, 33, 1)) * 256& + Asc(Mid$(MapData, 34, 1))
             .NPC = Asc(Mid$(MapData, 35, 1)) * 256 + Asc(Mid$(MapData, 36, 1))
             .MIDI = Asc(Mid$(MapData, 37, 1))
@@ -88,7 +88,7 @@ Sub UploadMap()
         Else
             .Version = 1
         End If
-        St1 = .name
+        St1 = .Name
         TheMapData = St1 + QuadChar(.Version) + DoubleChar$(CLng(.NPC)) + Chr$(.MIDI) + DoubleChar$(CLng(.ExitUp)) + DoubleChar$(CLng(.ExitDown)) + DoubleChar$(CLng(.ExitLeft)) + DoubleChar$(CLng(.ExitRight)) + DoubleChar(CLng(.BootLocation.Map)) + Chr$(.BootLocation.X) + Chr$(.BootLocation.Y) + DoubleChar$(CLng(.DeathLocation.Map)) + Chr$(.DeathLocation.X) + Chr$(.DeathLocation.Y)
         TheMapData = TheMapData + Chr$(.flags) + Chr$(.Flags2) + DoubleChar$(CLng(.MonsterSpawn(0).Monster)) + Chr$(.MonsterSpawn(0).Rate) + DoubleChar$(CLng(.MonsterSpawn(1).Monster)) + Chr$(.MonsterSpawn(1).Rate) + DoubleChar$(CLng(.MonsterSpawn(2).Monster)) + Chr$(.MonsterSpawn(2).Rate) + DoubleChar$(CLng(.MonsterSpawn(3).Monster)) + Chr$(.MonsterSpawn(3).Rate) + DoubleChar$(CLng(.MonsterSpawn(4).Monster)) + Chr$(.MonsterSpawn(4).Rate) + DoubleChar$(CLng(.MonsterSpawn(5).Monster)) + Chr$(.MonsterSpawn(5).Rate) + DoubleChar$(CLng(.MonsterSpawn(6).Monster)) + Chr$(.MonsterSpawn(6).Rate) + DoubleChar$(CLng(.MonsterSpawn(7).Monster)) + Chr$(.MonsterSpawn(7).Rate) + DoubleChar$(CLng(.MonsterSpawn(8).Monster)) + Chr$(.MonsterSpawn(8).Rate) + DoubleChar$(CLng(.MonsterSpawn(9).Monster)) + Chr$(.MonsterSpawn(9).Rate)
         For Y = 0 To 11
@@ -110,7 +110,7 @@ Sub LoadMapData(LoadMapData As String)
         MapData = LoadMapData
         MapDataLoadingArray() = StrConv(MapData, vbFromUnicode)
         With Map
-            .name = ClipString$(Mid$(MapData, 1, 30))
+            .Name = ClipString$(Mid$(MapData, 1, 30))
             .Version = Asc(Mid$(MapData, 31, 1)) * 16777216 + Asc(Mid$(MapData, 32, 1)) * 65536 + Asc(Mid$(MapData, 33, 1)) * 256& + Asc(Mid$(MapData, 34, 1))
             .NPC = Asc(Mid$(MapData, 35, 1)) * 256 + Asc(Mid$(MapData, 36, 1))
             .MIDI = Asc(Mid$(MapData, 37, 1))
@@ -176,9 +176,6 @@ LoadError:
 End Sub
 
 Sub LoadMapFromCache(LoadMap As Long)
-    ChDir App.Path
-    CurDir App.Path
-
     On Error Resume Next
     Close #1
     On Error GoTo LoadError
@@ -216,7 +213,7 @@ Sub DrawMap()
     
     If CMap = 0 Then Exit Sub
 
-    If options.DisableLighting = False Then
+    If Options.DisableLighting = False Then
         ClearMapLights
 
         If ExamineBit(Map.Flags2, 0) = True Then 'Raining
@@ -289,7 +286,7 @@ Sub DrawMap()
                         Call FGTile2Buffer.BltFast(X * 32, Y * 32, DDSTiles, TileSource, DDBLTFAST_SRCCOLORKEY)
                     End If
                     If .Att = 19 Then
-                        If options.DisableLighting = False Then AddMapLight X * 32 + 16, Y * 32 + 16, .AttData(0), .AttData(1)
+                        If Options.DisableLighting = False Then AddMapLight X * 32 + 16, Y * 32 + 16, .AttData(0), .AttData(1)
                     End If
                 End With
             Next Y
@@ -373,7 +370,7 @@ Sub DrawMap()
                         End If
                     End If
                     If .Att = 19 Then
-                        If options.DisableLighting = False Then AddMapLight X * 32 + 16, Y * 32 + 16, .AttData(0), .AttData(1)
+                        If Options.DisableLighting = False Then AddMapLight X * 32 + 16, Y * 32 + 16, .AttData(0), .AttData(1)
                     End If
                 End With
             Next Y
@@ -408,7 +405,7 @@ Sub DrawMap()
         AlwaysDark = False
     End If
 
-    If options.DisableLighting = False Then
+    If Options.DisableLighting = False Then
         UpdateLights
 
         CreateLightMap Lighting(0), Darkness, MapDataLoadingArray(0), OutdoorLight
@@ -429,7 +426,7 @@ Sub SaveMap(File As String)
     Dim TheMapData As String, St1 As String * 30
     Dim X As Long, Y As Long
     With Map
-        St1 = .name
+        St1 = .Name
         TheMapData = St1 + QuadChar(.Version) + DoubleChar$(CLng(.NPC)) + Chr$(.MIDI) + DoubleChar$(CLng(.ExitUp)) + DoubleChar$(CLng(.ExitDown)) + DoubleChar$(CLng(.ExitLeft)) + DoubleChar$(CLng(.ExitRight)) + DoubleChar(CLng(.BootLocation.Map)) + Chr$(.BootLocation.X) + Chr$(.BootLocation.Y) + DoubleChar(CLng(.DeathLocation.Map)) + Chr$(.DeathLocation.X) + Chr$(.DeathLocation.Y)
         TheMapData = TheMapData + Chr$(.flags) + Chr$(.Flags2) + DoubleChar$(CLng(.MonsterSpawn(0).Monster)) + Chr$(.MonsterSpawn(0).Rate) + DoubleChar$(CLng(.MonsterSpawn(1).Monster)) + Chr$(.MonsterSpawn(1).Rate) + DoubleChar$(CLng(.MonsterSpawn(2).Monster)) + Chr$(.MonsterSpawn(2).Rate) + DoubleChar$(CLng(.MonsterSpawn(3).Monster)) + Chr$(.MonsterSpawn(3).Rate) + DoubleChar$(CLng(.MonsterSpawn(4).Monster)) + Chr$(.MonsterSpawn(4).Rate) + DoubleChar$(CLng(.MonsterSpawn(5).Monster)) + Chr$(.MonsterSpawn(5).Rate) + DoubleChar$(CLng(.MonsterSpawn(6).Monster)) + Chr$(.MonsterSpawn(6).Rate) + DoubleChar$(CLng(.MonsterSpawn(7).Monster)) + Chr$(.MonsterSpawn(7).Rate) + DoubleChar$(CLng(.MonsterSpawn(8).Monster)) + Chr$(.MonsterSpawn(8).Rate) + DoubleChar$(CLng(.MonsterSpawn(9).Monster)) + Chr$(.MonsterSpawn(9).Rate)
         For Y = 0 To 11

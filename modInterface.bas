@@ -124,7 +124,7 @@ Private Sub RealDrawCurInvObject()
         If CurInvObj <= 20 Then
             If Character.Inv(CurInvObj).Object > 0 Then
                 DrawToDC 0, 0, 32, 32, frmMain.picObject.hDC, DDSObjects, 0, (Object(Character.Inv(CurInvObj).Object).Picture - 1) * 32
-                frmMain.lblCurObj = Object(Character.Inv(CurInvObj).Object).name
+                'frmMain.lblCurObj = Object(Character.Inv(CurInvObj).Object).name
 
                 'First line (the name line)
                 If Character.Inv(CurInvObj).ItemPrefix > 0 Then
@@ -254,7 +254,7 @@ Private Sub RealDrawCurInvObject()
         Else
             TheObj = CurInvObj - 20
             If Character.EquippedObject(TheObj).Object > 0 Then
-                frmMain.lblCurObj = Object(Character.EquippedObject(TheObj).Object).name
+                'frmMain.lblCurObj = Object(Character.EquippedObject(TheObj).Object).name
                 DrawToDC 0, 0, 32, 32, frmMain.picObject.hDC, DDSObjects, 0, (Object(Character.EquippedObject(TheObj).Object).Picture - 1) * 32
                 If Character.EquippedObject(TheObj).ItemPrefix > 0 Then
                     If Len(ItemPrefix(Character.EquippedObject(TheObj).ItemPrefix).name) > 0 Then

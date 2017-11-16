@@ -245,7 +245,7 @@ Begin VB.Form frmNPC
       EndProperty
       Height          =   375
       Left            =   1320
-      MaxLength       =   15
+      MaxLength       =   35
       TabIndex        =   0
       Top             =   600
       Width           =   3855
@@ -565,4 +565,28 @@ Sub UpdateList()
         cmbTakeObject.AddItem CStr(A) + ": " + Object(A).name
     Next A
     lstSaleItems.ListIndex = 0
+End Sub
+
+Private Sub lstSaleItems_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Dim iIndex As Long
+    iIndex = GetCursorIndex(lstSaleItems.hWnd)
+    If Len(lstSaleItems.List(iIndex)) > 60 Then
+        lstSaleItems.ToolTipText = lstSaleItems.List(iIndex)
+    Else
+        lstSaleItems.ToolTipText = ""
+    End If
+End Sub
+Private Sub cmbGiveObject_Click()
+    If Len(cmbGiveObject.Text) > 12 Then
+        cmbGiveObject.ToolTipText = cmbGiveObject.Text
+    Else
+        cmbGiveObject.ToolTipText = ""
+    End If
+End Sub
+Private Sub cmbTakeObject_Click()
+    If Len(cmbTakeObject.Text) > 12 Then
+        cmbTakeObject.ToolTipText = cmbTakeObject.Text
+    Else
+        cmbTakeObject.ToolTipText = ""
+    End If
 End Sub

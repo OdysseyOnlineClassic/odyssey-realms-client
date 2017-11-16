@@ -129,32 +129,32 @@ Private Sub btnPlay_Click()
 
         Case 0 'Classic
             ServerDescription = "Odyssey Realms - Classic"
-            CacheDirectory = "classic"
+            CacheDirectory = App.Path + "\classic"
             ServerIP = "libertyarchives.info"
             ServerPort = 5756
         Case 1 'PK Island
             ServerDescription = "PK Island"
-            CacheDirectory = "pkisland"
+            CacheDirectory = App.Path + "\pkisland"
             ServerIP = "libertyarchives.info"
             ServerPort = 5758
         Case 2 'Ethia
             ServerDescription = "Ethia"
-            CacheDirectory = "ethia"
+            CacheDirectory = App.Path + "\ethia"
             ServerIP = "libertyarchives.info"
             ServerPort = 5750
         Case 3 'God Sandbox
             ServerDescription = "God Sandbox"
-            CacheDirectory = "sandbox"
+            CacheDirectory = App.Path + "\sandbox"
             ServerIP = "libertyarchives.info"
             ServerPort = 5752
         Case 4 'Condemned
             ServerDescription = "Condemned"
-            CacheDirectory = "condemned"
+            CacheDirectory = App.Path + "\condemned"
             ServerIP = "libertyarchives.info"
             ServerPort = 5753
         Case 5 'Fankenstein
             ServerDescription = "Fankenstein"
-            CacheDirectory = "fankenstein"
+            CacheDirectory = App.Path + "\fankenstein"
             ServerIP = "libertyarchives.info"
             ServerPort = 5751
     End Select
@@ -177,7 +177,7 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
         ServerDescription = "localhost"
         ServerIP = "127.0.0.1"
         ServerPort = 5750
-        CacheDirectory = "localhost"
+        CacheDirectory = App.Path + "\localhost"
         Unload Me
         InitializeGame
     End If

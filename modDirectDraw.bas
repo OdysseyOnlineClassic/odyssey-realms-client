@@ -108,13 +108,13 @@ Public Sub LoadSurfaces()
     BackBufferSurf.GetSurfaceDesc DDSDBackBuffer
 
     If DDSDBackBuffer.ddpfPixelFormat.lRGBBitCount = 16 Then
-        options.Bit32 = False
+        Options.Bit32 = False
     ElseIf DDSDBackBuffer.ddpfPixelFormat.lRGBBitCount = 32 Then
-        options.Bit32 = True
+        Options.Bit32 = True
     Else
-        If options.DisableLighting = False Then
+        If Options.DisableLighting = False Then
             MsgBox "Odyssey's lighting and weather effects require either 16 or 32 bit color display mode.  These effects have been disabled on your machine!"
-            options.DisableLighting = True
+            Options.DisableLighting = True
             SaveOptions
         End If
     End If
@@ -132,15 +132,15 @@ Public Sub LoadSurfaces()
     FGTile2Buffer.SetColorKey DDCKEY_SRCBLT, DDCK
     InventoryBuffer.SetColorKey DDCKEY_SRCBLT, DDCK
 
-    LoadProtectedSurface DDSEffects, GFXPATH + "effects.rsc"
-    LoadProtectedSurface DDSObjects, GFXPATH + "objects.rsc"
-    LoadProtectedSurface DDSSprites, GFXPATH + "sprites.rsc"
-    LoadProtectedSurface DDSTiles, GFXPATH + "tiles.rsc"
-    LoadProtectedSurface DDSAtts, GFXPATH + "atts.rsc"
-    LoadProtectedSurface DDSHPBar, GFXPATH + "hpbar.rsc"
-    LoadProtectedSurface DDSInventory, GFXPATH + "inventory.rsc"
-    LoadProtectedSurface DDSInterfaceLights, GFXPATH + "InterfaceLights.rsc"
-    LoadProtectedSurface DDSStats, GFXPATH + "stats.rsc"
+    LoadProtectedSurface DDSEffects, GetGfxPath + "effects.rsc"
+    LoadProtectedSurface DDSObjects, GetGfxPath + "objects.rsc"
+    LoadProtectedSurface DDSSprites, GetGfxPath + "sprites.rsc"
+    LoadProtectedSurface DDSTiles, GetGfxPath + "tiles.rsc"
+    LoadProtectedSurface DDSAtts, GetGfxPath + "atts.rsc"
+    LoadProtectedSurface DDSHPBar, GetGfxPath + "hpbar.rsc"
+    LoadProtectedSurface DDSInventory, GetGfxPath + "inventory.rsc"
+    LoadProtectedSurface DDSInterfaceLights, GetGfxPath + "InterfaceLights.rsc"
+    LoadProtectedSurface DDSStats, GetGfxPath + "stats.rsc"
 
     Call BackBufferSurf.BltColorFill(FullMapRect, RGB(0, 0, 0))
     Call BGTile1Buffer.BltColorFill(FullMapRect, RGB(0, 0, 0))
@@ -151,7 +151,7 @@ Public Sub LoadSurfaces()
 
     FontInfo.Bold = False
     FontInfo.Size = 11
-    FontInfo.name = "System"
+    FontInfo.Name = "System"
     BackBufferSurf.SetFontTransparency True
     BackBufferSurf.SetFont FontInfo
 End Sub
@@ -201,11 +201,11 @@ Public Sub LoadProtectedSurface(Surface As DirectDrawSurface4, File As String)
         FileByteArray() = StrConv(File, vbFromUnicode)
         ReDim Preserve FileByteArray(UBound(FileByteArray) + 1)
 
-        EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
+        'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
 
         LoadSurface Surface, File
 
-        EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
+        'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
     End If
 End Sub
 

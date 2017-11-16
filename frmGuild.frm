@@ -185,7 +185,7 @@ Begin VB.Form frmGuild
          EndProperty
          ForeColor       =   &H009AADC2&
          Height          =   255
-         Left            =   4320
+         Left            =   4800
          TabIndex        =   26
          Top             =   120
          Width           =   1335
@@ -246,7 +246,7 @@ Begin VB.Form frmGuild
          EndProperty
          ForeColor       =   &H009AADC2&
          Height          =   255
-         Left            =   3360
+         Left            =   3960
          TabIndex        =   23
          Top             =   120
          Width           =   735
@@ -330,7 +330,7 @@ Begin VB.Form frmGuild
          Left            =   840
          TabIndex        =   19
          Top             =   120
-         Width           =   2535
+         Width           =   2895
       End
       Begin VB.Label cptHall 
          BackColor       =   &H0061514B&
