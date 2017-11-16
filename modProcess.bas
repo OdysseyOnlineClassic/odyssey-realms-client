@@ -172,7 +172,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     With .Inv(A)
                         .Object = 0
                         .EquippedNum = 0
-                        .value = 0
+                        .Value = 0
                         .ItemPrefix = 0
                         .ItemSuffix = 0
                     End With
@@ -379,7 +379,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     .XOffset = B
                     B = Int(Rnd * 9)
                     .YOffset = B
-                    .value = Asc(Mid$(St, 8, 1)) * 16777216 + Asc(Mid$(St, 9, 1)) * 65536 + Asc(Mid$(St, 10, 1)) * 256& + Asc(Mid$(St, 11, 1))
+                    .Value = Asc(Mid$(St, 8, 1)) * 16777216 + Asc(Mid$(St, 9, 1)) * 65536 + Asc(Mid$(St, 10, 1)) * 256& + Asc(Mid$(St, 11, 1))
                     .PickedUp = 0
                     RedrawMapTile CLng(.X), CLng(.Y)
                 End With
@@ -394,7 +394,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     .Object = 0
                     .ItemPrefix = 0
                     .ItemSuffix = 0
-                    .value = 0
+                    .Value = 0
                     .PickedUp = 0
                     RedrawMapTile CLng(.X), CLng(.Y)
                 End With
@@ -509,7 +509,7 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 And A <= 20 Then
                 With Character.Inv(A)
                     .Object = GetInt(Mid$(St, 2, 2))
-                    .value = Asc(Mid$(St, 4, 1)) * 16777216 + Asc(Mid$(St, 5, 1)) * 65536 + Asc(Mid$(St, 6, 1)) * 256& + Asc(Mid$(St, 7, 1))
+                    .Value = Asc(Mid$(St, 4, 1)) * 16777216 + Asc(Mid$(St, 5, 1)) * 65536 + Asc(Mid$(St, 6, 1)) * 256& + Asc(Mid$(St, 7, 1))
                     .ItemPrefix = Asc(Mid$(St, 8, 1))
                     .ItemSuffix = Asc(Mid$(St, 9, 1))
                 End With
@@ -537,7 +537,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     .Object = 0
                     .ItemPrefix = 0
                     .ItemSuffix = 0
-                    .value = 0
+                    .Value = 0
                     .EquippedNum = 0
                 End With
                 If frmMain.picRepair.Visible = True Then
@@ -557,39 +557,39 @@ Sub ProcessString(PacketID As Long, St As String)
                     Select Case Object(Character.Inv(A).Object).Type
                     Case 2, 3, 4    'Armor pieces
                         Character.EquippedObject(Object(Character.Inv(A).Object).Type).Object = Character.Inv(A).Object
-                        Character.EquippedObject(Object(Character.Inv(A).Object).Type).value = Character.Inv(A).value
+                        Character.EquippedObject(Object(Character.Inv(A).Object).Type).Value = Character.Inv(A).Value
                         Character.EquippedObject(Object(Character.Inv(A).Object).Type).ItemPrefix = Character.Inv(A).ItemPrefix
                         Character.EquippedObject(Object(Character.Inv(A).Object).Type).ItemSuffix = Character.Inv(A).ItemSuffix
                         Character.Inv(A).Object = 0
-                        Character.Inv(A).value = 0
+                        Character.Inv(A).Value = 0
                         Character.Inv(A).ItemPrefix = 0
                         Character.Inv(A).ItemSuffix = 0
                     Case 8    'Ring
                         Character.EquippedObject(5).Object = Character.Inv(A).Object
-                        Character.EquippedObject(5).value = Character.Inv(A).value
+                        Character.EquippedObject(5).Value = Character.Inv(A).Value
                         Character.EquippedObject(5).ItemPrefix = Character.Inv(A).ItemPrefix
                         Character.EquippedObject(5).ItemSuffix = Character.Inv(A).ItemSuffix
                         Character.Inv(A).Object = 0
-                        Character.Inv(A).value = 0
+                        Character.Inv(A).Value = 0
                         Character.Inv(A).ItemPrefix = 0
                         Character.Inv(A).ItemSuffix = 0
                     Case 1    'Weapons
                         Character.EquippedObject(1).Object = Character.Inv(A).Object
-                        Character.EquippedObject(1).value = Character.Inv(A).value
+                        Character.EquippedObject(1).Value = Character.Inv(A).Value
                         Character.EquippedObject(1).ItemPrefix = Character.Inv(A).ItemPrefix
                         Character.EquippedObject(1).ItemSuffix = Character.Inv(A).ItemSuffix
                         Character.Inv(A).Object = 0
-                        Character.Inv(A).value = 0
+                        Character.Inv(A).Value = 0
                         Character.Inv(A).ItemPrefix = 0
                         Character.Inv(A).ItemSuffix = 0
                         Character.Projectile = False
                     Case 10    'Projectile Weapon
                         Character.EquippedObject(1).Object = Character.Inv(A).Object
-                        Character.EquippedObject(1).value = Character.Inv(A).value
+                        Character.EquippedObject(1).Value = Character.Inv(A).Value
                         Character.EquippedObject(1).ItemPrefix = Character.Inv(A).ItemPrefix
                         Character.EquippedObject(1).ItemSuffix = Character.Inv(A).ItemSuffix
                         Character.Inv(A).Object = 0
-                        Character.Inv(A).value = 0
+                        Character.Inv(A).Value = 0
                         Character.Inv(A).ItemPrefix = 0
                         Character.Inv(A).ItemSuffix = 0
                         Character.Projectile = True
@@ -618,7 +618,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     If Character.EquippedObject(A).Object > 0 Then
                         If Object(Character.EquippedObject(A).Object).Type = 10 Then Character.Projectile = False
                         Character.EquippedObject(A).Object = 0
-                        Character.EquippedObject(A).value = 0
+                        Character.EquippedObject(A).Value = 0
                         Character.EquippedObject(A).ItemPrefix = 0
                         Character.EquippedObject(A).ItemSuffix = 0
                         RefreshInventory
@@ -643,14 +643,14 @@ Sub ProcessString(PacketID As Long, St As String)
                 With .Inv(A)
                     .Object = 0
                     .EquippedNum = 0
-                    .value = 0
+                    .Value = 0
                     .ItemPrefix = 0
                     .ItemSuffix = 0
                 End With
             Next A
             For A = 1 To 5
                 .EquippedObject(A).Object = 0
-                .EquippedObject(A).value = 0
+                .EquippedObject(A).Value = 0
                 .EquippedObject(A).ItemPrefix = 0
                 .EquippedObject(A).ItemSuffix = 0
             Next A
@@ -828,7 +828,7 @@ Sub ProcessString(PacketID As Long, St As String)
                 .lblData(1) = .ObjData(1)
                 .lblData(2) = .ObjData(2)
                 .lblData(3) = .ObjData(3)
-                .sclLevel.value = Asc(Mid$(St, 9, 1))
+                .sclLevel.Value = Asc(Mid$(St, 9, 1))
                 B = Asc(Mid$(St, 8, 1))
                 For C = 0 To 3
                     If ExamineBit(CByte(B), CByte(C)) = True Then
@@ -887,10 +887,10 @@ Sub ProcessString(PacketID As Long, St As String)
                 .txtValue(1) = Asc(Mid$(St, 16, 1))
                 .cmbObject(2).ListIndex = GetInt(Mid$(St, 17, 2))
                 .txtValue(2) = Asc(Mid$(St, 19, 1))
-                .sclExperience.value = Asc(Mid$(St, 20, 1))
-                .sclMagicDefense.value = Asc(Mid$(St, 21, 1))
-                .lblExperience = .sclExperience.value
-                .lblMagicDefense = .sclMagicDefense.value
+                .sclExperience.Value = Asc(Mid$(St, 20, 1))
+                .sclMagicDefense.Value = Asc(Mid$(St, 21, 1))
+                .lblExperience = .sclExperience.Value
+                .lblMagicDefense = .sclMagicDefense.Value
                 .Show 1
             End With
         End If
@@ -1202,7 +1202,7 @@ Sub ProcessString(PacketID As Long, St As String)
                         PrintChat "Your " + Object(.Object).Name + " breaks!", 14
                     End If
                     .Object = 0
-                    .value = 0
+                    .Value = 0
                     .ItemPrefix = 0
                     .ItemSuffix = 0
                 End With
@@ -1849,7 +1849,7 @@ Sub ProcessString(PacketID As Long, St As String)
     Case 96    'Custom Wav Play
         If Len(St) >= 1 Then
             A = Asc(Mid$(St, 1, 1))
-            If Exists("Sound" + CStr(A) + ".wav") Then
+            If Exists(GetSoundPath + "sound" + CStr(A) + ".wav") Then
                 PlayWav A
             End If
         End If
@@ -1992,7 +1992,7 @@ Sub ProcessString(PacketID As Long, St As String)
         D = Asc(Mid$(St, 8, 1))
         E = Asc(Mid$(St, 9, 1))
         Character.ItemBank(A).Object = B
-        Character.ItemBank(A).value = C
+        Character.ItemBank(A).Value = C
         Character.ItemBank(A).ItemPrefix = D
         Character.ItemBank(A).ItemSuffix = E
         If frmMain.Visible = True Then
@@ -2006,7 +2006,7 @@ Sub ProcessString(PacketID As Long, St As String)
             frmMain.ItemBank(A).Refresh
         End If
         Character.ItemBank(A).Object = 0
-        Character.ItemBank(A).value = 0
+        Character.ItemBank(A).Value = 0
         Character.ItemBank(A).ItemPrefix = 0
         Character.ItemBank(A).ItemSuffix = 0
     Case 115    'Equipped Object
@@ -2017,18 +2017,18 @@ Sub ProcessString(PacketID As Long, St As String)
         Select Case Object(A).Type
         Case 1, 10    'Weapon
             Character.EquippedObject(1).Object = A
-            Character.EquippedObject(1).value = B
+            Character.EquippedObject(1).Value = B
             Character.EquippedObject(1).ItemPrefix = C
             Character.EquippedObject(1).ItemSuffix = D
             If Object(A).Type = 10 Then Character.Projectile = True
         Case 2, 3, 4
             Character.EquippedObject(Object(A).Type).Object = A
-            Character.EquippedObject(Object(A).Type).value = B
+            Character.EquippedObject(Object(A).Type).Value = B
             Character.EquippedObject(Object(A).Type).ItemPrefix = C
             Character.EquippedObject(Object(A).Type).ItemSuffix = D
         Case 8
             Character.EquippedObject(5).Object = A
-            Character.EquippedObject(5).value = B
+            Character.EquippedObject(5).Value = B
             Character.EquippedObject(5).ItemPrefix = C
             Character.EquippedObject(5).ItemSuffix = D
         End Select
@@ -2212,13 +2212,13 @@ Sub ProcessString(PacketID As Long, St As String)
         A = GetInt(Mid$(St, 1, 2))
         If frmMagic_Loaded = False Then Load frmMagic
         With frmMagic
-            If Magic(A).Level > 0 Then .sclLevel.value = Magic(A).Level
-            .lblLevel = .sclLevel.value
+            If Magic(A).Level > 0 Then .sclLevel.Value = Magic(A).Level
+            .lblLevel = .sclLevel.Value
             For B = 0 To NumClasses - 1
                 If ExamineBit(Magic(A).Class, CByte(B)) = True Then
-                    .chkClass(B).value = 1
+                    .chkClass(B).Value = 1
                 Else
-                    .chkClass(B).value = 0
+                    .chkClass(B).Value = 0
                 End If
             Next B
             .txtName = Magic(A).Name
@@ -2318,10 +2318,10 @@ Sub ProcessString(PacketID As Long, St As String)
         Load frmPrefix
         With frmPrefix
             .txtName = ItemPrefix(A).Name
-            .optModType(ItemPrefix(A).ModificationType).value = True
+            .optModType(ItemPrefix(A).ModificationType).Value = True
             .sclValue = ItemPrefix(A).ModificationValue
             .lblModValue = .sclValue
-            .chkOccursNaturally.value = ItemPrefix(A).OccursNaturally
+            .chkOccursNaturally.Value = ItemPrefix(A).OccursNaturally
             .lblNumber = A
             .Show
         End With
@@ -2330,10 +2330,10 @@ Sub ProcessString(PacketID As Long, St As String)
         Load frmSuffix
         With frmSuffix
             .txtName = ItemSuffix(A).Name
-            .optModType(ItemSuffix(A).ModificationType).value = True
+            .optModType(ItemSuffix(A).ModificationType).Value = True
             .sclValue = ItemSuffix(A).ModificationValue
             .lblModValue = .sclValue
-            .chkOccursNaturally.value = ItemSuffix(A).OccursNaturally
+            .chkOccursNaturally.Value = ItemSuffix(A).OccursNaturally
             .lblNumber = A
             .Show
         End With
