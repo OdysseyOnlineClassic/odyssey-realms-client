@@ -3,7 +3,7 @@ Begin VB.Form frmMenu
    BackColor       =   &H0061514B&
    BorderStyle     =   0  'None
    Caption         =   "The Odyssey Online Classic"
-   ClientHeight    =   4260
+   ClientHeight    =   5715
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   4485
@@ -13,9 +13,101 @@ Begin VB.Form frmMenu
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   4260
+   ScaleHeight     =   5715
    ScaleWidth      =   4485
    StartUpPosition =   2  'CenterScreen
+   Begin VB.Label lblMenu 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H0044342E&
+      BorderStyle     =   1  'Fixed Single
+      Caption         =   "Facebook Group"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   15.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   420
+      Index           =   15
+      Left            =   120
+      TabIndex        =   17
+      Top             =   4680
+      Width           =   4260
+   End
+   Begin VB.Label lblMenu 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H0044342E&
+      BorderStyle     =   1  'Fixed Single
+      Caption         =   "Facebook Page"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   15.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   420
+      Index           =   14
+      Left            =   120
+      TabIndex        =   16
+      Top             =   4200
+      Width           =   4260
+   End
+   Begin VB.Label lblMenu 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H0044342E&
+      BorderStyle     =   1  'Fixed Single
+      Caption         =   "Youtube"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   15.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   420
+      Index           =   13
+      Left            =   120
+      TabIndex        =   15
+      Top             =   3720
+      Width           =   2100
+   End
+   Begin VB.Label lblMenu 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H0044342E&
+      BorderStyle     =   1  'Fixed Single
+      Caption         =   "Reddit"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   15.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   420
+      Index           =   12
+      Left            =   2280
+      TabIndex        =   14
+      Top             =   3720
+      Width           =   2100
+   End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
@@ -41,7 +133,7 @@ Begin VB.Form frmMenu
       Appearance      =   0  'Flat
       BackColor       =   &H0044342E&
       BorderStyle     =   1  'Fixed Single
-      Caption         =   "Mega Pack Installer"
+      Caption         =   "Mega Pack"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   15.75
@@ -54,10 +146,10 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   420
       Index           =   11
-      Left            =   120
+      Left            =   2280
       TabIndex        =   12
-      Top             =   3240
-      Width           =   4260
+      Top             =   2280
+      Width           =   2100
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -77,9 +169,9 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   420
       Index           =   10
-      Left            =   2280
+      Left            =   120
       TabIndex        =   11
-      Top             =   2760
+      Top             =   2280
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -102,7 +194,7 @@ Begin VB.Form frmMenu
       Index           =   9
       Left            =   120
       TabIndex        =   10
-      Top             =   2760
+      Top             =   1320
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -125,7 +217,7 @@ Begin VB.Form frmMenu
       Index           =   8
       Left            =   2280
       TabIndex        =   9
-      Top             =   2280
+      Top             =   3240
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -148,7 +240,7 @@ Begin VB.Form frmMenu
       Index           =   7
       Left            =   120
       TabIndex        =   8
-      Top             =   2280
+      Top             =   3240
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -171,7 +263,7 @@ Begin VB.Form frmMenu
       Index           =   6
       Left            =   2280
       TabIndex        =   7
-      Top             =   1815
+      Top             =   1800
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -194,8 +286,8 @@ Begin VB.Form frmMenu
       Index           =   5
       Left            =   120
       TabIndex        =   6
-      Top             =   1815
-      Width           =   2100
+      Top             =   2760
+      Width           =   4260
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -263,7 +355,7 @@ Begin VB.Form frmMenu
       Index           =   2
       Left            =   2280
       TabIndex        =   3
-      Top             =   1335
+      Top             =   1320
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -286,7 +378,7 @@ Begin VB.Form frmMenu
       Index           =   3
       Left            =   120
       TabIndex        =   2
-      Top             =   1320
+      Top             =   1800
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -309,7 +401,7 @@ Begin VB.Form frmMenu
       Index           =   4
       Left            =   120
       TabIndex        =   1
-      Top             =   3720
+      Top             =   5160
       Width           =   4260
    End
    Begin VB.Label lblCurrentServer 
@@ -361,14 +453,14 @@ Private Sub Form_Load()
     lblCurrentServer = ServerDescription
 End Sub
 
-Private Sub lblMenu_MouseDown(index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-    lblMenu(index).BackColor = &H61514B
+Private Sub lblMenu_MouseDown(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+    lblMenu(Index).BackColor = &H61514B
 End Sub
 
-Private Sub lblMenu_MouseUp(index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-    lblMenu(index).BackColor = &H44342E
-    If X >= 0 And X <= lblMenu(index).Width And Y >= 0 And Y <= lblMenu(index).Height Then
-        Select Case index
+Private Sub lblMenu_MouseUp(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+    lblMenu(Index).BackColor = &H44342E
+    If X >= 0 And X <= lblMenu(Index).Width And Y >= 0 And Y <= lblMenu(Index).Height Then
+        Select Case Index
         Case 0    'Login
             frmLogin.Show
             Me.Hide
@@ -400,17 +492,25 @@ Private Sub lblMenu_MouseUp(index As Integer, Button As Integer, Shift As Intege
             sDirectory = GetGfxPath
             RunShellExecute sTopic, sFile, sParams, sDirectory, 1
         Case 7    'Forum
-            sTopic = "Open"
-            sFile = "forum.exe"
-            sParams = 0&
-            sDirectory = 0&
-            RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+            Dim wTopic As String
+            Dim wFile As String
+            Dim wParams As String
+            Dim wDirectory As String
+            wTopic = "Open"
+            wFile = TheForum
+            wParams = 0&
+            wDirectory = 0&
+            RunShellExecute wTopic, wFile, wParams, wDirectory, 1
         Case 8    'Chatroom
-            sTopic = "Open"
-            sFile = "chatroom.exe"
-            sParams = 0&
-            sDirectory = 0&
-            RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+            Dim xTopic As String
+            Dim xFile As String
+            Dim xParams As String
+            Dim xDirectory As String
+            xTopic = "Open"
+            xFile = TheIRC
+            xParams = 0&
+            xDirectory = 0&
+            RunShellExecute xTopic, xFile, xParams, xDirectory, 1
         Case 9    'Server List
             Me.Hide
             Load frmServerList
@@ -428,6 +528,46 @@ Private Sub lblMenu_MouseUp(index As Integer, Button As Integer, Shift As Intege
             sParams = 0&
             sDirectory = 0&
             RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+        Case 12    'Reddit
+            Dim rTopic As String
+            Dim rFile As String
+            Dim rParams As String
+            Dim rDirectory As String
+            rTopic = "Open"
+            rFile = TheSubReddit
+            rParams = 0&
+            rDirectory = 0&
+            RunShellExecute rTopic, rFile, rParams, rDirectory, 1
+        Case 13    'Youtube
+            Dim tTopic As String
+            Dim tFile As String
+            Dim tParams As String
+            Dim tDirectory As String
+            tTopic = "Open"
+            tFile = TheYoutubeChannel
+            tParams = 0&
+            tDirectory = 0&
+            RunShellExecute tTopic, tFile, tParams, tDirectory, 1
+        Case 14    'Facebook Page
+            Dim uTopic As String
+            Dim uFile As String
+            Dim uParams As String
+            Dim uDirectory As String
+            uTopic = "Open"
+            uFile = TheFacebookPage
+            uParams = 0&
+            uDirectory = 0&
+            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
+        Case 15    'Facebook Group
+            Dim vTopic As String
+            Dim vFile As String
+            Dim vParams As String
+            Dim vDirectory As String
+            vTopic = "Open"
+            vFile = TheFacebookGroup
+            vParams = 0&
+            vDirectory = 0&
+            RunShellExecute vTopic, vFile, vParams, vDirectory, 1
         End Select
     End If
 End Sub

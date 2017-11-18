@@ -16,6 +16,27 @@ Begin VB.Form frmCredits
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   390
    StartUpPosition =   2  'CenterScreen
+   Begin VB.Label lblQBcrusher 
+      Alignment       =   2  'Center
+      BackColor       =   &H0044342E&
+      Caption         =   "Programming by Christopher Lowenthal (BaD)"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   495
+      Index           =   2
+      Left            =   120
+      TabIndex        =   11
+      Top             =   3360
+      Width           =   5535
+   End
    Begin VB.Label lblVer 
       AutoSize        =   -1  'True
       BackColor       =   &H0044342E&
@@ -71,7 +92,7 @@ Begin VB.Form frmCredits
    Begin VB.Label lblQBcrusher 
       Alignment       =   2  'Center
       BackColor       =   &H0044342E&
-      Caption         =   "Odyssey Realms Registry && Odyssey Classic History Book maintenance by Dante Pellicciotti (QBcrusher)"
+      Caption         =   "Odyssey Realms registry, website, social media communities and hosting by Dante Pellicciotti (QBcrusher)"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   9.75
@@ -112,7 +133,7 @@ Begin VB.Form frmCredits
    Begin VB.Label lblArt 
       Alignment       =   2  'Center
       BackColor       =   &H0044342E&
-      Caption         =   "Art by Greg Dorando (Archbane), Judy Shmidt (Gecky), Vivi"
+      Caption         =   "Original Art by Greg Dorando (Archbane), Judy Shmidt (Gecky), Vivi"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   9.75
@@ -123,10 +144,10 @@ Begin VB.Form frmCredits
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   375
+      Height          =   495
       Left            =   120
       TabIndex        =   2
-      Top             =   1320
+      Top             =   1200
       Width           =   5535
    End
    Begin VB.Label lblSmithy 
@@ -146,7 +167,7 @@ Begin VB.Form frmCredits
       Height          =   375
       Left            =   240
       TabIndex        =   6
-      Top             =   960
+      Top             =   840
       Width           =   5535
    End
    Begin VB.Label btnOk 
@@ -188,7 +209,7 @@ Begin VB.Form frmCredits
       Height          =   375
       Left            =   120
       TabIndex        =   4
-      Top             =   600
+      Top             =   480
       Width           =   5535
    End
    Begin VB.Label lblSpecialThanks 
@@ -246,3 +267,4 @@ End Sub
 Private Sub Form_Load()
     lblVer.Caption = "Version B" + CStr(ClientVer)
 End Sub
+
