@@ -10,6 +10,8 @@ Public ServerPort As Long
 
 Sub Main()
     Dim A As Long
+    
+    Randomize
 
     InitPath = App.Path
     ChDir App.Path
@@ -22,7 +24,11 @@ Sub Main()
     
     ServerDescription = "Odyssey Realms"
     CacheDirectory = App.Path + "\classic"
-    ServerIP = "libertyarchives.info"
+    If Exists("Odyssey.vbp") Then
+        ServerIP = "127.0.0.1"
+    Else
+        ServerIP = "libertyarchives.info"
+    End If
     ServerPort = 5756
     
     'EncryptFiles
@@ -277,14 +283,14 @@ Sub LoadMacros()
         End With
     Next A
 End Sub
-Sub MonsterDied(index As Long)
+Sub MonsterDied(Index As Long)
     Dim A As Long
     
     For A = 1 To MaxProjectiles
         With Projectile(A)
             If .Sprite > 0 Then
                 If .TargetType = pttMonster Then
-                    If .TargetNum = index Then
+                    If .TargetNum = Index Then
                         DestroyEffect A
                     End If
                 End If
@@ -292,6 +298,11 @@ Sub MonsterDied(index As Long)
         End With
     Next A
 End Sub
+
+Public Function GetOffsetDistance(SrcXO As Long, SrcYO As Long, DestXO As Long, DestYO As Long) As Long
+Dim A As Long, B As Long, C As Long, Dir As Long, XDist As Long, YDist As Long
+    GetOffsetDistance = Sqr((SrcXO - DestXO) ^ 2 + (SrcYO - DestYO) ^ 2)
+End Function
 
 Sub DisplayRepair()
     If frmMain.Visible = False Then Exit Sub
@@ -373,7 +384,7 @@ Sub DisplayRepair()
             C = QBColor(11)
             A = 0
             frmMain.lblMenu(56).Visible = False
-        ElseIf ExamineBit(Object(D).flags, 0) = 255 Or Object(D).SellPrice = 0 Then
+        ElseIf ExamineBit(Object(D).flags, 0) = 255 Then
             B = GetObjectDur(CurInvObj)
             St = "Cannot Repair"
             C = QBColor(4)
@@ -588,7 +599,7 @@ Function GetRepairCost(Slot As Integer) As Long
                 'B = B + (C * (Object(Character.Inv(Slot).Object).Modifier * World.Cost_Per_Strength))
                 'If B > 0 Then B = B / 100
                 If Object(Character.Inv(Slot).Object).MaxDur * 10 > 0 Then
-                    C = Object(Character.Inv(Slot).Object).SellPrice - ((Character.Inv(Slot).value / (Object(Character.Inv(Slot).Object).MaxDur * 10)) * Object(Character.Inv(Slot).Object).SellPrice)
+                    C = Object(Character.Inv(Slot).Object).SellPrice + 2500 - ((Character.Inv(Slot).value / (Object(Character.Inv(Slot).Object).MaxDur * 10)) * (Object(Character.Inv(Slot).Object).SellPrice + 1))
                     If C >= 0 Then
                         GetRepairCost = C
                     Else
@@ -624,7 +635,7 @@ Function GetRepairCost(Slot As Integer) As Long
                 'B = B + (C * (Object(Character.EquippedObject(Slot).Object).Modifier * World.Cost_Per_Strength))
                 'If B > 0 Then B = B / 100
                 If Object(Character.EquippedObject(Slot).Object).MaxDur * 10 > 0 Then
-                    C = Object(Character.EquippedObject(Slot).Object).SellPrice - (Character.EquippedObject(Slot).value / (Object(Character.EquippedObject(Slot).Object).MaxDur * 10) * Object(Character.EquippedObject(Slot).Object).SellPrice)
+                    C = Object(Character.EquippedObject(Slot).Object).SellPrice + 2500 - (Character.EquippedObject(Slot).value / (Object(Character.EquippedObject(Slot).Object).MaxDur * 10) * (Object(Character.EquippedObject(Slot).Object).SellPrice + 1))
                     If C >= 0 Then
                         GetRepairCost = C
                     Else
@@ -646,17 +657,17 @@ Function GetRepairAllCost() As Long
         GetRepairAllCost = GetRepairAllCost + GetRepairCost(CInt(A))
     Next A
 End Function
-Sub PlayerLeftMap(index As Long)
+Sub PlayerLeftMap(Index As Long)
 
-    Player(index).Map = 0
-    Player(index).HP = 0
+    Player(Index).Map = 0
+    Player(Index).HP = 0
 
     Dim A As Long
     For A = 1 To MaxProjectiles
         With Projectile(A)
             If .Sprite > 0 Then
                 If .TargetType = pttCharacter Then
-                    If .TargetNum = index Then
+                    If .TargetNum = Index Then
                         DestroyEffect A
                     End If
                 End If
@@ -1345,9 +1356,9 @@ Sub Transition()
     End Select
     NextTransition = 0
 End Sub
-Sub UpdatePlayerColor(index As Long)
+Sub UpdatePlayerColor(Index As Long)
     Dim A As Long
-    With Player(index)
+    With Player(Index)
         If .Guild > 0 Then
             If .Guild = Character.Guild Then
                 .Color = 11
@@ -1762,14 +1773,13 @@ Sub DrawNextFrame()
         With Player(A)
             If .Map = CMap Then
                 If .IsDead = False Then
+                    r.Left = .XO - 32
+                    r.Right = .XO + 64
+                    r.Top = .YO - 32
+                    r.Bottom = .YO - 16
                     If .status = 9 Or .status = 25 Then
-
+                        If Character.Access Then Draw3dText HDCBuffer, r, .name, StatusColors(.status), 2
                     Else
-                        r.Left = .XO - 32
-                        r.Right = .XO + 64
-                        r.Top = .YO - 32
-                        r.Bottom = .YO - 16
-
                         If .status = 1 And CurFrame = 0 Then
                             Draw3dText HDCBuffer, r, .name, QBColor(4), 2
                         ElseIf .status = 1 And CurFrame = 1 Then
@@ -2199,8 +2209,10 @@ Sub CreateStatusColors()
     StatusColors(21) = QBColor(10)
     StatusColors(22) = QBColor(12)
     StatusColors(23) = QBColor(13)
+    StatusColors(24) = QBColor(7)
+    StatusColors(25) = &H808080
 
-    For A = 24 To 100
+    For A = 26 To 100
         StatusColors(A) = QBColor(7)
     Next A
 End Sub
@@ -2308,6 +2320,7 @@ Sub DestroyEffect(number As Long)
             .TotalFrames = 0
             .X = 0
             .Y = 0
+            .Position = 0
         End With
     End If
 End Sub
@@ -2498,7 +2511,7 @@ Sub DrawStats()
 End Sub
 
 Sub CreateProjectile(Direction As Byte, StartX As Byte, StartY As Byte, TheType As Byte, Creator As Byte, Optional Damage As Byte = 0, Optional Magic As Byte = 0)
-    If Creator = Character.index Then CAttack = 5 Else Player(Creator).A = 5
+    If Creator = Character.Index Then CAttack = 5 Else Player(Creator).A = 5
     Dim A As Long
     For A = 1 To MaxProjectiles
         With Projectile(A)

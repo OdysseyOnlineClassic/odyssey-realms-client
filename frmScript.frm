@@ -279,6 +279,10 @@ Private Sub btnOk_Click()
 
             Kill "COMPILE.BAT"
             Kill "CLOSE.COM"
+            Kill "SCRIPT.BAS"
+            Kill "SCRIPT.ASM"
+            Kill "SCRIPT.BIN"
+            Kill "SCRIPT.LOG"
         Else
             MsgBox "File 'mbsc.inc' not found!", vbOKOnly + vbExclamation, TitleString
         End If

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Object = "{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}#1.1#0"; "ieframe.dll"
 Begin VB.Form frmMain 
    BackColor       =   &H0044342E&
@@ -659,7 +659,7 @@ Begin VB.Form frmMain
          NoFolders       =   0   'False
          Transparent     =   0   'False
          ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-         Location        =   ""
+         Location        =   "http:///"
       End
    End
    Begin VB.PictureBox picSellObject 
@@ -707,7 +707,7 @@ Begin VB.Form frmMain
             TabIndex        =   104
             Top             =   1580
             Width           =   1695
-		    WordWrap        =   -1  'True
+            WordWrap        =   -1  'True
          End
          Begin VB.Label cptSellPrice 
             AutoSize        =   -1  'True
@@ -728,7 +728,7 @@ Begin VB.Form frmMain
             TabIndex        =   102
             Top             =   975
             Width           =   1695
-		    WordWrap        =   -1  'True
+            WordWrap        =   -1  'True
          End
          Begin VB.Label cptSellName 
             AutoSize        =   -1  'True
@@ -773,7 +773,7 @@ Begin VB.Form frmMain
          TabIndex        =   106
          Top             =   720
          Width           =   2175
-		 WordWrap        =   -1  'True
+         WordWrap        =   -1  'True
       End
       Begin VB.Label lblSellNPCName 
          Alignment       =   2  'Center
@@ -784,7 +784,7 @@ Begin VB.Form frmMain
          TabIndex        =   105
          Top             =   120
          Width           =   2175
-		 WordWrap		 =   -1  'True
+         WordWrap        =   -1  'True
       End
       Begin VB.Label lblMenu 
          Alignment       =   2  'Center
@@ -3610,17 +3610,17 @@ Private Sub chkAtts_Click()
     DrawMap
 End Sub
 
-Private Sub ItemBank_Click(index As Integer)
-    With Character.ItemBank(index)
+Private Sub ItemBank_Click(Index As Integer)
+    With Character.ItemBank(Index)
         If .Object > 0 Then
             If Not Object(.Object).Type = 6 And Not Object(.Object).Type = 11 Then
-                SendSocket Chr$(55) & Chr$(3) & Chr$(index)
+                SendSocket Chr$(55) & Chr$(3) & Chr$(Index)
             Else
                 frmMain.KeyPreview = False
                 lblDrop.Caption = "Withdraw how many?"
                 TempVar1 = 0
                 TempVar2 = .value
-                TempVar3 = index
+                TempVar3 = Index
                 txtDrop.Text = TempVar2
                 TempVar1 = TempVar2
                 picDrop.Visible = True
@@ -3831,7 +3831,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                 Exit Sub
                             End If
                             SendSocket Chr$(15) + Suffix
-                            PrintChat Character.Name + ": " + Suffix, 13
+                            PrintChat Character.name + ": " + Suffix, 13
                         Else
                             PrintChat "What do you want to broadcast?", YELLOW
                         End If
@@ -3869,7 +3869,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                 Exit Sub
                             End If
                             SendSocket Chr$(16) + Suffix
-                            PrintChat Character.Name + " " + Suffix, 11
+                            PrintChat Character.name + " " + Suffix, 11
                         Else
                             PrintChat "What do you want to do?", YELLOW
                         End If
@@ -3891,9 +3891,9 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
 
                     Case "STATS", "TRAIN"
                         If Character.Gender = 0 Then
-                            PrintChat "Name:  " + Character.Name + "     Gender:  Male     Level:  " + CStr(Character.Level) + "     Class:  " + Class(Character.Class).Name, 15
+                            PrintChat "Name:  " + Character.name + "     Gender:  Male     Level:  " + CStr(Character.Level) + "     Class:  " + Class(Character.Class).name, 15
                         Else
-                            PrintChat "Name:  " + Character.Name + "     Gender:  Female     Level:  " + CStr(Character.Level) + "     Class:  " + Class(Character.Class).Name, 15
+                            PrintChat "Name:  " + Character.name + "     Gender:  Female     Level:  " + CStr(Character.Level) + "     Class:  " + Class(Character.Class).name, 15
                         End If
                         PrintChat "Attack:  " + CStr(Character.PhysicalAttack) + "     Defense:  " + CStr(Character.PhysicalDefense) + "     Magic Defense:  " + CStr(Character.MagicDefense), 15
 
@@ -3904,10 +3904,10 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                 With Player(A)
                                     If .Ignore = True Then
                                         .Ignore = False
-                                        PrintChat "You are no longer ignoring " + .Name + ".", YELLOW
+                                        PrintChat "You are no longer ignoring " + .name + ".", YELLOW
                                     Else
                                         .Ignore = True
-                                        PrintChat "You are now ignoring " + .Name + ".", YELLOW
+                                        PrintChat "You are now ignoring " + .name + ".", YELLOW
                                     End If
                                 End With
                             Else
@@ -3920,7 +3920,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                 With Player(A)
                                     If .Sprite > 0 And .Ignore = True Then
                                         B = B + 1
-                                        St1 = St1 + ", " + .Name
+                                        St1 = St1 + ", " + .name
                                     End If
                                 End With
                             Next A
@@ -3945,9 +3945,9 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                             Exit Sub
                                         End If
                                         SendSocket Chr$(14) + Chr$(A) + Suffix
-                                        PrintChat "You tell " + Player(A).Name + ", " + Chr$(34) + Suffix + Chr$(34), 10
+                                        PrintChat "You tell " + Player(A).name + ", " + Chr$(34) + Suffix + Chr$(34), 10
                                     Else
-                                        PrintChat "What do you want to tell " + Player(A).Name + "?", YELLOW
+                                        PrintChat "What do you want to tell " + Player(A).name + "?", YELLOW
                                     End If
                                 Else
                                     PrintChat "No such player!", YELLOW
@@ -3963,9 +3963,9 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                         B = 0
                         For A = 1 To MaxUsers
                             With Player(A)
-                                If .Sprite > 0 And A <> Character.index And Not .status = 25 Then
+                                If .Sprite > 0 And A <> Character.Index And Not .Status = 25 Then
                                     B = B + 1
-                                    St1 = St1 + ", " + .Name
+                                    St1 = St1 + ", " + .name
                                 End If
                             End With
                         Next A
@@ -4010,9 +4010,9 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                 B = 0
                                 For A = 1 To MaxUsers
                                     With Player(A)
-                                        If .Sprite > 0 And A <> Character.index And .Guild = Character.Guild Then
+                                        If .Sprite > 0 And A <> Character.Index And .Guild = Character.Guild Then
                                             B = B + 1
-                                            St1 = St1 + ", " + .Name
+                                            St1 = St1 + ", " + .name
                                         End If
                                     End With
                                 Next A
@@ -4035,7 +4035,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                         Exit Sub
                                     End If
                                     SendSocket Chr$(41) + Suffix    'Guild Chat
-                                    PrintChat Character.Name + " -> Guild: " + Suffix, 15
+                                    PrintChat Character.name + " -> Guild: " + Suffix, 15
                                 Else
                                     PrintChat "You must specify a message!", YELLOW
                                 End If
@@ -4052,7 +4052,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                         A = FindPlayer(Section(1))
                                         If A > 0 Then
                                             SendSocket Chr$(34) + Chr$(A)
-                                            PrintChat Player(A).Name + " has been invited to join your guild.", 15
+                                            PrintChat Player(A).name + " has been invited to join your guild.", 15
                                         Else
                                             PrintChat "No such player!", 14
                                         End If
@@ -4186,10 +4186,12 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                         If Character.Access > 0 Then
                             GetSections Suffix, 1
                             Select Case UCase$(Section(1))
+                            Case "BUGS"
+                                SendSocket Chr$(30)
                             Case "CHAT"
                                 If Suffix <> "" Then
                                     SendSocket Chr$(18) + Chr$(14) + Suffix
-                                    PrintChat "<" + Character.Name + ">: " + Suffix, 11
+                                    PrintChat "<" + Character.name + ">: " + Suffix, 11
                                 End If
                             Case "BOOT"
                                 GetSections Suffix, 1
@@ -4244,7 +4246,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                     A = FindGuild(Section(1))
                                     If A >= 1 Then
                                         SendSocket Chr$(18) + Chr$(5) + Chr$(A)
-                                        PrintChat "Guild " + Guild(A).Name + " disbanded!", 14
+                                        PrintChat "Guild " + Guild(A).name + " disbanded!", 14
                                     Else
                                         PrintChat "No such guild!", 14
                                     End If
@@ -4272,7 +4274,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                 If Character.Access >= 2 Then
                                     If Len(Suffix) > 0 Then
                                         If Len(Suffix) <= 15 Then
-                                            SendSocket Chr$(18) + Chr$(7) + Chr$(Character.index) + Suffix
+                                            SendSocket Chr$(18) + Chr$(7) + Chr$(Character.Index) + Suffix
                                         Else
                                             PrintChat "Name may be no longer than 15 characters!", 14
                                         End If
@@ -4306,7 +4308,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                         B = Int(Val(Section(2)))
                                         If B >= 0 And B <= 255 Then
                                             SendSocket Chr$(18) + Chr$(17) + Chr$(A) + Chr$(B)
-                                            PrintChat Player(A).Name + "'s Status has been changed.", 14
+                                            PrintChat Player(A).name + "'s Status has been changed.", 14
                                         Else
                                             PrintChat "Invalid Status number!", 14
                                         End If
@@ -4320,7 +4322,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                 If Val(Suffix) > 0 Then
                                     A = Int(Val(Suffix))
                                     If A > 25 Then A = 25
-                                    SendSocket Chr$(18) + Chr$(17) + Chr$(Character.index) + Chr$(A)
+                                    SendSocket Chr$(18) + Chr$(17) + Chr$(Character.Index) + Chr$(A)
                                     PrintChat "Status changed.", 14
                                 Else
                                     PrintChat "You must specify a sprite number!", 14
@@ -4349,7 +4351,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                         B = Int(Val(Section(2)))
                                         If B >= 0 And B <= MaxSprite Then
                                             SendSocket Chr$(18) + Chr$(6) + Chr$(A) + DoubleChar$(B)
-                                            PrintChat Player(A).Name + "'s sprite has been changed.", 14
+                                            PrintChat Player(A).name + "'s sprite has been changed.", 14
                                         Else
                                             PrintChat "Invalid sprite number!", 14
                                         End If
@@ -4368,7 +4370,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                         B = Int(Val(Section(2)))
                                         If B > 0 And B < NumClasses Then
                                             SendSocket Chr$(18) + Chr$(25) + Chr$(A) + Chr$(B)
-                                            PrintChat Player(A).Name + "'s class has been changed.", 14
+                                            PrintChat Player(A).name + "'s class has been changed.", 14
                                         Else
                                             PrintChat "Invalid class number!", 14
                                         End If
@@ -4383,7 +4385,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                 If Val(Suffix) > 0 Then
                                     A = Int(Val(Suffix))
                                     If A > 0 And A <= NumClasses Then
-                                        SendSocket Chr$(18) + Chr$(25) + Chr$(Character.index) + Chr$(A)
+                                        SendSocket Chr$(18) + Chr$(25) + Chr$(Character.Index) + Chr$(A)
                                         PrintChat "Class changed.", 14
                                     Else
                                         PrintChat "Invalid class number!", 14
@@ -4400,7 +4402,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                         B = Int(Val(Section(2)))
                                         If B <= MaxSprite Then
                                             SendSocket Chr$(18) + Chr$(15) + Chr$(A) + DoubleChar$(B)
-                                            PrintChat Guild(A).Name + "'s sprite has been changed.", 14
+                                            PrintChat Guild(A).name + "'s sprite has been changed.", 14
                                         Else
                                             PrintChat "Invalid sprite number!", 14
                                         End If
@@ -4415,7 +4417,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                 If Val(Suffix) > 0 Then
                                     A = Int(Val(Suffix))
                                     If A > MaxSprite Then A = MaxSprite
-                                    SendSocket Chr$(18) + Chr$(6) + Chr$(Character.index) + DoubleChar$(A)
+                                    SendSocket Chr$(18) + Chr$(6) + Chr$(Character.Index) + DoubleChar$(A)
                                     PrintChat "Sprite changed.", 14
                                 Else
                                     PrintChat "You must specify a sprite number!", 14
@@ -4487,7 +4489,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                     A = FindPlayer(Section(1))
                                     If A > 0 Then
                                         SendSocket Chr$(18) + Chr$(2) + Chr$(A)
-                                        PrintChat "You have been warped to " + Player(A).Name + ".", 14
+                                        PrintChat "You have been warped to " + Player(A).name + ".", 14
                                     Else
                                         PrintChat "No such player", 14
                                     End If
@@ -4502,7 +4504,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                                         A = FindPlayer(Section(1))
                                         If A > 0 Then
                                             SendSocket Chr$(18) + Chr$(3) + Chr$(A) + DoubleChar(CMap) + Chr$(CX) + Chr$(CY)
-                                            PrintChat Player(A).Name + " has been warped to you.", YELLOW
+                                            PrintChat Player(A).name + " has been warped to you.", YELLOW
                                         Else
                                             PrintChat "No such player", YELLOW
                                         End If
@@ -4799,17 +4801,17 @@ Private Sub Form_Unload(Cancel As Integer)
     frmMain_Showing = False
 End Sub
 
-Private Sub lblEditMode_MouseDown(index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-    lblEditMode(index).BackColor = &H61514B
+Private Sub lblEditMode_MouseDown(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+    lblEditMode(Index).BackColor = &H61514B
 End Sub
 
-Private Sub lblEditMode_MouseUp(index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub lblEditMode_MouseUp(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
     Dim A As Byte, B As Byte, C As Long, D As Long
 
-    If index <= 7 Then
-        EditMode = index
+    If Index <= 7 Then
+        EditMode = Index
         For A = 0 To 7
-            If A <> index Then
+            If A <> Index Then
                 lblEditMode(A).BackColor = &H44342E
             End If
             If A >= 6 Then RedrawMap = True
@@ -4824,9 +4826,9 @@ Private Sub lblEditMode_MouseUp(index As Integer, Button As Integer, Shift As In
             End If
         Next A
     End If
-    Select Case index
+    Select Case Index
     Case 8    'Fill
-        lblEditMode(index).BackColor = &H44342E
+        lblEditMode(Index).BackColor = &H44342E
         For A = 0 To 11
             For B = 0 To 11
                 With EditMap.Tile(A, B)
@@ -4855,7 +4857,7 @@ Private Sub lblEditMode_MouseUp(index As Integer, Button As Integer, Shift As In
             Next B
         Next A
     Case 10    'Trees
-        lblEditMode(index).BackColor = &H44342E
+        lblEditMode(Index).BackColor = &H44342E
         For A = 0 To 11
             For B = 0 To 11
                 Randomize
@@ -4914,7 +4916,7 @@ Private Sub lblEditMode_MouseUp(index As Integer, Button As Integer, Shift As In
             Next B
         Next A
     Case 11    'Grass
-        lblEditMode(index).BackColor = &H44342E
+        lblEditMode(Index).BackColor = &H44342E
         For A = 0 To 11
             For B = 0 To 11
                 With EditMap.Tile(A, B)
@@ -4945,7 +4947,7 @@ Private Sub lblEditMode_MouseUp(index As Integer, Button As Integer, Shift As In
             Next B
         Next A
     Case 12
-        lblEditMode(index).BackColor = &H44342E
+        lblEditMode(Index).BackColor = &H44342E
         For A = 0 To 11
             For B = 0 To 11
                 With EditMap.Tile(A, B)
@@ -4978,14 +4980,14 @@ Private Sub lblEditMode_MouseUp(index As Integer, Button As Integer, Shift As In
     RedrawTile
 End Sub
 
-Private Sub lblMenu_MouseDown(index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-    lblMenu(index).BackColor = QBColor(15)
+Private Sub lblMenu_MouseDown(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+    lblMenu(Index).BackColor = QBColor(15)
 End Sub
 
-Private Sub lblMenu_MouseUp(index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub lblMenu_MouseUp(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
     Dim A As Long
-    lblMenu(index).BackColor = &H44342E
-    Select Case index
+    lblMenu(Index).BackColor = &H44342E
+    Select Case Index
     Case 0    'Options
         ChatString = "/Options"
         Form_KeyPress 13
@@ -5123,9 +5125,9 @@ Private Sub lblMenu_MouseUp(index As Integer, Button As Integer, Shift As Intege
             End If
         End If
     Case 36, 37, 38, 39, 40, 41, 42, 43, 44, 45    'Buy/Buy
-        With NPC(Map.NPC).SaleItem(index - 36)
+        With NPC(Map.NPC).SaleItem(Index - 36)
             If .GiveObject >= 1 And .TakeObject >= 1 Then
-                SendSocket Chr$(53) + Chr$(index - 36)
+                SendSocket Chr$(53) + Chr$(Index - 36)
             End If
         End With
     Case 46    'Buy/Close
@@ -5169,11 +5171,11 @@ Private Sub lblMenu_MouseUp(index As Integer, Button As Integer, Shift As Intege
     Case 57    'Repair Cancel
         picRepair.Visible = False
     Case 58    'Map Properties
-        lblMenu(index).BackColor = &H44342E
+        lblMenu(Index).BackColor = &H44342E
         If frmMapProperties_Loaded = False Then Load frmMapProperties
         With EditMap
             frmMapProperties.Caption = "The Odyssey Online Classic [Map " + CStr(CMap) + " Properties]"
-            frmMapProperties.txtName = EditMap.Name
+            frmMapProperties.txtName = EditMap.name
             frmMapProperties.sclMIDI = .MIDI
             frmMapProperties.txtUp = CStr(.ExitUp)
             frmMapProperties.txtDown = CStr(.ExitDown)
@@ -5528,11 +5530,11 @@ Private Sub picViewport_MouseDown(Button As Integer, Shift As Integer, X As Sing
         If Button = 1 Then
             For A = 1 To MaxUsers
                 With Player(A)
-                    If .Map = CMap And .X = MapX And .Y = MapY And Not .status = 9 And Not .status = 25 Then
+                    If .Map = CMap And .X = MapX And .Y = MapY And Not .Status = 9 And Not .Status = 25 Then
                         If .Guild > 0 Then
-                            PrintChat "You see " + .Name + ", member of the guild " + Chr$(34) + Guild(.Guild).Name + Chr$(34) + "!", 7
+                            PrintChat "You see " + .name + ", member of the guild " + Chr$(34) + Guild(.Guild).name + Chr$(34) + "!", 7
                         Else
-                            PrintChat "You see " + .Name + "!", 7
+                            PrintChat "You see " + .name + "!", 7
                         End If
                         SendSocket Chr$(27) + Chr$(A)
                         FoundSomething = True
@@ -5542,7 +5544,7 @@ Private Sub picViewport_MouseDown(Button As Integer, Shift As Integer, X As Sing
             For A = 0 To MaxMonsters
                 With Map.Monster(A)
                     If .Monster > 0 And .X = MapX And .Y = MapY Then
-                        PrintChat "You see a " + Monster(.Monster).Name + "!", 7
+                        PrintChat "You see a " + Monster(.Monster).name + "!", 7
                         FoundSomething = True
                     End If
                 End With
@@ -5551,33 +5553,33 @@ Private Sub picViewport_MouseDown(Button As Integer, Shift As Integer, X As Sing
                 If Map.Object(A).X = MapX And Map.Object(A).Y = MapY And Map.Object(A).Object > 0 Then
                     Select Case Object(Map.Object(A).Object).Type
                     Case 6, 11
-                        PrintChat "You see " + CStr(Map.Object(A).value) + " " + Object(Map.Object(A).Object).Name + "!", 7
+                        PrintChat "You see " + CStr(Map.Object(A).value) + " " + Object(Map.Object(A).Object).name + "!", 7
                     Case 1, 2, 3, 4
                         St = ""
                         If Map.Object(A).ItemPrefix > 0 Then
-                            St = ItemPrefix(Map.Object(A).ItemPrefix).Name + " "
+                            St = ItemPrefix(Map.Object(A).ItemPrefix).name + " "
                         End If
                         If Map.Object(A).ItemSuffix > 0 Then
-                            St = St + Object(Map.Object(A).Object).Name + " " + ItemSuffix(Map.Object(A).ItemSuffix).Name + "!"
+                            St = St + Object(Map.Object(A).Object).name + " " + ItemSuffix(Map.Object(A).ItemSuffix).name + "!"
                         Else
-                            St = St + Object(Map.Object(A).Object).Name + "!"
+                            St = St + Object(Map.Object(A).Object).name + "!"
                         End If
                         St = "You see a " + St + "  Condition: " + GetDurStringFromValue(Map.Object(A).value, Object(Map.Object(A).Object).MaxDur)
                         PrintChat St, 7
                     Case 7    'Key
                         St = ""
                         If Map.Object(A).ItemPrefix > 0 Then
-                            St = ItemPrefix(Map.Object(A).ItemPrefix).Name + " "
+                            St = ItemPrefix(Map.Object(A).ItemPrefix).name + " "
                         End If
                         If Map.Object(A).ItemSuffix > 0 Then
-                            St = St + Object(Map.Object(A).Object).Name + " " + ItemSuffix(Map.Object(A).ItemSuffix).Name + "!"
+                            St = St + Object(Map.Object(A).Object).name + " " + ItemSuffix(Map.Object(A).ItemSuffix).name + "!"
                         Else
-                            St = St + Object(Map.Object(A).Object).Name + "!"
+                            St = St + Object(Map.Object(A).Object).name + "!"
                         End If
                         St = "You see a " + St + "!"
                         PrintChat St, 7
                     Case Else
-                        PrintChat "You see a " + Object(Map.Object(A).Object).Name + "!", 7
+                        PrintChat "You see a " + Object(Map.Object(A).Object).name + "!", 7
                     End Select
                     FoundSomething = True
                 End If
@@ -5674,7 +5676,7 @@ Private Sub picList_MouseDown(Button As Integer, Shift As Integer, X As Single, 
                         B = B + 1
                         If B > 0 Then
                             If B = ListIndex Then
-                                lblCurObj.Caption = Magic(A).Name
+                                lblCurObj.Caption = Magic(A).name
                                 SetObjectInfo "Level " + CStr(Magic(A).Level) + vbCrLf + Magic(A).Description + vbCrLf + "Press Esc + F1-F10 to hotkey this spell"
                             End If
                         End If
@@ -5797,26 +5799,26 @@ Sub ShowBuyMenu(NPCIndex As Integer)
                 St1 = vbNullString
                 Select Case Object(.GiveObject).Type
                 Case 6    'Money
-                    St1 = CStr(.GiveValue) + " " + Object(.GiveObject).Name + " in exchange for "
+                    St1 = CStr(.GiveValue) + " " + Object(.GiveObject).name + " in exchange for "
                     If Object(.TakeObject).Type = 6 Or Object(.TakeObject).Type = 11 Then
-                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).Name & vbCrLf
+                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).name & vbCrLf
                     Else
-                        St1 = St1 + "1 " + Object(.TakeObject).Name
+                        St1 = St1 + "1 " + Object(.TakeObject).name
                     End If
                 Case 11    'Ammo
-                    St1 = CStr(.GiveValue) + " +" & Object(.GiveObject).Modifier & " " + Object(.GiveObject).Name & " (Ammunition)" + " in exchange for "
+                    St1 = CStr(.GiveValue) + " +" & Object(.GiveObject).Modifier & " " + Object(.GiveObject).name & " (Ammunition)" + " in exchange for "
                     If Object(.TakeObject).Type = 6 Or Object(.TakeObject).Type = 11 Then
-                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).Name & vbCrLf
+                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).name & vbCrLf
                     Else
-                        St1 = St1 + "1 " + Object(.TakeObject).Name
+                        St1 = St1 + "1 " + Object(.TakeObject).name
                     End If
                 Case 1, 2, 3, 4, 10    'Weapon
                     Dim St2 As String
-                    St1 = "+" & Object(.GiveObject).Modifier & " " & Object(.GiveObject).Name + " in exchange for "
+                    St1 = "+" & Object(.GiveObject).Modifier & " " & Object(.GiveObject).name + " in exchange for "
                     If Object(.TakeObject).Type = 6 Or Object(.TakeObject).Type = 11 Then
-                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).Name & vbCrLf & "Requirements:  "
+                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).name & vbCrLf & "Requirements:  "
                     Else
-                        St1 = St1 + "1 " + Object(.TakeObject).Name & vbCrLf & "Requirements:  "
+                        St1 = St1 + "1 " + Object(.TakeObject).name & vbCrLf & "Requirements:  "
                     End If
                     If Object(.GiveObject).LevelReq > 0 Then St2 = St2 & "Level " & Object(.GiveObject).LevelReq
                     If St2 = vbNullString Then St1 = St1 & "<None>" Else St1 = St1 & St2
@@ -5824,30 +5826,30 @@ Sub ShowBuyMenu(NPCIndex As Integer)
                 Case 8    'Ring
                     Select Case Object(.GiveObject).Data2
                     Case 0    'Damage
-                        St1 = "+" & Object(.GiveObject).Modifier & " Damage " & Object(.GiveObject).Name + " in exchange for "
+                        St1 = "+" & Object(.GiveObject).Modifier & " Damage " & Object(.GiveObject).name + " in exchange for "
                     Case 1    'Defense
-                        St1 = "+" & Object(.GiveObject).Modifier & " Defense " & Object(.GiveObject).Name + " in exchange for "
+                        St1 = "+" & Object(.GiveObject).Modifier & " Defense " & Object(.GiveObject).name + " in exchange for "
                     End Select
                     If Object(.TakeObject).Type = 6 Or Object(.TakeObject).Type = 11 Then
-                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).Name & vbCrLf & "Requirements:  "
+                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).name & vbCrLf & "Requirements:  "
                     Else
-                        St1 = St1 + "1 " + Object(.TakeObject).Name & vbCrLf & "Requirements:  "
+                        St1 = St1 + "1 " + Object(.TakeObject).name & vbCrLf & "Requirements:  "
                     End If
                     If Object(.GiveObject).LevelReq > 0 Then St2 = St2 & "Level " & Object(.GiveObject).LevelReq
                     If St2 = vbNullString Then St1 = St1 & "<None>" Else St1 = St1 & St2
                     St2 = vbNullString
                 Case Else
-                    St1 = "1 " + Object(.GiveObject).Name + " in exchange for "
+                    St1 = "1 " + Object(.GiveObject).name + " in exchange for "
                     If Object(.TakeObject).Type = 6 Or Object(.TakeObject).Type = 11 Then
-                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).Name & vbCrLf
+                        St1 = St1 + CStr(.TakeValue) + " " + Object(.TakeObject).name & vbCrLf
                     Else
-                        St1 = St1 + "1 " + Object(.TakeObject).Name
+                        St1 = St1 + "1 " + Object(.TakeObject).name
                     End If
                 End Select
                 frmMain.lblItem(A) = St1
                 frmMain.GivObjPic(A).Cls
                 DrawToDC 0, 0, 32, 32, frmMain.GivObjPic(A).hDC, DDSObjects, 0, (Object(.GiveObject).Picture - 1) * 32
-                frmMain.lblShopName.Caption = Map.Name
+                frmMain.lblShopName.Caption = Map.name
             Else
                 frmMain.lblItem(A) = vbNullString
                 frmMain.GivObjPic(A).Cls

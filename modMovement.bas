@@ -129,7 +129,7 @@ Dim A As Long, B As Long, C As Long, D As Long
 End Sub
 
 Public Sub MoveProjectiles()
-Dim A As Long, B As Long, C As Long, D As Long
+Dim A As Long, B As Long, C As Long, D As Long, H As Double, X As Long, Y As Long, NewX As Long, NewY As Long
 Dim TempStr As String, TempVar As Long
     For A = 1 To MaxProjectiles
         With Projectile(A)
@@ -168,22 +168,23 @@ Dim TempStr As String, TempVar As Long
                         .TargetX = Player(.TargetNum).XO
                         .TargetY = Player(.TargetNum).YO
                     End If
-                    If .X < .TargetX Then .X = .X + 2
-                    If .X > .TargetX Then .X = .X - 2
-                    If .Y < .TargetY Then .Y = .Y + 2
-                    If .Y > .TargetY Then .Y = .Y - 2
-
-                    If Tick - .TimeStamp >= .speed Then
-                        If .X = .TargetX Then
-                            If .Y = .TargetY Then
-                                If .Frame < .TotalFrames Then
-                                    .Frame = .Frame + 1
-                                Else
-                                    DestroyEffect A
-                                End If
+                    
+                    X = .TargetX - (.SourceX * 32)
+                    Y = .TargetY - (.SourceY * 32)
+                    H = CInt(Sqr(X ^ 2 + Y ^ 2))
+                    If .Position < H Then
+                        .Position = .Position + 2
+                        .X = (.SourceX * 32) + CInt((.Position / H) * X)
+                        .Y = (.SourceY * 32) + CInt((.Position / H) * Y)
+                    Else
+                        If Tick - .TimeStamp >= .speed Then
+                            If .Frame < .TotalFrames Then
+                                .Frame = .Frame + 1
+                            Else
+                                DestroyEffect A
                             End If
+                            .TimeStamp = Tick
                         End If
-                        .TimeStamp = Tick
                     End If
                 Case pttMonster
                     .TargetX = Map.Monster(.TargetNum).XO

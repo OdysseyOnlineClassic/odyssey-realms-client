@@ -156,6 +156,11 @@ Private Sub btnPlay_Click()
             CacheDirectory = App.Path + "\fankenstein"
             ServerIP = "libertyarchives.info"
             ServerPort = 5751
+        Case 6 '127.0.0.1
+            ServerDescription = "Local Host"
+            CacheDirectory = App.Path + "\localhost"
+            ServerIP = "127.0.0.1"
+            ServerPort = 5756
     End Select
     
     On Error Resume Next
@@ -170,17 +175,6 @@ Private Sub btnPlay_Click()
     Unload Me
     Load frmMenu
     frmMenu.Show
-End Sub
-
-Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
-    If KeyCode = vbKeyF1 Then
-        ServerDescription = "localhost"
-        ServerIP = "127.0.0.1"
-        ServerPort = 5750
-        CacheDirectory = App.Path + "\localhost"
-        Unload Me
-        frmMenu.Show
-    End If
 End Sub
 
 Private Sub Form_Load()
@@ -202,6 +196,7 @@ Private Sub Form_Load()
     lstServers.AddItem "God Sandbox"
     lstServers.AddItem "Condemned"
     lstServers.AddItem "Fankenstein"
+    If Exists("Odyssey.vbp") Then lstServers.AddItem "Local Host (Source Testing)"
        
        
     'Classic
@@ -245,16 +240,16 @@ Private Sub lstServers_DblClick()
     btnPlay_Click
 End Sub
 
-Private Sub sckPing_Connect(index As Integer)
+Private Sub sckPing_Connect(Index As Integer)
     Dim St As String, send As String
     St = Chr$(35)
-    sckPing(index).SendData DoubleChar$(Len(St)) + Chr$(CheckSum(St) * 20 Mod 194) + Chr$(0) + St
+    sckPing(Index).SendData DoubleChar$(Len(St)) + Chr$(CheckSum(St) * 20 Mod 194) + Chr$(0) + St
 End Sub
 
-Private Sub sckPing_DataArrival(index As Integer, ByVal bytesTotal As Long)
+Private Sub sckPing_DataArrival(Index As Integer, ByVal bytesTotal As Long)
     Dim Receive As String
-    sckPing(index).GetData Receive, vbString, bytesTotal
-    lstServers.List(index) = lstServers.List(index) + " (" + Receive + ")"
-    sckPing(index).Close
+    sckPing(Index).GetData Receive, vbString, bytesTotal
+    lstServers.List(Index) = lstServers.List(Index) + " (" + Receive + ")"
+    sckPing(Index).Close
 End Sub
 

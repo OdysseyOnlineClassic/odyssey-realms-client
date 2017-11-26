@@ -3,6 +3,16 @@ Option Explicit
 
 Public ReceiveArray(0 To 255) As Long
 
+Type BugReportData
+    Status As Byte
+    PlayerUser As String
+    PlayerName As String
+    PlayerIP As String
+    Title As String
+    Description As String
+    Resolver As String
+End Type
+
 Type NPCSaleItemData
     GiveObject As Integer
     GiveValue As Long
@@ -41,6 +51,7 @@ Type ProjectileData
     SourceY As Byte
     X As Long
     Y As Long
+    Position As Long
     TimeStamp As Long
     LoopCount As Integer
     CurLoop As Integer
@@ -55,12 +66,12 @@ Type ProjectileData
 End Type
 
 Type PlayerData
-    Name As String
+    name As String
     LastMessage As String
     RepCount As Long
     Map As Long
     Sprite As Integer
-    status As Byte
+    Status As Byte
     X As Byte
     Y As Byte
     XO As Long
@@ -85,7 +96,7 @@ Type MacroData
 End Type
 
 Type ObjectData
-    Name As String
+    name As String
     Type As Byte
     flags As Byte
     Picture As Integer
@@ -99,7 +110,7 @@ Type ObjectData
 End Type
 
 Type MonsterData
-    Name As String
+    name As String
     Sprite As Integer
     Version As Byte
     MaxLife As Integer
@@ -164,7 +175,7 @@ Type MapMonsterSpawnData
 End Type
 
 Type MapData
-    Name As String
+    name As String
     ExitUp As Integer
     ExitDown As Integer
     ExitLeft As Integer
@@ -192,12 +203,12 @@ Type InvObjData
 End Type
 
 Type GuildData
-    Name As String
+    name As String
     MemberCount As Byte
 End Type
 
 Type MagicData
-    Name As String
+    name As String
     MagicLevel As Byte
     MagicExperience As Long
     Level As Byte
@@ -210,12 +221,12 @@ Type MagicData
 End Type
 
 Type HallData
-    Name As String
+    name As String
     Version As Byte
 End Type
 
 Type NPCData
-    Name As String
+    name As String
     Version As Byte
     flags As Byte
     SaleItem(0 To 9) As NPCSaleItemData
@@ -234,7 +245,7 @@ Type GuildDeclarationData
 End Type
 
 Type CharacterData
-    Name As String
+    name As String
     Class As Byte
     Gender As Byte
     Sprite As Integer
@@ -255,9 +266,9 @@ Type CharacterData
     Hotkey(1 To 12) As HotkeyData
     ItemBank(0 To 29) As ItemBankData
 
-    status As Byte
+    Status As Byte
     Access As Byte
-    index As Byte
+    Index As Byte
     Guild As Byte
     GuildRank As Byte
 
@@ -277,7 +288,7 @@ Type CharacterData
 End Type
 
 Type ClassData
-    Name As String
+    name As String
     StartHP As Byte
     StartEnergy As Byte
     StartMana As Byte
@@ -295,7 +306,7 @@ Type FloatTextData
 End Type
 
 Type PrefixData
-    Name As String
+    name As String
     ModificationType As Byte
     ModificationValue As Byte
     OccursNaturally As Byte
@@ -350,6 +361,7 @@ Public Character As CharacterData
 Attribute Character.VB_VarUserMemId = 1073741840
 Public Macro(0 To 9) As MacroData
 Attribute Macro.VB_VarUserMemId = 1073741841
+Public Bug(1 To 500) As BugReportData
 Public World As WorldProperties
 Attribute World.VB_VarUserMemId = 1073741842
 
