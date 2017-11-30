@@ -129,14 +129,14 @@ Dim A As Long, B As Long, C As Long, D As Long
 End Sub
 
 Public Sub MoveProjectiles()
-Dim A As Long, B As Long, C As Long, D As Long, H As Double, X As Long, Y As Long, NewX As Long, NewY As Long
+Dim A As Long, B As Long, C As Long, D As Long
 Dim TempStr As String, TempVar As Long
     For A = 1 To MaxProjectiles
         With Projectile(A)
             If .Sprite > 0 Then
                 Select Case .TargetType
                 Case pttCharacter
-                    If .TargetNum = Character.index Then
+                    If .TargetNum = Character.Index Then
                         .X = CXO
                         .Y = CYO
                     Else
@@ -161,7 +161,7 @@ Dim TempStr As String, TempVar As Long
                         .TimeStamp = Tick
                     End If
                 Case pttPlayer
-                    If .TargetNum = Character.index Then
+                    If .TargetNum = Character.Index Then
                         .TargetX = CXO
                         .TargetY = CYO
                     Else
@@ -290,7 +290,7 @@ Dim TempStr As String, TempVar As Long
                                 If Map.Monster(B).X = C Then
                                     If Map.Monster(B).Y = D Then
                                         If Map.Monster(B).Monster > 0 Then
-                                            If .Creator = Character.index Then
+                                            If .Creator = Character.Index Then
                                                 If .Damage > 0 Then
                                                     TempVar = (CMap + CX + CY) Mod 250
                                                     If .Magic > 0 Then
@@ -336,7 +336,7 @@ Dim TempStr As String, TempVar As Long
                                                     If Collide = True Then
                                                         .TargetX = .X
                                                         .TargetY = .Y
-                                                        If .Creator = Character.index Then
+                                                        If .Creator = Character.Index Then
                                                             If .Damage > 0 Then
                                                                 TempVar = CMap Mod 250
 
@@ -364,7 +364,7 @@ Dim TempStr As String, TempVar As Long
                             Next B
                             If CX = C Then
                                 If CY = D Then
-                                    If Not .Creator = Character.index Then
+                                    If Not .Creator = Character.Index Then
                                         .TargetX = .X
                                         .TargetY = .Y
                                     End If

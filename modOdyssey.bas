@@ -3,7 +3,7 @@ Option Explicit
 
 Public Const TitleString = "Odyssey Realms Registry"
 Public Const TheWebSite = "http://www.odysseyclassic.info"
-Public Const ClientVer = 2
+Public Const ClientVer = 3
 
 Public ServerIP As String
 Public ServerPort As Long
@@ -298,11 +298,6 @@ Sub MonsterDied(Index As Long)
         End With
     Next A
 End Sub
-
-Public Function GetOffsetDistance(SrcXO As Long, SrcYO As Long, DestXO As Long, DestYO As Long) As Long
-Dim A As Long, B As Long, C As Long, Dir As Long, XDist As Long, YDist As Long
-    GetOffsetDistance = Sqr((SrcXO - DestXO) ^ 2 + (SrcYO - DestYO) ^ 2)
-End Function
 
 Sub DisplayRepair()
     If frmMain.Visible = False Then Exit Sub
