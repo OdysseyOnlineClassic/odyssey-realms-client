@@ -129,7 +129,7 @@ Dim A As Long, B As Long, C As Long, D As Long
 End Sub
 
 Public Sub MoveProjectiles()
-Dim A As Long, B As Long, C As Long, D As Long
+Dim A As Long, B As Long, C As Long, D As Long, X As Long, Y As Long, H As Integer
 Dim TempStr As String, TempVar As Long
     For A = 1 To MaxProjectiles
         With Projectile(A)
