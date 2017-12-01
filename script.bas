@@ -253,6 +253,6 @@ CONST STOP = 1
 
 CONST TRUE = -1
 CONST FALSE = 0
-SUB Main(Player AS LONG, Map AS LONG)
-	RunScript1(StrCat("JoinMap", Str(Map)), Player)
-END SUB
+FUNCTION Main(Player as LONG, Command as String, Parm1 as String, Parm2 as String, Parm3 as String) AS LONG
+Main = Continue
+END FUNCTION

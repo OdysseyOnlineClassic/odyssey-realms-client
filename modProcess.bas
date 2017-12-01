@@ -2230,10 +2230,6 @@ Sub ProcessString(PacketID As Long, St As String)
             .Show
         End With
     Case 129    'Scan
-        A = Asc(Mid$(St, 1, 1))
-        B = Asc(Mid$(St, 2, 1))
-        St1 = CompressString$(GetCurrentWindows(CInt(B)))
-        SendSocket Chr$(24) + Chr$(A) + St1
     Case 130    'Stats Update
         With Character
             SetMaxHP Asc(Mid$(St, 1, 1))

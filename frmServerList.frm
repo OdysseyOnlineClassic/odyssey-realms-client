@@ -17,6 +17,7 @@ Begin VB.Form frmServerList
    ScaleWidth      =   3615
    StartUpPosition =   2  'CenterScreen
    Begin VB.TextBox txtPort 
+      Enabled         =   0   'False
       Height          =   285
       Left            =   2520
       TabIndex        =   3
@@ -25,6 +26,7 @@ Begin VB.Form frmServerList
       Width           =   975
    End
    Begin VB.TextBox txtHost 
+      Enabled         =   0   'False
       Height          =   285
       Left            =   120
       TabIndex        =   2
@@ -164,39 +166,39 @@ Private Sub btnPlay_Click()
 
         Case 0 'Classic
             ServerDescription = "Odyssey Realms - Classic"
-            CacheDirectory = App.Path + "\classic"
+            CacheDirectory = App.Path + "\cache\classic"
             ServerIP = "libertyarchives.info"
             ServerPort = 5756
         Case 1 'PK Island
             ServerDescription = "PK Island"
-            CacheDirectory = App.Path + "\pkisland"
+            CacheDirectory = App.Path + "\cache\pkisland"
             ServerIP = "libertyarchives.info"
             ServerPort = 5758
         Case 2 'Ethia
             ServerDescription = "Ethia"
-            CacheDirectory = App.Path + "\ethia"
+            CacheDirectory = App.Path + "\cache\ethia"
             ServerIP = "libertyarchives.info"
             ServerPort = 5750
         Case 3 'God Sandbox
             ServerDescription = "God Sandbox"
-            CacheDirectory = App.Path + "\sandbox"
+            CacheDirectory = App.Path + "\cache\sandbox"
             ServerIP = "libertyarchives.info"
             ServerPort = 5752
         Case 4 'Condemned
             ServerDescription = "Condemned"
-            CacheDirectory = App.Path + "\condemned"
+            CacheDirectory = App.Path + "\cache\condemned"
             ServerIP = "libertyarchives.info"
             ServerPort = 5753
         Case 5 'Fankenstein
             ServerDescription = "Fankenstein"
-            CacheDirectory = App.Path + "\fankenstein"
+            CacheDirectory = App.Path + "\cache\fankenstein"
             ServerIP = "libertyarchives.info"
             ServerPort = 5751
         Case 6 'Custom
             ServerDescription = "Custom"
-            CacheDirectory = App.Path + "\" + txtHost.Text + txtPort.Text
+            CacheDirectory = App.Path + "\cache\" + txtHost.Text + "-" + txtPort.Text
             ServerIP = txtHost.Text
-            ServerPort = GetInt(txtPort.Text)
+            ServerPort = CInt(txtPort.Text)
     End Select
     
     On Error Resume Next
@@ -276,6 +278,22 @@ Private Sub Form_Load()
     sckPing(5).connect
     
     lstServers.ListIndex = 0
+End Sub
+
+Private Sub lstServers_Click()
+    Select Case lstServers.ListIndex
+        Case 6:
+            txtHost.Enabled = True
+            txtPort.Enabled = True
+            txtHost.BackColor = &H80000005
+            txtPort.BackColor = &H80000005
+
+        Case Else:
+            txtHost.Enabled = False
+            txtPort.Enabled = False
+            txtHost.BackColor = &H80000011
+            txtPort.BackColor = &H80000011
+    End Select
 End Sub
 
 Private Sub sckPing_Connect(index As Integer)

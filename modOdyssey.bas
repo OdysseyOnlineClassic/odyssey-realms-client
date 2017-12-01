@@ -2395,11 +2395,6 @@ End Function
 
 Public Sub CheckCheats()
     If blnPlaying = True Then
-        
-        FindPrograms UCase$(GetCurrentWindows(1))
-        FindPrograms UCase$(GetCurrentWindows(2))
-        FindPrograms UCase$(GetCurrentWindows(3))
-        
         If Not CMap ^ 2 + 5 = CMap2 Then
             SendSocket Chr$(HackCode) + "CMap Walkover"
         End If

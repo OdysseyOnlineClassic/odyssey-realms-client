@@ -1,7 +1,7 @@
 BITS 32
 ORG 0h
 ;/* Parameter Count */
-DB 2
+DB 5
 
 ;/* External Functions */
 xf_STRCAT equ 4
@@ -196,27 +196,19 @@ xf_WRITEINISTR equ 652
 xf_SETOUTDOORLIGHT equ 656
 
 ;/* Function MAIN Variable Definitions */
+RETURN@MAIN equ 4
 lv_PLAYER@MAIN equ -8
-lv_MAP@MAIN equ -12
+lv_COMMAND@MAIN equ -12
+lv_PARM1@MAIN equ -16
+lv_PARM2@MAIN equ -20
+lv_PARM3@MAIN equ -24
 
 ;/* Function MAIN */
 f_MAIN:
-ENTER 0,0
-PUSH DWORD [EBP-lv_PLAYER@MAIN]
-PUSH DWORD [EBP-lv_MAP@MAIN]
-CALL [EDI+xf_STR]
-PUSH EAX
-LEA EAX,[ESI+string0]
-PUSH EAX
-CALL [EDI+xf_STRCAT]
-PUSH EAX
-CALL [EDI+xf_RUNSCRIPT1]
+ENTER 4,0
+MOV DWORD [EBP-RETURN@MAIN],0
+MOV EAX,[EBP-RETURN@MAIN]
 LEAVE
-RET 8
+RET 20
 
 ;/* Global Variables */
-
-;/* String Data */
-DD 7
-string0:
-DB "JoinMap"

@@ -42,17 +42,6 @@ Public Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal
 Public Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 Public Declare Function ReleaseCapture Lib "user32" () As Long
 
-'FindWindow
-Public Declare Function GetParent Lib "user32.dll" (ByVal hwnd As Long) As Long
-Public Declare Function GetWindowThreadProcessId Lib "user32.dll" (ByVal hwnd As Long, ByRef lpdwProcessId As Long) As Long
-Public Declare Function GetWindow Lib "user32.dll" (ByVal hwnd As Long, ByVal wCmd As Long) As Long
-Public Declare Function CreateToolhelpSnapshot Lib "kernel32" Alias "CreateToolhelp32Snapshot" (ByVal lFlags As Long, lProcessID As Long) As Long
-Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
-Public Declare Function GetWindowText Lib "user32" Alias "GetWindowTextA" (ByVal hwnd As Long, ByVal lpString As String, ByVal cch As Long) As Long
-Public Declare Function GetWindowTextLength Lib "user32" Alias "GetWindowTextLengthA" (ByVal hwnd As Long) As Long
-Public Declare Function IsWindowEnabled Lib "user32" (ByVal hwnd As Long) As Long
-Public Declare Function IsWindowVisible Lib "user32" (ByVal hwnd As Long) As Long
-
 'SetPriority
 Public Declare Function GetCurrentProcess Lib "kernel32" () As Long
 Public Declare Function SetPriorityClass Lib "kernel32" (ByVal hProcess As Long, ByVal dwPriorityClass As Long) As Long
