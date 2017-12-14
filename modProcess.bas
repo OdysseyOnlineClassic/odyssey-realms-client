@@ -81,6 +81,7 @@ Sub ProcessString(PacketID As Long, St As String)
 
     Dim A As Long, B As Long, C As Long, D As Long, E As Long
     Dim St1 As String
+    Dim Item As cListItem
 
     ReceiveArray(PacketID) = ReceiveArray(PacketID) + 1
 
@@ -138,7 +139,7 @@ Sub ProcessString(PacketID As Long, St As String)
         CWalkStep = 0
         If Len(St) >= 10 Then
             With Character
-                .Name = vbNullString
+                .name = vbNullString
                 .Class = Asc(Mid$(St, 1, 1))
                 .Gender = Asc(Mid$(St, 2, 1))
                 .Sprite = Asc(Mid$(St, 3, 1)) * 256 + Asc(Mid$(St, 4, 1))
@@ -147,13 +148,13 @@ Sub ProcessString(PacketID As Long, St As String)
                 .Guild = Asc(Mid$(St, 7, 1))
                 .GuildRank = Asc(Mid$(St, 8, 1))
                 .Access = Asc(Mid$(St, 9, 1))
-                .index = Asc(Mid$(St, 10, 1))
+                .Index = Asc(Mid$(St, 10, 1))
                 .Experience = Asc(Mid$(St, 11, 1)) * 16777216 + Asc(Mid$(St, 12, 1)) * 65536 + Asc(Mid$(St, 13, 1)) * 256& + Asc(Mid$(St, 14, 1))
 
                 St = Mid$(St, 15)
                 A = InStr(St, vbNullChar)
                 If A > 1 Then
-                    .Name = Mid$(St, 1, A - 1)
+                    .name = Mid$(St, 1, A - 1)
                     If A < Len(St) Then
                         .Desc = Mid$(St, A + 1)
                     End If
@@ -161,7 +162,7 @@ Sub ProcessString(PacketID As Long, St As String)
             End With
             SetMap 0
             For A = 1 To MaxUsers
-                Guild(A).Name = vbNullString
+                Guild(A).name = vbNullString
                 With Player(A)
                     .Sprite = 0
                     .Map = 0
@@ -172,7 +173,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     With .Inv(A)
                         .Object = 0
                         .EquippedNum = 0
-                        .Value = 0
+                        .value = 0
                         .ItemPrefix = 0
                         .ItemSuffix = 0
                     End With
@@ -205,13 +206,13 @@ Sub ProcessString(PacketID As Long, St As String)
                 .status = Asc(Mid$(St, 4, 1))
                 .Guild = Asc(Mid$(St, 5, 1))
                 .MaxHP = Asc(Mid$(St, 6, 1))
-                .Name = Mid$(St, 7)
+                .name = Mid$(St, 7)
                 If CMap > 0 Then
                     If Not .status = 25 Then
                         If .status = 2 Then
-                            PrintChat "All hail " + .Name + ", a new adventurer in this land!", 3
+                            PrintChat "All hail " + .name + ", a new adventurer in this land!", 3
                         Else
-                            PrintChat .Name + " has joined the game!", 3
+                            PrintChat .name + " has joined the game!", 3
                         End If
                     End If
                 End If
@@ -225,7 +226,7 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 Then
                 With Player(A)
                     If Not .status = 25 Then
-                        PrintChat .Name + " has left the game!", 3
+                        PrintChat .name + " has left the game!", 3
                     End If
                     PlayerLeftMap A
                     .Sprite = 0
@@ -284,7 +285,7 @@ Sub ProcessString(PacketID As Long, St As String)
     Case 11    'Say
         If Len(St) >= 2 Then
             A = Asc(Mid$(St, 1, 1))
-            If Player(A).Ignore = False Then PrintChat Player(A).Name + " says, " + Chr$(34) + Mid$(St, 2) + Chr$(34), 7
+            If Player(A).Ignore = False Then PrintChat Player(A).name + " says, " + Chr$(34) + Mid$(St, 2) + Chr$(34), 7
         End If
 
     Case 12    'You joined map
@@ -307,9 +308,9 @@ Sub ProcessString(PacketID As Long, St As String)
                 B = 0
                 For A = 1 To MaxUsers
                     With Player(A)
-                        If .Sprite > 0 And A <> Character.index And Not .status = 25 Then
+                        If .Sprite > 0 And A <> Character.Index And Not .status = 25 Then
                             B = B + 1
-                            St1 = St1 + ", " + .Name
+                            St1 = St1 + ", " + .name
                         End If
                     End With
                 Next A
@@ -379,7 +380,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     .XOffset = B
                     B = Int(Rnd * 9)
                     .YOffset = B
-                    .Value = Asc(Mid$(St, 8, 1)) * 16777216 + Asc(Mid$(St, 9, 1)) * 65536 + Asc(Mid$(St, 10, 1)) * 256& + Asc(Mid$(St, 11, 1))
+                    .value = Asc(Mid$(St, 8, 1)) * 16777216 + Asc(Mid$(St, 9, 1)) * 65536 + Asc(Mid$(St, 10, 1)) * 256& + Asc(Mid$(St, 11, 1))
                     .PickedUp = 0
                     RedrawMapTile CLng(.X), CLng(.Y)
                 End With
@@ -394,7 +395,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     .Object = 0
                     .ItemPrefix = 0
                     .ItemSuffix = 0
-                    .Value = 0
+                    .value = 0
                     .PickedUp = 0
                     RedrawMapTile CLng(.X), CLng(.Y)
                 End With
@@ -509,7 +510,7 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 And A <= 20 Then
                 With Character.Inv(A)
                     .Object = GetInt(Mid$(St, 2, 2))
-                    .Value = Asc(Mid$(St, 4, 1)) * 16777216 + Asc(Mid$(St, 5, 1)) * 65536 + Asc(Mid$(St, 6, 1)) * 256& + Asc(Mid$(St, 7, 1))
+                    .value = Asc(Mid$(St, 4, 1)) * 16777216 + Asc(Mid$(St, 5, 1)) * 65536 + Asc(Mid$(St, 6, 1)) * 256& + Asc(Mid$(St, 7, 1))
                     .ItemPrefix = Asc(Mid$(St, 8, 1))
                     .ItemSuffix = Asc(Mid$(St, 9, 1))
                 End With
@@ -537,7 +538,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     .Object = 0
                     .ItemPrefix = 0
                     .ItemSuffix = 0
-                    .Value = 0
+                    .value = 0
                     .EquippedNum = 0
                 End With
                 If frmMain.picRepair.Visible = True Then
@@ -557,39 +558,39 @@ Sub ProcessString(PacketID As Long, St As String)
                     Select Case Object(Character.Inv(A).Object).Type
                     Case 2, 3, 4    'Armor pieces
                         Character.EquippedObject(Object(Character.Inv(A).Object).Type).Object = Character.Inv(A).Object
-                        Character.EquippedObject(Object(Character.Inv(A).Object).Type).Value = Character.Inv(A).Value
+                        Character.EquippedObject(Object(Character.Inv(A).Object).Type).value = Character.Inv(A).value
                         Character.EquippedObject(Object(Character.Inv(A).Object).Type).ItemPrefix = Character.Inv(A).ItemPrefix
                         Character.EquippedObject(Object(Character.Inv(A).Object).Type).ItemSuffix = Character.Inv(A).ItemSuffix
                         Character.Inv(A).Object = 0
-                        Character.Inv(A).Value = 0
+                        Character.Inv(A).value = 0
                         Character.Inv(A).ItemPrefix = 0
                         Character.Inv(A).ItemSuffix = 0
                     Case 8    'Ring
                         Character.EquippedObject(5).Object = Character.Inv(A).Object
-                        Character.EquippedObject(5).Value = Character.Inv(A).Value
+                        Character.EquippedObject(5).value = Character.Inv(A).value
                         Character.EquippedObject(5).ItemPrefix = Character.Inv(A).ItemPrefix
                         Character.EquippedObject(5).ItemSuffix = Character.Inv(A).ItemSuffix
                         Character.Inv(A).Object = 0
-                        Character.Inv(A).Value = 0
+                        Character.Inv(A).value = 0
                         Character.Inv(A).ItemPrefix = 0
                         Character.Inv(A).ItemSuffix = 0
                     Case 1    'Weapons
                         Character.EquippedObject(1).Object = Character.Inv(A).Object
-                        Character.EquippedObject(1).Value = Character.Inv(A).Value
+                        Character.EquippedObject(1).value = Character.Inv(A).value
                         Character.EquippedObject(1).ItemPrefix = Character.Inv(A).ItemPrefix
                         Character.EquippedObject(1).ItemSuffix = Character.Inv(A).ItemSuffix
                         Character.Inv(A).Object = 0
-                        Character.Inv(A).Value = 0
+                        Character.Inv(A).value = 0
                         Character.Inv(A).ItemPrefix = 0
                         Character.Inv(A).ItemSuffix = 0
                         Character.Projectile = False
                     Case 10    'Projectile Weapon
                         Character.EquippedObject(1).Object = Character.Inv(A).Object
-                        Character.EquippedObject(1).Value = Character.Inv(A).Value
+                        Character.EquippedObject(1).value = Character.Inv(A).value
                         Character.EquippedObject(1).ItemPrefix = Character.Inv(A).ItemPrefix
                         Character.EquippedObject(1).ItemSuffix = Character.Inv(A).ItemSuffix
                         Character.Inv(A).Object = 0
-                        Character.Inv(A).Value = 0
+                        Character.Inv(A).value = 0
                         Character.Inv(A).ItemPrefix = 0
                         Character.Inv(A).ItemSuffix = 0
                         Character.Projectile = True
@@ -618,7 +619,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     If Character.EquippedObject(A).Object > 0 Then
                         If Object(Character.EquippedObject(A).Object).Type = 10 Then Character.Projectile = False
                         Character.EquippedObject(A).Object = 0
-                        Character.EquippedObject(A).Value = 0
+                        Character.EquippedObject(A).value = 0
                         Character.EquippedObject(A).ItemPrefix = 0
                         Character.EquippedObject(A).ItemSuffix = 0
                         RefreshInventory
@@ -643,14 +644,14 @@ Sub ProcessString(PacketID As Long, St As String)
                 With .Inv(A)
                     .Object = 0
                     .EquippedNum = 0
-                    .Value = 0
+                    .value = 0
                     .ItemPrefix = 0
                     .ItemSuffix = 0
                 End With
             Next A
             For A = 1 To 5
                 .EquippedObject(A).Object = 0
-                .EquippedObject(A).Value = 0
+                .EquippedObject(A).value = 0
                 .EquippedObject(A).ItemPrefix = 0
                 .EquippedObject(A).ItemSuffix = 0
             Next A
@@ -672,7 +673,7 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 Then
                 With Player(A)
                     If .Ignore = False Then
-                        PrintChat .Name + " tells you, " + Chr$(34) + Mid$(St, 2) + Chr$(34), 10
+                        PrintChat .name + " tells you, " + Chr$(34) + Mid$(St, 2) + Chr$(34), 10
                     End If
                 End With
             End If
@@ -683,7 +684,7 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
                 If Player(A).Ignore = False Then
-                    PrintChat Player(A).Name + ": " + Mid$(St, 2), 13
+                    PrintChat Player(A).name + ": " + Mid$(St, 2), 13
                 End If
             End If
         End If
@@ -692,7 +693,7 @@ Sub ProcessString(PacketID As Long, St As String)
         If Len(St) >= 2 Then
             A = Asc(Mid$(St, 1, 1))
             If Player(A).Ignore = False Then
-                PrintChat Player(A).Name + " " + Mid$(St, 2), 11
+                PrintChat Player(A).name + " " + Mid$(St, 2), 11
             End If
         End If
 
@@ -700,7 +701,7 @@ Sub ProcessString(PacketID As Long, St As String)
         If Len(St) >= 2 Then
             A = Asc(Mid$(St, 1, 1))
             If Player(A).Ignore = False Then
-                PrintChat Player(A).Name + " yells, " + Chr$(34) + Mid$(St, 2) + Chr$(34), 7
+                PrintChat Player(A).name + " yells, " + Chr$(34) + Mid$(St, 2) + Chr$(34), 7
             End If
         End If
 
@@ -735,18 +736,18 @@ Sub ProcessString(PacketID As Long, St As String)
                     .Version = Asc(Mid$(St, 12, 1))
                     .SellPrice = Asc(Mid$(St, 13, 1)) * 256 + Asc(Mid$(St, 14, 1))
                     If Len(St) >= 15 Then
-                        .Name = Mid$(St, 15)
+                        .name = Mid$(St, 15)
                     Else
-                        .Name = vbNullString
+                        .name = vbNullString
                     End If
                     If frmMonster_Loaded = True Then
-                        frmMonster.cmbObject(0).List(A) = CStr(A) + ": " + .Name
-                        frmMonster.cmbObject(1).List(A) = CStr(A) + ": " + .Name
-                        frmMonster.cmbObject(2).List(A) = CStr(A) + ": " + .Name
+                        frmMonster.cmbObject(0).List(A) = CStr(A) + ": " + .name
+                        frmMonster.cmbObject(1).List(A) = CStr(A) + ": " + .name
+                        frmMonster.cmbObject(2).List(A) = CStr(A) + ": " + .name
                     End If
                     If frmNPC_Loaded = True Then
-                        frmNPC.cmbGiveObject.List(A) = CStr(A) + ": " + .Name
-                        frmNPC.cmbTakeObject.List(A) = CStr(A) + ": " + .Name
+                        frmNPC.cmbGiveObject.List(A) = CStr(A) + ": " + .name
+                        frmNPC.cmbTakeObject.List(A) = CStr(A) + ": " + .name
                     End If
                     If frmList_Loaded = True Then
                         frmList.DrawList
@@ -775,16 +776,16 @@ Sub ProcessString(PacketID As Long, St As String)
                     .MaxLife = GetInt(Mid$(St, 6, 2))
                     .flags = Asc(Mid$(St, 8, 1))
                     If Len(St) >= 9 Then
-                        .Name = Mid$(St, 9)
+                        .name = Mid$(St, 9)
                     Else
-                        .Name = vbNullString
+                        .name = vbNullString
                     End If
                     If frmList_Loaded = True Then
                         frmList.DrawList
                     End If
                     If frmMapProperties_Loaded = True Then
                         For B = 0 To 9
-                            frmMapProperties.cmbMonster(B).List(A) = CStr(A) + ": " + .Name
+                            frmMapProperties.cmbMonster(B).List(A) = CStr(A) + ": " + .name
                         Next B
 
                     End If
@@ -806,7 +807,7 @@ Sub ProcessString(PacketID As Long, St As String)
             If frmObject_Loaded = False Then Load frmObject
             With frmObject
                 .lblNumber = A
-                .txtName = Object(A).Name
+                .txtName = Object(A).name
                 If Object(A).Picture > 0 Then
                     .sclPicture = Object(A).Picture
                 Else
@@ -828,7 +829,7 @@ Sub ProcessString(PacketID As Long, St As String)
                 .lblData(1) = .ObjData(1)
                 .lblData(2) = .ObjData(2)
                 .lblData(3) = .ObjData(3)
-                .sclLevel.Value = Asc(Mid$(St, 9, 1))
+                .sclLevel.value = Asc(Mid$(St, 9, 1))
                 B = Asc(Mid$(St, 8, 1))
                 For C = 0 To 3
                     If ExamineBit(CByte(B), CByte(C)) = True Then
@@ -855,7 +856,7 @@ Sub ProcessString(PacketID As Long, St As String)
             If frmMonster_Loaded = False Then Load frmMonster
             With frmMonster
                 .lblNumber = A
-                .txtName = Monster(A).Name
+                .txtName = Monster(A).name
                 If Monster(A).Sprite > 0 Then
                     .sclSprite = Monster(A).Sprite
                 Else
@@ -887,10 +888,10 @@ Sub ProcessString(PacketID As Long, St As String)
                 .txtValue(1) = Asc(Mid$(St, 16, 1))
                 .cmbObject(2).ListIndex = GetInt(Mid$(St, 17, 2))
                 .txtValue(2) = Asc(Mid$(St, 19, 1))
-                .sclExperience.Value = Asc(Mid$(St, 20, 1))
-                .sclMagicDefense.Value = Asc(Mid$(St, 21, 1))
-                .lblExperience = .sclExperience.Value
-                .lblMagicDefense = .sclMagicDefense.Value
+                .sclExperience.value = Asc(Mid$(St, 20, 1))
+                .sclMagicDefense.value = Asc(Mid$(St, 21, 1))
+                .lblExperience = .sclExperience.value
+                .lblMagicDefense = .sclMagicDefense.value
                 .Show 1
             End With
         End If
@@ -1021,7 +1022,7 @@ Sub ProcessString(PacketID As Long, St As String)
             If C >= 0 And C <= MaxMonsters Then
                 If Map.Monster(C).Monster > 0 Then
                     Map.Monster(C).Life = CInt(E)
-                    If A = Character.index Then
+                    If A = Character.Index Then
                         Select Case B
                         Case 0    'Hit
                             PlayWav 2
@@ -1053,9 +1054,9 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 Then
                 With Player(A)
                     If .status = 1 Then
-                        PrintChat "You have put the evil murderer " + .Name + " to justice!", 12
+                        PrintChat "You have put the evil murderer " + .name + " to justice!", 12
                     Else
-                        PrintChat "You have murdered " + .Name + " in cold blood!", 12
+                        PrintChat "You have murdered " + .name + " in cold blood!", 12
                     End If
                     .IsDead = True
                     B = Asc(Mid$(St, 2, 1)) * 16777216 + Asc(Mid$(St, 3, 1)) * 65536 + Asc(Mid$(St, 4, 1)) * 256& + Asc(Mid$(St, 5, 1))
@@ -1165,9 +1166,9 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 Then
                 With Player(A)
                     If Character.status = 1 Then
-                        PrintChat .Name + " has put you to justice!", 12
+                        PrintChat .name + " has put you to justice!", 12
                     Else
-                        PrintChat .Name + " has murdered you in cold blood!", 12
+                        PrintChat .name + " has murdered you in cold blood!", 12
                     End If
                 End With
                 YouDied
@@ -1181,10 +1182,39 @@ Sub ProcessString(PacketID As Long, St As String)
                 NextTransition = 6
                 PlayWav 8
                 With Monster(A)
-                    PrintChat "The " + .Name + " has killed you!", 12
+                    PrintChat "The " + .name + " has killed you!", 12
                 End With
                 YouDied
             End If
+        End If
+        
+    Case 55    'Receive Bug Report List
+        Dim Index As Long
+        If Len(St) = 0 Then
+            frmBugReports.Show
+            frmBugReports.lstReports.Clear
+        ElseIf Len(St) >= 7 Then
+            Index = Asc(Mid$(St, 1, 1))
+            With Bug(Index)
+                .status = Asc(Mid$(St, 2, 1))
+                St = Mid$(St, 3)
+                .Title = Mid$(St, 1, InStr(St, Chr$(0)) - 1)
+                St = Mid$(St, Len(.Title) + 2)
+                .Description = Mid$(St, 1, InStr(St, Chr$(0)) - 1)
+                St = Mid$(St, Len(.Description) + 2)
+                .PlayerUser = Mid$(St, 1, InStr(St, Chr$(0)) - 1)
+                St = Mid$(St, Len(.PlayerUser) + 2)
+                .PlayerName = Mid$(St, 1, InStr(St, Chr$(0)) - 1)
+                St = Mid$(St, Len(.PlayerName) + 2)
+                .PlayerIP = Mid$(St, 1, InStr(St, Chr$(0)) - 1)
+                St = Mid$(St, Len(.PlayerIP) + 2)
+                .Resolver = St
+                With frmBugReports.lstReports
+                    St = "ID #" + CStr(Index) + ": " + Bug(Index).Title
+                    If Bug(Index).Resolver <> vbNullString Then St = St + " - Resolver: " + Bug(Index).Resolver
+                    .AddItem St
+                End With
+            End With
         End If
 
     Case 56    'Text
@@ -1198,11 +1228,11 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 And A <= 5 Then
                 With Character.EquippedObject(A)
                     If .Object > 0 Then
-                        PrintInfoText "Your " + Object(.Object).Name + " breaks!"
-                        PrintChat "Your " + Object(.Object).Name + " breaks!", 14
+                        PrintInfoText "Your " + Object(.Object).name + " breaks!"
+                        PrintChat "Your " + Object(.Object).name + " breaks!", 14
                     End If
                     .Object = 0
-                    .Value = 0
+                    .value = 0
                     .ItemPrefix = 0
                     .ItemSuffix = 0
                 End With
@@ -1242,16 +1272,16 @@ Sub ProcessString(PacketID As Long, St As String)
                                 PlayWav 8
                                 CreateFloatText "Dead!", 12, .X, .Y
                             End If
-                            PrintChat Player(B).Name + " has put " + .Name + " to justice!", 12
+                            PrintChat Player(B).name + " has put " + .name + " to justice!", 12
                         Else
                             If .Map = CMap Then
                                 PlayWav 8
                                 CreateFloatText "Dead!", 12, .X, .Y
                             End If
-                            PrintChat Player(B).Name + " has murdered " + .Name + " in cold blood!", 12
+                            PrintChat Player(B).name + " has murdered " + .name + " in cold blood!", 12
                         End If
                     Else
-                        PrintChat Player(B).Name + " has died!", 12
+                        PrintChat Player(B).name + " has died!", 12
                     End If
                 End With
             End If
@@ -1268,7 +1298,7 @@ Sub ProcessString(PacketID As Long, St As String)
                         PlayWav 8
                         CreateFloatText "Dead!", 12, .X, .Y
                     End If
-                    PrintChat .Name + " has been killed by a " + Monster(B).Name + "!", 12
+                    PrintChat .name + " has been killed by a " + Monster(B).name + "!", 12
                 End With
             End If
         End If
@@ -1278,7 +1308,7 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             B = Asc(Mid$(St, 2, 1)) * 256 + Asc(Mid$(St, 3, 1))
             If A >= 1 And B >= 1 Then
-                If A = Character.index Then
+                If A = Character.Index Then
                     Character.Sprite = B
                 Else
                     If Player(A).Sprite > 0 Then
@@ -1292,11 +1322,11 @@ Sub ProcessString(PacketID As Long, St As String)
         If Len(St) >= 2 Then
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
-                If A = Character.index Then
-                    Character.Name = Mid$(St, 2)
+                If A = Character.Index Then
+                    Character.name = Mid$(St, 2)
                 Else
                     If Player(A).Sprite > 0 Then
-                        Player(A).Name = Mid$(St, 2)
+                        Player(A).name = Mid$(St, 2)
                     End If
                 End If
             End If
@@ -1320,15 +1350,15 @@ Sub ProcessString(PacketID As Long, St As String)
             If B >= 1 Then
                 If C >= 1 Then
                     If Len(St) > 2 Then
-                        PrintChat Player(B).Name + " has been banned by " + Player(C).Name + ": " + Mid$(St, 3), 15
+                        PrintChat Player(B).name + " has been banned by " + Player(C).name + ": " + Mid$(St, 3), 15
                     Else
-                        PrintChat Player(B).Name + " has been banned by " + Player(C).Name + "!", 15
+                        PrintChat Player(B).name + " has been banned by " + Player(C).name + "!", 15
                     End If
                 Else
                     If Len(St) > 2 Then
-                        PrintChat Player(B).Name + " has been banned: " + Mid$(St, 3), 15
+                        PrintChat Player(B).name + " has been banned: " + Mid$(St, 3), 15
                     Else
-                        PrintChat Player(B).Name + " has been banned!", 15
+                        PrintChat Player(B).name + " has been banned!", 15
                     End If
                 End If
             End If
@@ -1339,9 +1369,9 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
                 If Len(St) > 1 Then
-                    MsgBox "You have been booted from The Odyssey by " + Player(A).Name + ": " + Mid$(St, 2), vbOKOnly + vbExclamation, TitleString
+                    MsgBox "You have been booted from The Odyssey by " + Player(A).name + ": " + Mid$(St, 2), vbOKOnly + vbExclamation, TitleString
                 Else
-                    MsgBox "You have been booted from The Odyssey by " + Player(A).Name + "!", vbOKOnly + vbExclamation, TitleString
+                    MsgBox "You have been booted from The Odyssey by " + Player(A).name + "!", vbOKOnly + vbExclamation, TitleString
                 End If
             Else
                 If Len(St) > 1 Then
@@ -1360,15 +1390,15 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 Then
                 If B >= 1 Then
                     If Len(St) > 2 Then
-                        PrintChat Player(A).Name + " has been booted by " + Player(B).Name + ": " + Mid$(St, 3), 15
+                        PrintChat Player(A).name + " has been booted by " + Player(B).name + ": " + Mid$(St, 3), 15
                     Else
-                        PrintChat Player(A).Name + " has been booted by " + Player(B).Name + "!", 15
+                        PrintChat Player(A).name + " has been booted by " + Player(B).name + "!", 15
                     End If
                 Else
                     If Len(St) > 2 Then
-                        PrintChat Player(A).Name + " has been booted: " + Mid$(St, 3), 15
+                        PrintChat Player(A).name + " has been booted: " + Mid$(St, 3), 15
                     Else
-                        PrintChat Player(A).Name + " has been booted!", 15
+                        PrintChat Player(A).name + " has been booted!", 15
                     End If
                 End If
             End If
@@ -1391,10 +1421,10 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 Then
                 If Len(St) > 1 Then
                     B = Asc(Mid$(St, 2, 1))
-                    Guild(A).Name = Mid$(St, 3)
+                    Guild(A).name = Mid$(St, 3)
                     Guild(A).MemberCount = B
                 Else
-                    Guild(A).Name = vbNullString
+                    Guild(A).name = vbNullString
                 End If
             End If
         End If
@@ -1415,10 +1445,10 @@ Sub ProcessString(PacketID As Long, St As String)
         If Len(St) = 1 Then
             A = Asc(Mid$(St, 1, 1))
             If A > 0 Then
-                PrintChat "You are now a member of " + Chr$(34) + Guild(A).Name + Chr$(34) + ".  For available guild commands, type /guild help.", 15
+                PrintChat "You are now a member of " + Chr$(34) + Guild(A).name + Chr$(34) + ".  For available guild commands, type /guild help.", 15
             Else
                 If Character.Guild > 0 Then
-                    PrintChat "You are no longer a member of " + Chr$(34) + Guild(Character.Guild).Name + Chr$(34), 15
+                    PrintChat "You are no longer a member of " + Chr$(34) + Guild(Character.Guild).name + Chr$(34), 15
                 End If
             End If
             Character.Guild = A
@@ -1432,11 +1462,11 @@ Sub ProcessString(PacketID As Long, St As String)
             B = Asc(Mid$(St, 2, 1))
             If A >= 1 Then
                 If Player(A).Guild = Character.Guild And Character.Guild > 0 Then
-                    PrintChat Player(A).Name + " is no longer a member of your guild.", 15
+                    PrintChat Player(A).name + " is no longer a member of your guild.", 15
                 End If
                 Player(A).Guild = B
                 If B > 0 And B = Character.Guild Then
-                    PrintChat Player(A).Name + " is now a member of your guild.", 15
+                    PrintChat Player(A).name + " is now a member of your guild.", 15
                 End If
             End If
             UpdatePlayerColor A
@@ -1452,10 +1482,10 @@ Sub ProcessString(PacketID As Long, St As String)
             B = Asc(Mid$(St, 5, 1)) * 16777216 + Asc(Mid$(St, 6, 1)) * 65536 + Asc(Mid$(St, 7, 1)) * 256& + Asc(Mid$(St, 8, 1))
             C = Asc(Mid$(St, 9, 1))
             D = Asc(Mid$(St, 10, 1)) * 16777216 + Asc(Mid$(St, 11, 1)) * 65536 + Asc(Mid$(St, 12, 1)) * 256& + Asc(Mid$(St, 13, 1))
-            If C = Character.index Then
+            If C = Character.Index Then
                 PrintChat "You have deposited " + CStr(D) + " gold.  Your guild owes " + CStr(A) + " gold.  This must be paid before " + CStr(CDate(B)) + " or your guild will be disbanded.  Type '/guild pay <amount>' to pay toward the debt.", 15
             Else
-                PrintChat Player(C).Name + " has deposited " + CStr(D) + " gold.  Your guild owes " + CStr(A) + " gold.  This must be paid before " + CStr(CDate(B)) + " or your guild will be disbanded.  Type '/guild pay <amount>' to pay toward the debt.", 15
+                PrintChat Player(C).name + " has deposited " + CStr(D) + " gold.  Your guild owes " + CStr(A) + " gold.  This must be paid before " + CStr(CDate(B)) + " or your guild will be disbanded.  Type '/guild pay <amount>' to pay toward the debt.", 15
             End If
         End If
 
@@ -1487,7 +1517,7 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             B = Asc(Mid$(St, 2, 1))
             If A >= 1 And B >= 1 Then
-                PrintChat "You have been invited to join the guild " + Chr$(34) + Guild(A).Name + Chr$(34) + " by " + Player(B).Name + ".  If you wish to join, Type /guild join.  It will cost " + CStr(World.GuildJoinCost) + " gold to join this guild.", 15
+                PrintChat "You have been invited to join the guild " + Chr$(34) + Guild(A).name + Chr$(34) + " by " + Player(B).name + ".  If you wish to join, Type /guild join.  It will cost " + CStr(World.GuildJoinCost) + " gold to join this guild.", 15
             End If
         End If
 
@@ -1502,10 +1532,10 @@ Sub ProcessString(PacketID As Long, St As String)
             frmGuild.lblKills = Asc(Mid$(St, 8, 1)) * 16777216 + Asc(Mid$(St, 9, 1)) * 65536 + Asc(Mid$(St, 10, 1)) * 256& + Asc(Mid$(St, 11, 1))
             frmGuild.lblDeaths = Asc(Mid$(St, 12, 1)) * 16777216 + Asc(Mid$(St, 13, 1)) * 65536 + Asc(Mid$(St, 14, 1)) * 256& + Asc(Mid$(St, 15, 1))
             With frmGuild
-                .lblName = Guild(frmGuild.CurrentGuild).Name
+                .lblName = Guild(frmGuild.CurrentGuild).name
                 A = Asc(Mid$(St, 16, 1))
                 If A > 0 Then
-                    .lblHall = Hall(A).Name
+                    .lblHall = Hall(A).name
                 Else
                     .lblHall = "<none>"
                 End If
@@ -1518,12 +1548,12 @@ Sub ProcessString(PacketID As Long, St As String)
                         D = Asc(Mid$(St, 23 + 14 * A, 1)) * 16777216 + Asc(Mid$(St, 24 + 14 * A, 1)) * 65536 + Asc(Mid$(St, 25 + 14 * A, 1)) * 256& + Asc(Mid$(St, 26 + 14 * A, 1))
                         E = Asc(Mid$(St, 27 + 14 * A, 1)) * 16777216 + Asc(Mid$(St, 28 + 14 * A, 1)) * 65536 + Asc(Mid$(St, 29 + 14 * A, 1)) * 256& + Asc(Mid$(St, 30 + 14 * A, 1))
                         If Asc(Mid$(St, 18 + 14 * A)) = 0 Then
-                            .lstDeclarations.AddItem "Alliance with " + Guild(B).Name + " (Forged " & CDate(C) & ")"
+                            .lstDeclarations.AddItem "Alliance with " + Guild(B).name + " (Forged " & CDate(C) & ")"
                         Else
                             If Character.Access >= 0 Then
-                                .lstDeclarations.AddItem "War with " + Guild(B).Name + " (Began " & CDate(C) & ", " + CStr(D) + " kills, " + CStr(E) + " deaths)"
+                                .lstDeclarations.AddItem "War with " + Guild(B).name + " (Began " & CDate(C) & ", " + CStr(D) + " kills, " + CStr(E) + " deaths)"
                             Else
-                                .lstDeclarations.AddItem "War with " + Guild(B).Name + " (Began " & CDate(C) & ")"
+                                .lstDeclarations.AddItem "War with " + Guild(B).name + " (Began " & CDate(C) & ")"
                             End If
                         End If
                         .lstDeclarations.ItemData(.lstDeclarations.ListCount - 1) = A
@@ -1578,7 +1608,7 @@ Sub ProcessString(PacketID As Long, St As String)
         If Len(St) >= 2 Then
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
-                PrintChat Player(A).Name + " -> Guild: " + Mid$(St, 2), 15
+                PrintChat Player(A).name + " -> Guild: " + Mid$(St, 2), 15
             End If
         End If
 
@@ -1588,7 +1618,7 @@ Sub ProcessString(PacketID As Long, St As String)
             Character.Guild = A
             Character.GuildRank = 3
             If A > 0 Then
-                PrintChat "You have created a new guild called " + Chr$(34) + Guild(A).Name + Chr$(34) + ".  To invite other players to your guild, Type '/guild invite <player>'.  You must get atleast two other players to join your guild today or your guild will be disbanded.  For a listing of other available guild commands, type /guild help.", 15
+                PrintChat "You have created a new guild called " + Chr$(34) + Guild(A).name + Chr$(34) + ".  To invite other players to your guild, Type '/guild invite <player>'.  You must get atleast two other players to join your guild today or your guild will be disbanded.  For a listing of other available guild commands, type /guild help.", 15
             End If
         End If
 
@@ -1607,9 +1637,9 @@ Sub ProcessString(PacketID As Long, St As String)
             If A >= 1 Then
                 Hall(A).Version = Asc(Mid$(St, 2, 1))
                 If Len(St) >= 3 Then
-                    Hall(A).Name = Mid$(St, 3)
+                    Hall(A).name = Mid$(St, 3)
                 Else
-                    Hall(A).Name = vbNullString
+                    Hall(A).name = vbNullString
                 End If
                 If frmList_Loaded = True Then
                     frmList.DrawList
@@ -1626,7 +1656,7 @@ Sub ProcessString(PacketID As Long, St As String)
                 If frmHall_Loaded = False Then Load frmHall
                 With frmHall
                     .lblNumber = A
-                    .txtName = Hall(A).Name
+                    .txtName = Hall(A).name
                     .txtPrice = CStr(Asc(Mid$(St, 2, 1)) * 16777216 + Asc(Mid$(St, 3, 1)) * 65536 + Asc(Mid$(St, 4, 1)) * 256& + Asc(Mid$(St, 5, 1)))
                     .txtUpkeep = CStr(Asc(Mid$(St, 6, 1)) * 16777216 + Asc(Mid$(St, 7, 1)) * 65536 + Asc(Mid$(St, 8, 1)) * 256& + Asc(Mid$(St, 9, 1)))
                     B = Asc(Mid$(St, 10, 1)) * 256 + Asc(Mid$(St, 11, 1))
@@ -1649,9 +1679,9 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
                 B = Asc(Mid$(St, 2, 1))
-                PrintChat Hall(A).Name, 15
+                PrintChat Hall(A).name, 15
                 If B > 0 Then
-                    PrintChat "Owned By: " + Guild(B).Name, 15
+                    PrintChat "Owned By: " + Guild(B).name, 15
                 Else
                     PrintChat "This guild hall is not yet owned!", 15
                 End If
@@ -1677,15 +1707,15 @@ Sub ProcessString(PacketID As Long, St As String)
                         .SaleItem(B).TakeValue = Asc(Mid$(St, C + 8, 1)) * 16777216 + Asc(Mid$(St, C + 9, 1)) * 65536 + Asc(Mid$(St, C + 10, 1)) * 256& + Asc(Mid$(St, C + 11, 1))
                     Next B
                     If Len(St) >= 125 Then
-                        .Name = Mid$(St, 125)
+                        .name = Mid$(St, 125)
                     Else
-                        .Name = vbNullString
+                        .name = vbNullString
                     End If
                     If frmList_Loaded = True Then
                         frmList.DrawList
                     End If
                     If frmMapProperties_Loaded = True Then
-                        frmMapProperties.cmbNPC.List(A) = CStr(A) + ": " + .Name
+                        frmMapProperties.cmbNPC.List(A) = CStr(A) + ": " + .name
                     End If
                     Debug.Print "Save NPC " + CStr(A)
                     SaveNPC CInt(A)
@@ -1709,7 +1739,7 @@ Sub ProcessString(PacketID As Long, St As String)
                         End If
                     Next C
                     .lblNumber = A
-                    .txtName = NPC(A).Name
+                    .txtName = NPC(A).name
                     .txtJoinText = Section(1)
                     .txtLeaveText = Section(2)
                     .txtSayText1 = Section(3)
@@ -1727,7 +1757,7 @@ Sub ProcessString(PacketID As Long, St As String)
         If Len(St) >= 3 Then
             A = GetInt(Mid$(St, 1, 2))
             If A >= 1 Then
-                PrintChat NPC(A).Name + " says, " + Chr$(34) + Mid$(St, 3) + Chr$(34), 7
+                PrintChat NPC(A).name + " says, " + Chr$(34) + Mid$(St, 3) + Chr$(34), 7
             End If
         End If
 
@@ -1736,7 +1766,7 @@ Sub ProcessString(PacketID As Long, St As String)
             If Map.NPC >= 1 Then
                 A = Asc(Mid$(St, 1, 1)) * 16777216 + Asc(Mid$(St, 2, 1)) * 65536 + Asc(Mid$(St, 3, 1)) * 256& + Asc(Mid$(St, 4, 1))
                 frmMain.picBank.Visible = True
-                frmMain.lblBank = Map.Name
+                frmMain.lblBank = Map.name
                 frmMain.lblGoldCoins = CStr(A)
             End If
         End If
@@ -1745,7 +1775,7 @@ Sub ProcessString(PacketID As Long, St As String)
         If Len(St) >= 2 Then
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
-                PrintChat "<" + Player(A).Name + ">: " + Mid$(St, 2), 11
+                PrintChat "<" + Player(A).name + ">: " + Mid$(St, 2), 11
             End If
         End If
 
@@ -1753,7 +1783,7 @@ Sub ProcessString(PacketID As Long, St As String)
         If Len(St) = 2 Then
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
-                If A = Character.index Then
+                If A = Character.Index Then
                     Character.status = Asc(Mid$(St, 2, 1))
                 Else
                     Player(A).status = Asc(Mid$(St, 2, 1))
@@ -1774,7 +1804,7 @@ Sub ProcessString(PacketID As Long, St As String)
                 .txtReason = Section(3)
                 .txtComputerID = Section(4)
                 .txtIPAddress = Section(5)
-                If Not Character.Name = Section(2) And Not Character.Access >= 3 Then
+                If Not Character.name = Section(2) And Not Character.Access >= 3 Then
                     .btnClear.Enabled = False
                     .btnOk.Enabled = False
                 Else
@@ -1876,7 +1906,7 @@ Sub ProcessString(PacketID As Long, St As String)
         Select Case Asc(Mid$(St, 1, 1))
         Case 2    'Done Repairing Object
             A = GetInt(Mid$(St, 2, 2))
-            PrintChat "Your " + Object(A).Name + " is now at 100% durability.", 14
+            PrintChat "Your " + Object(A).name + " is now at 100% durability.", 14
             DisplayRepair
         End Select
 
@@ -1887,7 +1917,7 @@ Sub ProcessString(PacketID As Long, St As String)
         Case 2    'Character Effect
             CreateCharacterEffect Asc(Mid$(St, 2, 1)), Asc(Mid$(St, 3, 1)), Asc(Mid$(St, 4, 1)) * 256 + Asc(Mid$(St, 5, 1)), Asc(Mid$(St, 6, 1)), Asc(Mid$(St, 7, 1)), Asc(Mid$(St, 8, 1))
         Case 3    'Monster Effect
-            If Asc(Mid$(St, 2, 1)) = Character.index Then
+            If Asc(Mid$(St, 2, 1)) = Character.Index Then
                 A = CX
                 B = CY
             Else
@@ -1896,7 +1926,7 @@ Sub ProcessString(PacketID As Long, St As String)
             End If
             CreateMonsterEffect Asc(Mid$(St, 3, 1)), Asc(Mid$(St, 4, 1)), Asc(Mid$(St, 5, 1)) * 256 + Asc(Mid$(St, 6, 1)), Asc(Mid$(St, 6, 1)), A, B, Asc(Mid$(St, 8, 1))
         Case 4    'Player Effect
-            If Asc(Mid$(St, 2, 1)) = Character.index Then
+            If Asc(Mid$(St, 2, 1)) = Character.Index Then
                 A = CX
                 B = CY
             Else
@@ -1918,9 +1948,9 @@ Sub ProcessString(PacketID As Long, St As String)
         A = Asc(Mid$(St, 1, 1))    'Player
 
         With frmScan
-            .lblPlayer = Player(A).Name
+            .lblPlayer = Player(A).name
             .lblLevel = Asc(Mid$(St, 3, 1))
-            .lblClass = Class(Asc(Mid$(St, 2, 1))).Name
+            .lblClass = Class(Asc(Mid$(St, 2, 1))).name
             .lblMaxHP = Asc(Mid$(St, 8, 1))
             .lblMaxEnergy = Asc(Mid$(St, 10, 1))
             .lblMaxMana = Asc(Mid$(St, 9, 1))
@@ -1929,21 +1959,21 @@ Sub ProcessString(PacketID As Long, St As String)
             For D = 1 To MaxInvObjects
                 C = Asc(Mid$(St, D * 6 + 7, 1)) * 16777216 + Asc(Mid$(St, D * 6 + 8, 1)) * 65536 + Asc(Mid$(St, D * 6 + 9, 1)) * 256& + Asc(Mid$(St, D * 6 + 10, 1))
                 If GetInt(Mid$(St, D * 6 + 5, 2)) > 0 Then
-                    TempString = D & ":  " & Object(GetInt(Mid$(St, D * 6 + 5, 2))).Name & " (" & GetInt(Mid$(St, D * 6 + 5, 2)) & ")" & " (" & C & ") "
+                    TempString = D & ":  " & Object(GetInt(Mid$(St, D * 6 + 5, 2))).name & " (" & GetInt(Mid$(St, D * 6 + 5, 2)) & ")" & " (" & C & ") "
                     .lstInventory.AddItem TempString
                 End If
             Next D
             For D = 1 To 5
                 C = Asc(Mid$(St, D * 6 + 127, 1)) * 16777216 + Asc(Mid$(St, D * 6 + 128, 1)) * 65536 + Asc(Mid$(St, D * 6 + 129, 1)) * 256& + Asc(Mid$(St, D * 6 + 130, 1))
                 If GetInt(Mid$(St, D * 6 + 125, 2)) > 0 Then
-                    TempString = "(E) " & Object(GetInt(Mid$(St, D * 6 + 125, 2))).Name & " (" & GetInt(Mid$(St, D * 6 + 125, 2)) & ")" & " (" & C & ") "
+                    TempString = "(E) " & Object(GetInt(Mid$(St, D * 6 + 125, 2))).name & " (" & GetInt(Mid$(St, D * 6 + 125, 2)) & ")" & " (" & C & ") "
                     .lstInventory.AddItem TempString
                 End If
             Next D
             For D = 1 To 30
                 C = Asc(Mid$(St, D * 6 + 157, 1)) * 16777216 + Asc(Mid$(St, D * 6 + 158, 1)) * 65536 + Asc(Mid$(St, D * 6 + 159, 1)) * 256& + Asc(Mid$(St, D * 6 + 160, 1))
                 If GetInt(Mid$(St, D * 6 + 155, 2)) > 0 Then
-                    TempString = D & ":  " & Object(GetInt(Mid$(St, D * 6 + 155, 2))).Name & " (" & GetInt(Mid$(St, D * 6 + 155, 2)) & ")" & " (" & C & ") "
+                    TempString = D & ":  " & Object(GetInt(Mid$(St, D * 6 + 155, 2))).name & " (" & GetInt(Mid$(St, D * 6 + 155, 2)) & ")" & " (" & C & ") "
                     .lstBank.AddItem TempString
                 End If
             Next D
@@ -1964,12 +1994,12 @@ Sub ProcessString(PacketID As Long, St As String)
         DrawStats
     Case 110    'Someone died from damage tile
         A = Asc(Mid$(St, 1, 1))
-        If A = Character.index Then
+        If A = Character.Index Then
             PlayWav 8
             PrintChat "You have died!", 12
         Else
             PlayWav 8
-            PrintChat Player(A).Name & " has died!", 12
+            PrintChat Player(A).name & " has died!", 12
             Player(A).IsDead = True
         End If
     Case 111    'Floating Number
@@ -1992,7 +2022,7 @@ Sub ProcessString(PacketID As Long, St As String)
         D = Asc(Mid$(St, 8, 1))
         E = Asc(Mid$(St, 9, 1))
         Character.ItemBank(A).Object = B
-        Character.ItemBank(A).Value = C
+        Character.ItemBank(A).value = C
         Character.ItemBank(A).ItemPrefix = D
         Character.ItemBank(A).ItemSuffix = E
         If frmMain.Visible = True Then
@@ -2006,7 +2036,7 @@ Sub ProcessString(PacketID As Long, St As String)
             frmMain.ItemBank(A).Refresh
         End If
         Character.ItemBank(A).Object = 0
-        Character.ItemBank(A).Value = 0
+        Character.ItemBank(A).value = 0
         Character.ItemBank(A).ItemPrefix = 0
         Character.ItemBank(A).ItemSuffix = 0
     Case 115    'Equipped Object
@@ -2017,18 +2047,18 @@ Sub ProcessString(PacketID As Long, St As String)
         Select Case Object(A).Type
         Case 1, 10    'Weapon
             Character.EquippedObject(1).Object = A
-            Character.EquippedObject(1).Value = B
+            Character.EquippedObject(1).value = B
             Character.EquippedObject(1).ItemPrefix = C
             Character.EquippedObject(1).ItemSuffix = D
             If Object(A).Type = 10 Then Character.Projectile = True
         Case 2, 3, 4
             Character.EquippedObject(Object(A).Type).Object = A
-            Character.EquippedObject(Object(A).Type).Value = B
+            Character.EquippedObject(Object(A).Type).value = B
             Character.EquippedObject(Object(A).Type).ItemPrefix = C
             Character.EquippedObject(Object(A).Type).ItemSuffix = D
         Case 8
             Character.EquippedObject(5).Object = A
-            Character.EquippedObject(5).Value = B
+            Character.EquippedObject(5).value = B
             Character.EquippedObject(5).ItemPrefix = C
             Character.EquippedObject(5).ItemSuffix = D
         End Select
@@ -2052,27 +2082,27 @@ Sub ProcessString(PacketID As Long, St As String)
             CreateFloatText "Dead!", 12, CByte(A), CByte(B)
         Case 3    'Caught something
             D = Asc(Mid$(St, 4, 1))
-            CreateFloatText "Caught " + Object(D).Name, 11, CByte(A), CByte(B)
+            CreateFloatText "Caught " + Object(D).name, 11, CByte(A), CByte(B)
         Case 4    'Chopped something
             D = Asc(Mid$(St, 4, 1))
             CreateFloatText "Chopped " + CStr(D) + " lumber!", 11, CByte(A), CByte(B)
         Case 5    'Mined something
             D = Asc(Mid$(St, 4, 1))
-            CreateFloatText "Mined " + Object(D).Name, 11, CByte(A), CByte(B)
+            CreateFloatText "Mined " + Object(D).name, 11, CByte(A), CByte(B)
         End Select
     Case 119    'Skill Data
         ProcessSkillData St
     Case 120    'Player Revived
         A = Asc(Mid$(St, 1, 1))
         If Len(St) = 2 Then
-            If Character.index = A Then
+            If Character.Index = A Then
                 Character.IsDead = True
                 NextTransition = 6
             Else
                 Player(A).IsDead = True
             End If
         Else
-            If Character.index = A Then
+            If Character.Index = A Then
                 Character.IsDead = False
                 NextTransition = 6
                 SetHP GetMaxHP
@@ -2196,7 +2226,7 @@ Sub ProcessString(PacketID As Long, St As String)
                     .CastTimer = Asc(Mid$(St, 9, 1)) * 256 + Asc(Mid$(St, 10, 1))
                     B = InStr(11, St, Chr$(0))
                     If B > 11 And B <= Len(St) Then
-                        .Name = Mid$(St, 11, B - 11)
+                        .name = Mid$(St, 11, B - 11)
                         If Not B = Len(St) Then .Description = Mid$(St, B + 1)
                         If frmList_Loaded = True Then
                             frmList.DrawList
@@ -2212,16 +2242,16 @@ Sub ProcessString(PacketID As Long, St As String)
         A = GetInt(Mid$(St, 1, 2))
         If frmMagic_Loaded = False Then Load frmMagic
         With frmMagic
-            If Magic(A).Level > 0 Then .sclLevel.Value = Magic(A).Level
-            .lblLevel = .sclLevel.Value
+            If Magic(A).Level > 0 Then .sclLevel.value = Magic(A).Level
+            .lblLevel = .sclLevel.value
             For B = 0 To NumClasses - 1
                 If ExamineBit(Magic(A).Class, CByte(B)) = True Then
-                    .chkClass(B).Value = 1
+                    .chkClass(B).value = 1
                 Else
-                    .chkClass(B).Value = 0
+                    .chkClass(B).value = 0
                 End If
             Next B
-            .txtName = Magic(A).Name
+            .txtName = Magic(A).name
             .txtDescription = Magic(A).Description
             '.sclIcon = Magic(A).Icon
             '.sclCastTimer = Magic(A).CastTimer
@@ -2292,7 +2322,7 @@ Sub ProcessString(PacketID As Long, St As String)
             .ModificationValue = Asc(Mid$(St, 3, 1))
             .OccursNaturally = Asc(Mid$(St, 4, 1))
             .Version = Asc(Mid$(St, 5, 1))
-            If Len(St) > 5 Then .Name = Mid$(St, 6)
+            If Len(St) > 5 Then .name = Mid$(St, 6)
             If frmList_Loaded = True Then
                 frmList.DrawList
             End If
@@ -2306,7 +2336,7 @@ Sub ProcessString(PacketID As Long, St As String)
             .ModificationValue = Asc(Mid$(St, 3, 1))
             .OccursNaturally = Asc(Mid$(St, 4, 1))
             .Version = Asc(Mid$(St, 5, 1))
-            If Len(St) > 5 Then .Name = Mid$(St, 6)
+            If Len(St) > 5 Then .name = Mid$(St, 6)
             If frmList_Loaded = True Then
                 frmList.DrawList
             End If
@@ -2317,11 +2347,11 @@ Sub ProcessString(PacketID As Long, St As String)
         A = Asc(Mid$(St, 1, 1))
         Load frmPrefix
         With frmPrefix
-            .txtName = ItemPrefix(A).Name
-            .optModType(ItemPrefix(A).ModificationType).Value = True
+            .txtName = ItemPrefix(A).name
+            .optModType(ItemPrefix(A).ModificationType).value = True
             .sclValue = ItemPrefix(A).ModificationValue
             .lblModValue = .sclValue
-            .chkOccursNaturally.Value = ItemPrefix(A).OccursNaturally
+            .chkOccursNaturally.value = ItemPrefix(A).OccursNaturally
             .lblNumber = A
             .Show
         End With
@@ -2329,11 +2359,11 @@ Sub ProcessString(PacketID As Long, St As String)
         A = Asc(Mid$(St, 1, 1))
         Load frmSuffix
         With frmSuffix
-            .txtName = ItemSuffix(A).Name
-            .optModType(ItemSuffix(A).ModificationType).Value = True
+            .txtName = ItemSuffix(A).name
+            .optModType(ItemSuffix(A).ModificationType).value = True
             .sclValue = ItemSuffix(A).ModificationValue
             .lblModValue = .sclValue
-            .chkOccursNaturally.Value = ItemSuffix(A).OccursNaturally
+            .chkOccursNaturally.value = ItemSuffix(A).OccursNaturally
             .lblNumber = A
             .Show
         End With
@@ -2381,7 +2411,7 @@ Sub ProcessString(PacketID As Long, St As String)
     Case 146    'Change Direction
         A = Asc(Mid$(St, 1, 1))
         B = Asc(Mid$(St, 2, 1))
-        If A = Character.index Then
+        If A = Character.Index Then
             CDir = B
         Else
             Player(A).D = B
@@ -2421,10 +2451,10 @@ Sub ProcessString(PacketID As Long, St As String)
             B = Asc(Mid$(St, 5, 1)) * 16777216 + Asc(Mid$(St, 6, 1)) * 65536 + Asc(Mid$(St, 7, 1)) * 256& + Asc(Mid$(St, 8, 1))
             C = Asc(Mid$(St, 9, 1))
             D = Asc(Mid$(St, 10, 1)) * 16777216 + Asc(Mid$(St, 11, 1)) * 65536 + Asc(Mid$(St, 12, 1)) * 256& + Asc(Mid$(St, 13, 1))
-            If C = Character.index Then
+            If C = Character.Index Then
                 PrintChat "You have deposited " + CStr(D) + " gold.  Your guild has " + CStr(A) + " gold in the bank.  Your guild upkeep is " + CStr(B) + " per day.", 15
             Else
-                PrintChat Player(C).Name + " has deposited " + CStr(D) + " gold.  Your guild has " + CStr(A) + " gold in the bank.  Your guild upkeep is " + CStr(B) + " per day.", 15
+                PrintChat Player(C).name + " has deposited " + CStr(D) + " gold.  Your guild has " + CStr(A) + " gold in the bank.  Your guild upkeep is " + CStr(B) + " per day.", 15
             End If
         End If
     Case 153    'Magic Level Data

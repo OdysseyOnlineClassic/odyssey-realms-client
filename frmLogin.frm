@@ -16,6 +16,25 @@ Begin VB.Form frmLogin
    ScaleHeight     =   3645
    ScaleWidth      =   4500
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CheckBox chkSavePass 
+      BackColor       =   &H0061514B&
+      Caption         =   "Save Password"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Left            =   1320
+      TabIndex        =   8
+      Top             =   1560
+      Width           =   3015
+   End
    Begin VB.TextBox txtUser 
       Appearance      =   0  'Flat
       BackColor       =   &H0044342E&
@@ -54,10 +73,10 @@ Begin VB.Form frmLogin
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   1455
+      Height          =   855
       Left            =   120
       TabIndex        =   7
-      Top             =   1560
+      Top             =   1920
       Width           =   4215
    End
    Begin VB.Label lblCurrentServer 
@@ -183,7 +202,13 @@ Private Sub btnOk_Click()
     Pass = txtPass
 
     WriteString "Login", "User", User
-    DelItem "Login", "Password"
+    If chkSavePass.value = 1 Then
+        WriteString "Login", "SavePassword", "1"
+        SavePassword Pass
+    Else
+        WriteString "Login", "SavePassword", "0"
+        ClearPassword
+    End If
 
     NewAccount = False
 
@@ -198,7 +223,14 @@ Private Sub Form_Load()
     Me.Picture = frmMenu.Picture
 
     txtUser = ReadString$("Login", "User")
-
+    If ReadInt("Login", "SavePassword") = 1 Then
+        chkSavePass.value = 1
+        txtPass = LoadPassword
+    Else
+        chkSavePass.value = 0
+        txtPass = vbNullString
+    End If
+    
     Me.Show
 
     If txtUser = vbNullString Then

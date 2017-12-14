@@ -1,6 +1,7 @@
 Attribute VB_Name = "modOdyssey"
 Option Explicit
 
+Public Const ClientVer = 3
 Public Const TitleString = "Odyssey Realms Registry"
 Public Const TheWebSite = "http://www.odysseyclassic.info"
 Public Const TheForum = "http://www.odysseyclassic.info/forum"
@@ -9,13 +10,14 @@ Public Const TheSubReddit = "https://www.reddit.com/r/odysseyonlineclassic"
 Public Const TheYoutubeChannel = "https://www.youtube.com/channel/UC7ZLcAfhim5cm1na-rgSANg/"
 Public Const TheFacebookPage = "https://www.facebook.com/odysseyonlineclassic/"
 Public Const TheFacebookGroup = "https://www.facebook.com/groups/odyssey.classic.history.book/"
-Public Const ClientVer = 2
 
 Public ServerIP As String
 Public ServerPort As Long
 
 Sub Main()
     Dim A As Long
+    
+    Randomize
 
     InitPath = App.Path
     ChDir App.Path
@@ -28,7 +30,11 @@ Sub Main()
     
     ServerDescription = "Odyssey Realms"
     CacheDirectory = App.Path + "\classic"
-    ServerIP = "libertyarchives.info"
+    If Exists("Odyssey.vbp") Then
+        ServerIP = "127.0.0.1"
+    Else
+        ServerIP = "libertyarchives.info"
+    End If
     ServerPort = 5756
     
     'EncryptFiles
@@ -379,7 +385,7 @@ Sub DisplayRepair()
             C = QBColor(11)
             A = 0
             frmMain.lblMenu(56).Visible = False
-        ElseIf ExamineBit(Object(D).flags, 0) = 255 Or Object(D).SellPrice = 0 Then
+        ElseIf ExamineBit(Object(D).flags, 0) = 255 Then
             B = GetObjectDur(CurInvObj)
             St = "Cannot Repair"
             C = QBColor(4)
@@ -594,7 +600,7 @@ Function GetRepairCost(Slot As Integer) As Long
                 'B = B + (C * (Object(Character.Inv(Slot).Object).Modifier * World.Cost_Per_Strength))
                 'If B > 0 Then B = B / 100
                 If Object(Character.Inv(Slot).Object).MaxDur * 10 > 0 Then
-                    C = Object(Character.Inv(Slot).Object).SellPrice - ((Character.Inv(Slot).value / (Object(Character.Inv(Slot).Object).MaxDur * 10)) * Object(Character.Inv(Slot).Object).SellPrice)
+                    C = Object(Character.Inv(Slot).Object).SellPrice + 2500 - ((Character.Inv(Slot).value / (Object(Character.Inv(Slot).Object).MaxDur * 10)) * (Object(Character.Inv(Slot).Object).SellPrice + 1))
                     If C >= 0 Then
                         GetRepairCost = C
                     Else
@@ -630,7 +636,7 @@ Function GetRepairCost(Slot As Integer) As Long
                 'B = B + (C * (Object(Character.EquippedObject(Slot).Object).Modifier * World.Cost_Per_Strength))
                 'If B > 0 Then B = B / 100
                 If Object(Character.EquippedObject(Slot).Object).MaxDur * 10 > 0 Then
-                    C = Object(Character.EquippedObject(Slot).Object).SellPrice - (Character.EquippedObject(Slot).value / (Object(Character.EquippedObject(Slot).Object).MaxDur * 10) * Object(Character.EquippedObject(Slot).Object).SellPrice)
+                    C = Object(Character.EquippedObject(Slot).Object).SellPrice + 2500 - (Character.EquippedObject(Slot).value / (Object(Character.EquippedObject(Slot).Object).MaxDur * 10) * (Object(Character.EquippedObject(Slot).Object).SellPrice + 1))
                     If C >= 0 Then
                         GetRepairCost = C
                     Else
@@ -1768,14 +1774,13 @@ Sub DrawNextFrame()
         With Player(A)
             If .Map = CMap Then
                 If .IsDead = False Then
+                    r.Left = .XO - 32
+                    r.Right = .XO + 64
+                    r.Top = .YO - 32
+                    r.Bottom = .YO - 16
                     If .status = 9 Or .status = 25 Then
-
+                        If Character.Access Then Draw3dText HDCBuffer, r, .name, StatusColors(.status), 2
                     Else
-                        r.Left = .XO - 32
-                        r.Right = .XO + 64
-                        r.Top = .YO - 32
-                        r.Bottom = .YO - 16
-
                         If .status = 1 And CurFrame = 0 Then
                             Draw3dText HDCBuffer, r, .Name, QBColor(4), 2
                         ElseIf .status = 1 And CurFrame = 1 Then
@@ -2205,8 +2210,10 @@ Sub CreateStatusColors()
     StatusColors(21) = QBColor(10)
     StatusColors(22) = QBColor(12)
     StatusColors(23) = QBColor(13)
+    StatusColors(24) = QBColor(7)
+    StatusColors(25) = &H808080
 
-    For A = 24 To 100
+    For A = 26 To 100
         StatusColors(A) = QBColor(7)
     Next A
 End Sub
@@ -2314,6 +2321,7 @@ Sub DestroyEffect(number As Long)
             .TotalFrames = 0
             .X = 0
             .Y = 0
+            .Position = 0
         End With
     End If
 End Sub

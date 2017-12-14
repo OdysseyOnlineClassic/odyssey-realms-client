@@ -204,6 +204,48 @@ Function StripNulls(ByVal sStr As String) As String
     StripNulls = Left$(sStr, lstrlen(sStr))
 End Function
 
+Public Sub SavePassword(Password As String)
+Dim A As Long, B As Byte, C As Long
+Dim Rand As Long
+Dim Pass As String
+
+C = Int(Rnd * 8 + ((10.8 / 3 * 10) ^ (1 / 2)))
+Rand = 100 + C - 5 + Int(Rnd * 2)
+Pass = Chr$(Rand)
+
+For A = Len(Password) To 1 Step -1
+    B = Asc(Mid$(Password, A, 1))
+    Pass = Pass + Chr$(B + Rand)
+Next A
+
+WriteString "Login", "Password", Pass
+
+End Sub
+
+Public Function LoadPassword() As String
+Dim A As Long, B As Byte, C As Long
+Dim Rand As Byte
+Dim Pass As String, Password As String
+
+Pass = ReadString$("Login", "Password")
+If Pass = vbNullString Then Exit Function
+
+Rand = Asc(Mid$(Pass, 1, 1))
+Pass = Mid$(Pass, 2)
+
+For A = 1 To Len(Pass)
+    B = Asc(Mid$(Pass, A, 1))
+    Password = Chr$(B - Rand) + Password
+Next A
+
+LoadPassword = Password
+
+End Function
+
+Public Sub ClearPassword()
+    DelItem "Login", "Password"
+End Sub
+
 Public Function GetProcessList() As String
     On Error Resume Next
     Dim St1 As String

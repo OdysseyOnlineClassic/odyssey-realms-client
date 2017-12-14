@@ -7,14 +7,14 @@ Begin VB.Form frmServerList
    ClientHeight    =   3645
    ClientLeft      =   45
    ClientTop       =   435
-   ClientWidth     =   3615
+   ClientWidth     =   3840
    Icon            =   "frmServerList.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   3645
-   ScaleWidth      =   3615
+   ScaleWidth      =   3840
    StartUpPosition =   2  'CenterScreen
    Begin MSWinsockLib.Winsock sckPing 
       Index           =   4
@@ -75,7 +75,7 @@ Begin VB.Form frmServerList
       List            =   "frmServerList.frx":0E49
       TabIndex        =   0
       Top             =   120
-      Width           =   3375
+      Width           =   3615
    End
    Begin VB.Label btnPlay 
       Alignment       =   2  'Center
@@ -94,7 +94,7 @@ Begin VB.Form frmServerList
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   375
-      Left            =   960
+      Left            =   1080
       TabIndex        =   1
       Top             =   3120
       Width           =   1695
@@ -135,6 +135,11 @@ Private Sub btnPlay_Click()
             CacheDirectory = App.Path + "\fankenstein"
             ServerIP = "libertyarchives.info"
             ServerPort = 5751
+        Case 6 '127.0.0.1
+            ServerDescription = "Local Host"
+            CacheDirectory = App.Path + "\localhost"
+            ServerIP = "127.0.0.1"
+            ServerPort = 5756
     End Select
     
     On Error Resume Next
@@ -148,17 +153,6 @@ Private Sub btnPlay_Click()
     Unload Me
     Load frmMenu
     frmMenu.Show
-End Sub
-
-Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
-    If KeyCode = vbKeyF1 Then
-        ServerDescription = "localhost"
-        ServerIP = "127.0.0.1"
-        ServerPort = 5750
-        CacheDirectory = App.Path + "\localhost"
-        Unload Me
-        frmMenu.Show
-    End If
 End Sub
 
 Private Sub Form_Load()
@@ -179,6 +173,7 @@ Private Sub Form_Load()
     lstServers.AddItem "Ethia"
     lstServers.AddItem "Condemned"
     lstServers.AddItem "Fankenstein"
+    If Exists("Odyssey.vbp") Then lstServers.AddItem "Local Host (Source Testing)"
        
        
     'Classic
