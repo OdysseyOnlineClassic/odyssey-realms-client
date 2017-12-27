@@ -28,15 +28,6 @@ Sub Main()
     frmWait.lblStatus.Caption = "Initializing Data ..."
     frmWait.lblStatus.Refresh
     
-    ServerDescription = "Odyssey Realms"
-    CacheDirectory = App.Path + "\classic"
-    If Exists("Odyssey.vbp") Then
-        ServerIP = "127.0.0.1"
-    Else
-        ServerIP = "libertyarchives.info"
-    End If
-    ServerPort = 5756
-    
     'EncryptFiles
 
     LoadMapData MapData
