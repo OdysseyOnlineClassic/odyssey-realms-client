@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}#1.1#0"; "ieframe.dll"
 Begin VB.Form frmMain 
    BackColor       =   &H0044342E&
@@ -659,7 +659,7 @@ Begin VB.Form frmMain
          NoFolders       =   0   'False
          Transparent     =   0   'False
          ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-         Location        =   "http:///"
+         Location        =   ""
       End
    End
    Begin VB.PictureBox picSellObject 
@@ -3709,6 +3709,7 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
                 DrawSkillsList
                 DrawMagicList
             End If
+            keyEscape = False
         Else
             Select Case Character.Hotkey(KeyCode - 111).Type
             Case 1    'Skill
@@ -3963,7 +3964,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
                         B = 0
                         For A = 1 To MaxUsers
                             With Player(A)
-                                If .Sprite > 0 And A <> Character.Index And Not .Status = 25 Then
+                                If .Sprite > 0 And A <> Character.Index And Not .status = 25 Then
                                     B = B + 1
                                     St1 = St1 + ", " + .name
                                 End If
@@ -5530,7 +5531,7 @@ Private Sub picViewport_MouseDown(Button As Integer, Shift As Integer, X As Sing
         If Button = 1 Then
             For A = 1 To MaxUsers
                 With Player(A)
-                    If .Map = CMap And .X = MapX And .Y = MapY And Not .Status = 9 And Not .Status = 25 Then
+                    If .Map = CMap And .X = MapX And .Y = MapY And Not .status = 9 And Not .status = 25 Then
                         If .Guild > 0 Then
                             PrintChat "You see " + .name + ", member of the guild " + Chr$(34) + Guild(.Guild).name + Chr$(34) + "!", 7
                         Else

@@ -330,7 +330,7 @@ End Sub
 Private Sub lstReports_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 Dim A As Long, B As Long
 Dim St As String
-    St = lstReports.List(.ListIndex)
+    St = lstReports.List(lstReports.ListIndex)
     A = InStr(St, "#") + 1
     A = Val(Mid$(St, A, InStr(St, ":") - A))
     With Bug(A)

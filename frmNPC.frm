@@ -569,7 +569,8 @@ End Sub
 
 Private Sub lstSaleItems_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Dim iIndex As Long
-    iIndex = GetCursorIndex(lstSaleItems.hWnd)
+    iIndex = GetCursorIndex(lstSaleItems.hwnd)
+    If iIndex >= lstSaleItems.ListCount Then iIndex = 0
     If Len(lstSaleItems.List(iIndex)) > 60 Then
         lstSaleItems.ToolTipText = lstSaleItems.List(iIndex)
     Else

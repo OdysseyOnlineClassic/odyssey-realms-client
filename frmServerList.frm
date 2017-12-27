@@ -164,6 +164,7 @@ Private Sub btnPlay_Click()
     End Select
     
     On Error Resume Next
+    MkDir CacheDirectory
     sckPing(0).Close
     sckPing(1).Close
     sckPing(2).Close
@@ -234,10 +235,6 @@ End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
     If UnloadMode = 0 Then blnEnd = True
-End Sub
-
-Private Sub lstServers_DblClick()
-    btnPlay_Click
 End Sub
 
 Private Sub sckPing_Connect(Index As Integer)
