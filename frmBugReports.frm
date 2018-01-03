@@ -337,11 +337,11 @@ Dim St As String
         txtPlayer = .PlayerName + " - (" + .PlayerUser + ")"
         txtIP = .PlayerIP
         txtDescription = .Description
-        If .status < 3 Then
+        If .Status < 3 Then
             For B = 0 To 2
                 optStatus(B).Enabled = True
             Next B
-            optStatus(.status - 1).value = True
+            optStatus(.Status - 1).value = True
         Else
             optStatus(2).value = True
         End If

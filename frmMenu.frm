@@ -3,7 +3,7 @@ Begin VB.Form frmMenu
    BackColor       =   &H0061514B&
    BorderStyle     =   0  'None
    Caption         =   "The Odyssey Online Classic"
-   ClientHeight    =   5715
+   ClientHeight    =   4515
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   4485
@@ -13,15 +13,54 @@ Begin VB.Form frmMenu
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   5715
+   ScaleHeight     =   4515
    ScaleWidth      =   4485
    StartUpPosition =   2  'CenterScreen
+   Begin VB.Label lblCurrentServer 
+      Alignment       =   2  'Center
+      BackStyle       =   0  'Transparent
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Left            =   2880
+      TabIndex        =   0
+      Top             =   420
+      Width           =   1575
+   End
+   Begin VB.Label Label2 
+      Alignment       =   2  'Center
+      BackStyle       =   0  'Transparent
+      Caption         =   "Social Links"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Left            =   1560
+      TabIndex        =   15
+      Top             =   2760
+      Width           =   1455
+   End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
       Appearance      =   0  'Flat
       BackColor       =   &H0044342E&
       BorderStyle     =   1  'Fixed Single
-      Caption         =   "Facebook Group"
+      Caption         =   "FB Group"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   15.75
@@ -34,10 +73,10 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   420
       Index           =   15
-      Left            =   120
-      TabIndex        =   17
-      Top             =   4680
-      Width           =   4260
+      Left            =   2280
+      TabIndex        =   14
+      Top             =   3960
+      Width           =   2100
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -58,9 +97,9 @@ Begin VB.Form frmMenu
       Height          =   420
       Index           =   14
       Left            =   120
-      TabIndex        =   16
-      Top             =   4200
-      Width           =   4260
+      TabIndex        =   13
+      Top             =   3960
+      Width           =   2100
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -81,8 +120,8 @@ Begin VB.Form frmMenu
       Height          =   420
       Index           =   13
       Left            =   120
-      TabIndex        =   15
-      Top             =   3720
+      TabIndex        =   12
+      Top             =   3480
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -104,8 +143,8 @@ Begin VB.Form frmMenu
       Height          =   420
       Index           =   12
       Left            =   2280
-      TabIndex        =   14
-      Top             =   3720
+      TabIndex        =   11
+      Top             =   3480
       Width           =   2100
    End
    Begin VB.Label Label1 
@@ -124,55 +163,9 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   255
       Left            =   1680
-      TabIndex        =   13
+      TabIndex        =   10
       Top             =   240
       Width           =   1335
-   End
-   Begin VB.Label lblMenu 
-      Alignment       =   2  'Center
-      Appearance      =   0  'Flat
-      BackColor       =   &H0044342E&
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Mega Pack"
-      BeginProperty Font 
-         Name            =   "Times New Roman"
-         Size            =   15.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H009AADC2&
-      Height          =   420
-      Index           =   11
-      Left            =   2280
-      TabIndex        =   12
-      Top             =   2280
-      Width           =   2100
-   End
-   Begin VB.Label lblMenu 
-      Alignment       =   2  'Center
-      Appearance      =   0  'Flat
-      BackColor       =   &H0044342E&
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Updater"
-      BeginProperty Font 
-         Name            =   "Times New Roman"
-         Size            =   15.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H009AADC2&
-      Height          =   420
-      Index           =   10
-      Left            =   120
-      TabIndex        =   11
-      Top             =   2280
-      Width           =   2100
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -193,7 +186,7 @@ Begin VB.Form frmMenu
       Height          =   420
       Index           =   9
       Left            =   120
-      TabIndex        =   10
+      TabIndex        =   9
       Top             =   1320
       Width           =   2100
    End
@@ -216,8 +209,8 @@ Begin VB.Form frmMenu
       Height          =   420
       Index           =   8
       Left            =   2280
-      TabIndex        =   9
-      Top             =   3240
+      TabIndex        =   8
+      Top             =   3000
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -239,31 +232,8 @@ Begin VB.Form frmMenu
       Height          =   420
       Index           =   7
       Left            =   120
-      TabIndex        =   8
-      Top             =   3240
-      Width           =   2100
-   End
-   Begin VB.Label lblMenu 
-      Alignment       =   2  'Center
-      Appearance      =   0  'Flat
-      BackColor       =   &H0044342E&
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Map Editor"
-      BeginProperty Font 
-         Name            =   "Times New Roman"
-         Size            =   15.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H009AADC2&
-      Height          =   420
-      Index           =   6
-      Left            =   2280
       TabIndex        =   7
-      Top             =   1800
+      Top             =   3000
       Width           =   2100
    End
    Begin VB.Label lblMenu 
@@ -284,10 +254,10 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   420
       Index           =   5
-      Left            =   120
+      Left            =   2280
       TabIndex        =   6
-      Top             =   2760
-      Width           =   4260
+      Top             =   1800
+      Width           =   2100
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -401,27 +371,8 @@ Begin VB.Form frmMenu
       Index           =   4
       Left            =   120
       TabIndex        =   1
-      Top             =   5160
+      Top             =   2280
       Width           =   4260
-   End
-   Begin VB.Label lblCurrentServer 
-      Alignment       =   2  'Center
-      BackStyle       =   0  'Transparent
-      BeginProperty Font 
-         Name            =   "Times New Roman"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H009AADC2&
-      Height          =   255
-      Left            =   2880
-      TabIndex        =   0
-      Top             =   420
-      Width           =   1575
    End
 End
 Attribute VB_Name = "frmMenu"
@@ -485,12 +436,12 @@ Private Sub lblMenu_MouseUp(Index As Integer, Button As Integer, Shift As Intege
             sParams = 0&
             sDirectory = 0&
             RunShellExecute sTopic, sFile, sParams, sDirectory, 1
-        Case 6    'Map Editor
-            sTopic = "Open"
-            sFile = "mapeditor.exe"
-            sParams = 0&
-            sDirectory = GetGfxPath
-            RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+        'Case 6    'Map Editor
+            'sTopic = "Open"
+            'sFile = "mapeditor.exe"
+            'sParams = 0&
+            'sDirectory = GetGfxPath
+            'RunShellExecute sTopic, sFile, sParams, sDirectory, 1
         Case 7    'Forum
             Dim wTopic As String
             Dim wFile As String
@@ -516,18 +467,18 @@ Private Sub lblMenu_MouseUp(Index As Integer, Button As Integer, Shift As Intege
             Load frmServerList
             frmServerList.Show
             frmServerList.Refresh
-        Case 10    'Updater
-            sTopic = "Open"
-            sFile = "updater.exe"
-            sParams = 0&
-            sDirectory = 0&
-            RunShellExecute sTopic, sFile, sParams, sDirectory, 1
-        Case 11    'Mega Pack Installer
-            sTopic = "Open"
-            sFile = "mega-pack-installer.exe"
-            sParams = 0&
-            sDirectory = 0&
-            RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+        'Case 10    'Updater
+            'sTopic = "Open"
+            'sFile = "updater.exe"
+            'sParams = 0&
+            'sDirectory = 0&
+            'RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+        'Case 11    'Mega Pack Installer
+            'sTopic = "Open"
+            'sFile = "mega-pack-installer.exe"
+            'sParams = 0&
+            'sDirectory = 0&
+            'RunShellExecute sTopic, sFile, sParams, sDirectory, 1
         Case 12    'Reddit
             Dim rTopic As String
             Dim rFile As String
