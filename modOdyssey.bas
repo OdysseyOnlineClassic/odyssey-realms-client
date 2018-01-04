@@ -31,12 +31,6 @@ Sub Main()
     'EncryptFiles
 
     LoadMapData MapData
-    
-    On Error Resume Next
-    MkDir CacheDirectory
-    On Error GoTo 0
-    
-    CheckCache
 
     LoadMacros
 
@@ -174,7 +168,7 @@ Sub Main()
             LastSecond = CurrentSecond
             If SpeedStrikes >= 100 Then
                 CheckCheats
-                SendSocket Chr$(99) + Character.Name + " " + "Speedhack Strikeout"
+                SendSocket Chr$(99) + Character.name + " " + "Speedhack Strikeout"
                 MsgBox "Possible speedhack detected.  This can be caused by running too many programs at once"
             End If
 
@@ -311,7 +305,7 @@ Sub DisplayRepair()
     End If
     
     frmMain.picRepair.Visible = True
-    frmMain.lblRepairNPCName = Trim$(NPC(Map.NPC).Name)
+    frmMain.lblRepairNPCName = Trim$(NPC(Map.NPC).name)
     frmMain.picRepairObjectDisp.Cls
 
     If CurInvObj = 0 Then
@@ -321,7 +315,7 @@ Sub DisplayRepair()
         frmMain.lblRepairDurability.Caption = "None"
         frmMain.lblMenu(56).Visible = False
         frmMain.lblMenu(16).Visible = False
-        St = "Hail, " + Character.Name + "!  Please select the object you would like to repair."
+        St = "Hail, " + Character.name + "!  Please select the object you would like to repair."
         frmMain.lblSellNPCTalk = St
         Exit Sub
     End If
@@ -339,14 +333,14 @@ Sub DisplayRepair()
         frmMain.lblRepairDurability.Caption = "None"
         frmMain.lblMenu(56).Visible = False
         frmMain.lblMenu(16).Visible = False
-        St = "Hail, " + Character.Name + "!  Please select the object you would like to repair."
+        St = "Hail, " + Character.name + "!  Please select the object you would like to repair."
         frmMain.lblRepairNpcTalk = St
         Exit Sub
     End If
 
     frmMain.lblMenu(56).Visible = True
     frmMain.lblMenu(16).Visible = True
-    frmMain.lblRepairName = Trim$(Object(D).Name)
+    frmMain.lblRepairName = Trim$(Object(D).name)
     DrawToDC 0, 0, 32, 32, frmMain.picRepairObjectDisp.hDC, DDSObjects, 0, (Object(D).Picture - 1) * 32
 
     A = GetRepairCost(CInt(CurInvObj))
@@ -396,9 +390,9 @@ Sub DisplayRepair()
     frmMain.lblRepairCondition.ForeColor = C
     frmMain.lblRepairCost = CStr(A) + " gold coins."
     If A > 0 Then
-        St2 = "Hail, " + Character.Name + "!  I can repair your " + Trim$(Object(D).Name) + " for " + CStr(A) + " gold coins." + vbCrLf + vbCrLf
+        St2 = "Hail, " + Character.name + "!  I can repair your " + Trim$(Object(D).name) + " for " + CStr(A) + " gold coins." + vbCrLf + vbCrLf
     Else
-        St2 = "Hail, " + Character.Name + "!  Your " + Trim$(Object(D).Name) + " is in perfect condition and does not need to be repaired." + vbCrLf + vbCrLf
+        St2 = "Hail, " + Character.name + "!  Your " + Trim$(Object(D).name) + " is in perfect condition and does not need to be repaired." + vbCrLf + vbCrLf
     End If
 
     If GetRepairAllCost > 0 Then
@@ -428,13 +422,13 @@ Sub DisplaySell()
 
     frmMain.picRepair.Visible = False
     frmMain.picSellObject.Visible = True
-    frmMain.lblSellNPCName = Trim$(NPC(Map.NPC).Name)
+    frmMain.lblSellNPCName = Trim$(NPC(Map.NPC).name)
     frmMain.picSellObjectDisp.Cls
 
     If CurInvObj = 0 Then
         frmMain.lblSellName.Caption = "None"
         frmMain.lblSellPrice.Caption = "None"
-        St = "Hail, " + Character.Name + "!  Please select the object you would like to sell."
+        St = "Hail, " + Character.name + "!  Please select the object you would like to sell."
         frmMain.lblSellNPCTalk = St
         Exit Sub
     End If
@@ -442,7 +436,7 @@ Sub DisplaySell()
     If CurInvObj > 20 Then
         frmMain.lblSellName.Caption = "None"
         frmMain.lblSellPrice.Caption = "None"
-        St = "Hail, " + Character.Name + "!  You must unequip an item before you can sell it."
+        St = "Hail, " + Character.name + "!  You must unequip an item before you can sell it."
         frmMain.lblSellNPCTalk = St
         Exit Sub
     End If
@@ -450,21 +444,21 @@ Sub DisplaySell()
     If Character.Inv(CurInvObj).Object = 0 Then
         frmMain.lblSellName.Caption = "None"
         frmMain.lblSellPrice.Caption = "None"
-        St = "Hail, " + Character.Name + "!  Please select the object you would like to sell."
+        St = "Hail, " + Character.name + "!  Please select the object you would like to sell."
         frmMain.lblSellNPCTalk = St
         Exit Sub
     End If
 
     TheObject = Character.Inv(CurInvObj).Object
     SellPrice = GetSellPrice(CurInvObj)
-    frmMain.lblSellName.Caption = Object(TheObject).Name
+    frmMain.lblSellName.Caption = Object(TheObject).name
     DrawToDC 0, 0, 32, 32, frmMain.picSellObjectDisp.hDC, DDSObjects, 0, (Object(TheObject).Picture - 1) * 32
 
     If SellPrice > 0 Then
         frmMain.lblSellPrice = CStr(SellPrice) + " gold coins each."
         frmMain.lblMenu(19).Visible = True
     Else
-        St = "Hail, " + Character.Name + "!  I am afraid I have no interest in buying your " + Object(TheObject).Name + "."
+        St = "Hail, " + Character.name + "!  I am afraid I have no interest in buying your " + Object(TheObject).name + "."
         frmMain.lblSellNPCTalk = St
         frmMain.lblSellPrice = "Cannot Sell"
         frmMain.lblMenu(19).Visible = False
@@ -481,9 +475,9 @@ Sub DisplaySell()
         frmMain.lblMenu(59).Visible = False
     End Select
 
-    St = "Hail, " + Character.Name + "!  I will pay you " + CStr(SellPrice) + " gold coins for your " + Object(TheObject).Name + "." + vbCrLf + vbCrLf
+    St = "Hail, " + Character.name + "!  I will pay you " + CStr(SellPrice) + " gold coins for your " + Object(TheObject).name + "." + vbCrLf + vbCrLf
     If SellAllAmount > 0 Then
-        St = St + "I will also buy all " + CStr(SellAllAmount) & " of your " + Object(TheObject).Name + "s for " + CStr(SellAllOffer) + " gold coins."
+        St = St + "I will also buy all " + CStr(SellAllAmount) & " of your " + Object(TheObject).name + "s for " + CStr(SellAllOffer) + " gold coins."
     End If
     frmMain.lblSellNPCTalk = St
 End Sub
@@ -673,25 +667,25 @@ End Function
 
 Sub CreateClassData()
     With Class(1)    'Knight
-        .Name = "Knight"
+        .name = "Knight"
         .StartHP = 20
         .StartEnergy = 15
         .StartMana = 10
     End With
     With Class(2)    'Mage
-        .Name = "Mage"
+        .name = "Mage"
         .StartHP = 10
         .StartEnergy = 15
         .StartMana = 20
     End With
     With Class(3)    'Thief
-        .Name = "Thief"
+        .name = "Thief"
         .StartHP = 15
         .StartEnergy = 20
         .StartMana = 10
     End With
     With Class(4)    'Cleric
-        .Name = "Cleric"
+        .name = "Cleric"
         .StartHP = 10
         .StartEnergy = 15
         .StartMana = 15
@@ -806,7 +800,7 @@ Sub PrintInfoText(St As String, Optional Color As Long = 12)
 End Sub
 
 Sub ShowMap()
-    SetLocation "[" + Map.Name + "]"
+    SetLocation "[" + Map.name + "]"
     If ExamineBit(Map.flags, 0) = True Then
         frmMain.lblLocation.ForeColor = QBColor(11)
     ElseIf ExamineBit(Map.flags, 6) = True Then
@@ -981,7 +975,7 @@ Sub CopyMap(DestMap As MapData, SourceMap As MapData)
     Dim A As Long, X As Long, Y As Long
 
     With DestMap
-        .Name = SourceMap.Name
+        .name = SourceMap.name
         .MIDI = SourceMap.MIDI
         .NPC = SourceMap.NPC
         .ExitUp = SourceMap.ExitUp
@@ -1394,16 +1388,16 @@ Sub UpdateSaleItem(NPCIndex As Long, A As Long)
             St = CStr(A) + ": "
             If Object(.GiveObject).Type = 6 Then
                 'Money
-                St = St + CStr(.GiveValue) + " " + Object(.GiveObject).Name
+                St = St + CStr(.GiveValue) + " " + Object(.GiveObject).name
             Else
-                St = St + "1 " + Object(.GiveObject).Name
+                St = St + "1 " + Object(.GiveObject).name
             End If
             St = St + " in exchange for "
             If Object(.TakeObject).Type = 6 Then
                 'Money
-                St = St + CStr(.TakeValue) + " " + Object(.TakeObject).Name
+                St = St + CStr(.TakeValue) + " " + Object(.TakeObject).name
             Else
-                St = St + "1 " + Object(.TakeObject).Name
+                St = St + "1 " + Object(.TakeObject).name
             End If
             frmNPC.lstSaleItems.List(A) = St
         Else
@@ -1737,28 +1731,28 @@ Sub DrawNextFrame()
 
     If Character.Guild > 0 Then
         If Character.status = 1 And CurFrame = 0 Then
-            Draw3dText HDCBuffer, r, Character.Name, QBColor(4), 2
+            Draw3dText HDCBuffer, r, Character.name, QBColor(4), 2
         Else
             If Character.status > 1 Then
-                Draw3dText HDCBuffer, r, Character.Name, StatusColors(Character.status), 2
+                Draw3dText HDCBuffer, r, Character.name, StatusColors(Character.status), 2
             Else
-                Draw3dText HDCBuffer, r, Character.Name, QBColor(11), 2
+                Draw3dText HDCBuffer, r, Character.name, QBColor(11), 2
             End If
         End If
     Else
         If Character.status = 2 Then
-            Draw3dText HDCBuffer, r, Character.Name, QBColor(14), 2
+            Draw3dText HDCBuffer, r, Character.name, QBColor(14), 2
         ElseIf Character.status = 3 Then
-            Draw3dText HDCBuffer, r, Character.Name, QBColor(9), 2
+            Draw3dText HDCBuffer, r, Character.name, QBColor(9), 2
         ElseIf Character.status = 1 And CurFrame = 0 Then
-            Draw3dText HDCBuffer, r, Character.Name, QBColor(4), 2
+            Draw3dText HDCBuffer, r, Character.name, QBColor(4), 2
         Else
-            Draw3dText HDCBuffer, r, Character.Name, StatusColors(Character.status), 2
+            Draw3dText HDCBuffer, r, Character.name, StatusColors(Character.status), 2
         End If
     End If
 
     If Character.status = 24 Then    'Rainbow
-        Draw3dText HDCBuffer, r, Character.Name, StatusColors((Int(Rnd * 23))), 2
+        Draw3dText HDCBuffer, r, Character.name, StatusColors((Int(Rnd * 23))), 2
     End If
 
     For A = 1 To MaxUsers
@@ -1773,16 +1767,16 @@ Sub DrawNextFrame()
                         If Character.Access Then Draw3dText HDCBuffer, r, .name, StatusColors(.status), 2
                     Else
                         If .status = 1 And CurFrame = 0 Then
-                            Draw3dText HDCBuffer, r, .Name, QBColor(4), 2
+                            Draw3dText HDCBuffer, r, .name, QBColor(4), 2
                         ElseIf .status = 1 And CurFrame = 1 Then
-                            Draw3dText HDCBuffer, r, .Name, QBColor(.Color), 2
+                            Draw3dText HDCBuffer, r, .name, QBColor(.Color), 2
                         ElseIf .status = 0 Then
-                            Draw3dText HDCBuffer, r, .Name, QBColor(.Color), 2
+                            Draw3dText HDCBuffer, r, .name, QBColor(.Color), 2
                         Else
                             If .status = 24 Then  'Rainbow
-                                Draw3dText HDCBuffer, r, .Name, StatusColors((Int(Rnd * 23))), 2
+                                Draw3dText HDCBuffer, r, .name, StatusColors((Int(Rnd * 23))), 2
                             Else
-                                Draw3dText HDCBuffer, r, .Name, StatusColors(.status), 2
+                                Draw3dText HDCBuffer, r, .name, StatusColors(.status), 2
                             End If
                         End If
                     End If
@@ -1984,7 +1978,7 @@ Function FindPlayer(ByVal St As String) As Long
     'Search for exact match
     For A = 1 To MaxUsers
         With Player(A)
-            If .Sprite > 0 And UCase$(.Name) = St Then
+            If .Sprite > 0 And UCase$(.name) = St Then
                 FindPlayer = A
                 Exit Function
             End If
@@ -1996,8 +1990,8 @@ Function FindPlayer(ByVal St As String) As Long
     For A = 1 To MaxUsers
         With Player(A)
             If .Sprite > 0 Then
-                If Len(.Name) >= StLen Then
-                    If UCase$(Left$(.Name, StLen)) = St Then
+                If Len(.name) >= StLen Then
+                    If UCase$(Left$(.name, StLen)) = St Then
                         FindPlayer = A
                         Exit Function
                     End If
@@ -2014,7 +2008,7 @@ Function FindGuild(ByVal St As String) As Long
     'Search for exact match
     For A = 1 To MaxUsers
         With Guild(A)
-            If UCase$(.Name) = St Then
+            If UCase$(.name) = St Then
                 FindGuild = A
                 Exit Function
             End If
@@ -2025,8 +2019,8 @@ Function FindGuild(ByVal St As String) As Long
     StLen = Len(St)
     For A = 1 To MaxUsers
         With Guild(A)
-            If Len(.Name) >= StLen Then
-                If UCase$(Left$(.Name, StLen)) = St Then
+            If Len(.name) >= StLen Then
+                If UCase$(Left$(.name, StLen)) = St Then
                     FindGuild = A
                     Exit Function
                 End If
@@ -2640,9 +2634,9 @@ Function GenerateRequirements(TheObject As Integer) As String
     For A = 0 To 5
         If ExamineBit(Object(TheObject).ClassReq, A) = 255 Then
             If Not St = vbNullString Then
-                St = St + ", " + Class(A + 1).Name
+                St = St + ", " + Class(A + 1).name
             Else
-                St = vbCrLf + "Cannot be used by: " + Class(A + 1).Name
+                St = vbCrLf + "Cannot be used by: " + Class(A + 1).name
             End If
         End If
     Next A

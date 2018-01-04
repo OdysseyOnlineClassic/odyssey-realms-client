@@ -128,6 +128,8 @@ Private Sub btnPlay_Click()
     End Select
     
     On Error Resume Next
+    MkDir CacheDirectory
+    CheckCache
     sckPing(0).Close
     sckPing(1).Close
     sckPing(2).Close
