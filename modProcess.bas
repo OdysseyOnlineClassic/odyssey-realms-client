@@ -2070,7 +2070,7 @@ Sub ProcessString(PacketID As Long, St As String)
         RefreshInventory
     Case 116    'Version is Outdated
         MsgBox "Odyssey Realms has updated! Run the updater or download the latest version from www.odysseyclassic.info"
-        End
+        blnEnd = True
     Case 117    'Float Code
         A = Asc(Mid$(St, 1, 1))
         B = Asc(Mid$(St, 2, 1))

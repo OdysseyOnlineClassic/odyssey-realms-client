@@ -1,15 +1,9 @@
 Attribute VB_Name = "modOdyssey"
 Option Explicit
 
-Public Const ClientVer = 3
 Public Const TitleString = "Odyssey Realms Registry"
 Public Const TheWebSite = "http://www.odysseyclassic.info"
-Public Const TheForum = "http://www.odysseyclassic.info/forum"
-Public Const TheIRC = "http://www.odysseyclassic.info/chat"
-Public Const TheSubReddit = "https://www.reddit.com/r/odysseyonlineclassic"
-Public Const TheYoutubeChannel = "https://www.youtube.com/channel/UC7ZLcAfhim5cm1na-rgSANg/"
-Public Const TheFacebookPage = "https://www.facebook.com/odysseyonlineclassic/"
-Public Const TheFacebookGroup = "https://www.facebook.com/groups/odyssey.classic.history.book/"
+Public Const ClientVer = 3
 
 Public ServerIP As String
 Public ServerPort As Long
@@ -152,26 +146,6 @@ Sub Main()
             SecondTimer = Tick + 1000
             FrameRate = FrameCounter
             FrameCounter = 0
-
-            CurrentSecond = Second(Now)
-            If LastSecond = 59 Then
-                If Not CurrentSecond = 0 Then
-                    SpeedStrikes = SpeedStrikes + 1
-                End If
-            Else
-                If Not CurrentSecond = LastSecond + 1 Then
-                    If CurrentSecond = LastSecond Then
-                        SpeedStrikes = SpeedStrikes + 1
-                    End If
-                End If
-            End If
-            LastSecond = CurrentSecond
-            If SpeedStrikes >= 100 Then
-                CheckCheats
-                SendSocket Chr$(99) + Character.name + " " + "Speedhack Strikeout"
-                MsgBox "Possible speedhack detected.  This can be caused by running too many programs at once"
-            End If
-
             If Tick >= Character.EnergyTick And blnPlaying = True Then
                 If GetEnergy < GetMaxEnergy Then
                     A = GetEnergy
@@ -186,10 +160,6 @@ Sub Main()
             End If
         End If
         If blnPlaying = True Then
-            If Tick - LastSent >= 20000 Then
-                SendSocket Chr$(29) + Chr$(1)
-                If SpeedStrikes > 0 Then SpeedStrikes = SpeedStrikes - 1
-            End If
             If Freeze = False Then
                 CheckKeys
                 MoveCharacter
@@ -204,14 +174,9 @@ Sub Main()
                     End If
                 End With
             End If
-            If Tick >= SendSpeedHack Then
-                'CheckCheats
-                SendSpeedHack = Tick + 120000
-                SendSocket Chr$(92)
-            End If
             If Tick >= SendPing Then
                 SendPingPacket
-                SendPing = Tick + 15000
+                SendPing = Tick + 5000
             End If
         End If
         While timeGetTime - Tick < 6
@@ -3127,12 +3092,8 @@ Public Function BannedSprite(Sprite As Long) As Boolean
 End Function
 
 Public Sub SendPingPacket()
-    If Tick - PingSent > 10000 Then
-        PingSent = Tick
-        SendSocket Chr$(96)
-    Else
-        PrintChat "You cannot ping again so soon!", YELLOW
-    End If
+    PingSent = Tick
+    SendSocket Chr$(96)
 End Sub
 
 Public Function GetMapSwitchTime() As Long

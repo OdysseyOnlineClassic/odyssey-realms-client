@@ -17,6 +17,22 @@ Begin VB.Form frmServerList
    ScaleWidth      =   3840
    StartUpPosition =   2  'CenterScreen
    Begin MSWinsockLib.Winsock sckPing 
+      Index           =   6
+      Left            =   840
+      Top             =   2400
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
+   Begin MSWinsockLib.Winsock sckPing 
+      Index           =   5
+      Left            =   720
+      Top             =   2400
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
+   Begin MSWinsockLib.Winsock sckPing 
       Index           =   4
       Left            =   600
       Top             =   2400
@@ -113,14 +129,34 @@ Private Sub btnPlay_Click()
         Case 0 'Classic
             ServerDescription = "Odyssey Realms"
             CacheDirectory = App.Path + "\classic"
-            ServerIP = "odysseyclassic.info"
+            ServerIP = "libertyarchives.info"
             ServerPort = 5756
-        Case 1 'God Sandbox
+        Case 1 'PK Island
+            ServerDescription = "PK Island"
+            CacheDirectory = App.Path + "\pkisland"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5758
+        Case 2 'Ethia
+            ServerDescription = "Ethia"
+            CacheDirectory = App.Path + "\ethia"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5750
+        Case 3 'God Sandbox
             ServerDescription = "God Sandbox"
             CacheDirectory = App.Path + "\sandbox"
             ServerIP = "libertyarchives.info"
             ServerPort = 5752
-        Case 2 '127.0.0.1
+        Case 4 'Condemned
+            ServerDescription = "Condemned"
+            CacheDirectory = App.Path + "\condemned"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5753
+        Case 5 'Fankenstein
+            ServerDescription = "Fankenstein"
+            CacheDirectory = App.Path + "\fankenstein"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5751
+        Case 6 '127.0.0.1
             ServerDescription = "Local Host"
             CacheDirectory = App.Path + "\localhost"
             ServerIP = "127.0.0.1"
@@ -133,6 +169,9 @@ Private Sub btnPlay_Click()
     sckPing(0).Close
     sckPing(1).Close
     sckPing(2).Close
+    sckPing(3).Close
+    sckPing(4).Close
+    sckPing(5).Close
     On Error GoTo 0
     
     Unload Me
@@ -154,28 +193,49 @@ Private Sub Form_Load()
     lstServers.Clear
     
     lstServers.AddItem "Classic"
+    lstServers.AddItem "PK Island"
+    lstServers.AddItem "Ethia"
     lstServers.AddItem "God Sandbox"
+    lstServers.AddItem "Condemned"
+    lstServers.AddItem "Fankenstein"
     If Exists("Odyssey.vbp") Then lstServers.AddItem "Local Host (Source Testing)"
-         
+       
+       
     'Classic
-    sckPing(0).RemoteHost = "odysseyclassic.info"
+    sckPing(0).RemoteHost = "libertyarchives.info"
     sckPing(0).RemotePort = 5756
     sckPing(0).connect
-        
-    'God Sandbox
+       
+    'PK Island
     sckPing(1).RemoteHost = "libertyarchives.info"
-    sckPing(1).RemotePort = 5752
+    sckPing(1).RemotePort = 5758
     sckPing(1).connect
+    
+    'Ethia
+    sckPing(2).RemoteHost = "libertyarchives.info"
+    sckPing(2).RemotePort = 5750
+    sckPing(2).connect
+    
+    'God Sandbox
+    sckPing(3).RemoteHost = "libertyarchives.info"
+    sckPing(3).RemotePort = 5752
+    sckPing(3).connect
+    
+    'Condemned
+    sckPing(4).RemoteHost = "libertyarchives.info"
+    sckPing(4).RemotePort = 5753
+    sckPing(4).connect
+    
+    'Fankenstein
+    sckPing(5).RemoteHost = "libertyarchives.info"
+    sckPing(5).RemotePort = 5751
+    sckPing(5).connect
     
     lstServers.ListIndex = 0
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
     If UnloadMode = 0 Then blnEnd = True
-End Sub
-
-Private Sub lstServers_DblClick()
-    btnPlay_Click
 End Sub
 
 Private Sub sckPing_Connect(Index As Integer)
