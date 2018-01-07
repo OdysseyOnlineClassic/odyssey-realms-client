@@ -409,6 +409,10 @@ Private Sub lblMenu_MouseDown(Index As Integer, Button As Integer, Shift As Inte
 End Sub
 
 Private Sub lblMenu_MouseUp(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim uTopic As String
+Dim uFile As String
+Dim uParams As String
+Dim uDirectory As String
     lblMenu(Index).BackColor = &H44342E
     If X >= 0 And X <= lblMenu(Index).Width And Y >= 0 And Y <= lblMenu(Index).Height Then
         Select Case Index
@@ -427,41 +431,29 @@ Private Sub lblMenu_MouseUp(Index As Integer, Button As Integer, Shift As Intege
         Case 4    'Quit
             blnEnd = True
         Case 5    'Website
-            Dim sTopic As String
-            Dim sFile As String
-            Dim sParams As String
-            Dim sDirectory As String
-            sTopic = "Open"
-            sFile = TheWebSite
-            sParams = 0&
-            sDirectory = 0&
-            RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+            uTopic = "Open"
+            uFile = TheWebSite
+            uParams = 0&
+            uDirectory = 0&
+            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         'Case 6    'Map Editor
-            'sTopic = "Open"
-            'sFile = "mapeditor.exe"
-            'sParams = 0&
-            'sDirectory = GetGfxPath
+            'uTopic = "Open"
+            'uFile = "mapeditor.exe"
+            'uParams = 0&
+            'uDirectory = GetGfxPath
             'RunShellExecute sTopic, sFile, sParams, sDirectory, 1
         Case 7    'Forum
-            Dim wTopic As String
-            Dim wFile As String
-            Dim wParams As String
-            Dim wDirectory As String
-            wTopic = "Open"
-            wFile = TheForum
-            wParams = 0&
-            wDirectory = 0&
-            RunShellExecute wTopic, wFile, wParams, wDirectory, 1
+            uTopic = "Open"
+            uFile = TheForum
+            uParams = 0&
+            uDirectory = 0&
+            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         Case 8    'Chatroom
-            Dim xTopic As String
-            Dim xFile As String
-            Dim xParams As String
-            Dim xDirectory As String
-            xTopic = "Open"
-            xFile = TheIRC
-            xParams = 0&
-            xDirectory = 0&
-            RunShellExecute xTopic, xFile, xParams, xDirectory, 1
+            uTopic = "Open"
+            uFile = TheIRC
+            uParams = 0&
+            uDirectory = 0&
+            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         Case 9    'Server List
             Me.Hide
             Load frmServerList
@@ -472,53 +464,37 @@ Private Sub lblMenu_MouseUp(Index As Integer, Button As Integer, Shift As Intege
             'sFile = "updater.exe"
             'sParams = 0&
             'sDirectory = 0&
-            'RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+            'RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         'Case 11    'Mega Pack Installer
-            'sTopic = "Open"
-            'sFile = "mega-pack-installer.exe"
-            'sParams = 0&
-            'sDirectory = 0&
-            'RunShellExecute sTopic, sFile, sParams, sDirectory, 1
+            'uTopic = "Open"
+            'uFile = "mega-pack-installer.exe"
+            'uParams = 0&
+            'uDirectory = 0&
+            'RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         Case 12    'Reddit
-            Dim rTopic As String
-            Dim rFile As String
-            Dim rParams As String
-            Dim rDirectory As String
-            rTopic = "Open"
-            rFile = TheSubReddit
-            rParams = 0&
-            rDirectory = 0&
-            RunShellExecute rTopic, rFile, rParams, rDirectory, 1
+            uTopic = "Open"
+            uFile = TheSubReddit
+            uParams = 0&
+            uDirectory = 0&
+            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         Case 13    'Youtube
-            Dim tTopic As String
-            Dim tFile As String
-            Dim tParams As String
-            Dim tDirectory As String
-            tTopic = "Open"
-            tFile = TheYoutubeChannel
-            tParams = 0&
-            tDirectory = 0&
-            RunShellExecute tTopic, tFile, tParams, tDirectory, 1
+            uTopic = "Open"
+            uFile = TheYoutubeChannel
+            uParams = 0&
+            uDirectory = 0&
+            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         Case 14    'Facebook Page
-            Dim uTopic As String
-            Dim uFile As String
-            Dim uParams As String
-            Dim uDirectory As String
             uTopic = "Open"
             uFile = TheFacebookPage
             uParams = 0&
             uDirectory = 0&
             RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         Case 15    'Facebook Group
-            Dim vTopic As String
-            Dim vFile As String
-            Dim vParams As String
-            Dim vDirectory As String
-            vTopic = "Open"
-            vFile = TheFacebookGroup
-            vParams = 0&
-            vDirectory = 0&
-            RunShellExecute vTopic, vFile, vParams, vDirectory, 1
+            uTopic = "Open"
+            uFile = TheFacebookGroup
+            uParams = 0&
+            uDirectory = 0&
+            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         End Select
     End If
 End Sub

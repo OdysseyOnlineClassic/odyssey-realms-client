@@ -1,9 +1,15 @@
 Attribute VB_Name = "modOdyssey"
 Option Explicit
 
+Public Const ClientVer = 3
 Public Const TitleString = "Odyssey Realms Registry"
 Public Const TheWebSite = "http://www.odysseyclassic.info"
-Public Const ClientVer = 3
+Public Const TheForum = "http://www.odysseyclassic.info/forum"
+Public Const TheIRC = "http://www.odysseyclassic.info/chat"
+Public Const TheSubReddit = "https://www.reddit.com/r/odysseyonlineclassic"
+Public Const TheYoutubeChannel = "https://www.youtube.com/channel/UC7ZLcAfhim5cm1na-rgSANg/"
+Public Const TheFacebookPage = "https://www.facebook.com/odysseyonlineclassic/"
+Public Const TheFacebookGroup = "https://www.facebook.com/groups/odyssey.classic.history.book/"
 
 Public ServerIP As String
 Public ServerPort As Long

@@ -129,32 +129,32 @@ Private Sub btnPlay_Click()
         Case 0 'Classic
             ServerDescription = "Odyssey Realms"
             CacheDirectory = App.Path + "\classic"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5756
         Case 1 'PK Island
             ServerDescription = "PK Island"
             CacheDirectory = App.Path + "\pkisland"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5758
         Case 2 'Ethia
             ServerDescription = "Ethia"
             CacheDirectory = App.Path + "\ethia"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5750
         Case 3 'God Sandbox
             ServerDescription = "God Sandbox"
             CacheDirectory = App.Path + "\sandbox"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5752
         Case 4 'Condemned
             ServerDescription = "Condemned"
             CacheDirectory = App.Path + "\condemned"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5753
         Case 5 'Fankenstein
             ServerDescription = "Fankenstein"
             CacheDirectory = App.Path + "\fankenstein"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5751
         Case 6 '127.0.0.1
             ServerDescription = "Local Host"
@@ -202,32 +202,32 @@ Private Sub Form_Load()
        
        
     'Classic
-    sckPing(0).RemoteHost = "libertyarchives.info"
+    sckPing(0).RemoteHost = "odysseyclassic.info"
     sckPing(0).RemotePort = 5756
     sckPing(0).connect
        
     'PK Island
-    sckPing(1).RemoteHost = "libertyarchives.info"
+    sckPing(1).RemoteHost = "odysseyclassic.info"
     sckPing(1).RemotePort = 5758
     sckPing(1).connect
     
     'Ethia
-    sckPing(2).RemoteHost = "libertyarchives.info"
+    sckPing(2).RemoteHost = "odysseyclassic.info"
     sckPing(2).RemotePort = 5750
     sckPing(2).connect
     
     'God Sandbox
-    sckPing(3).RemoteHost = "libertyarchives.info"
+    sckPing(3).RemoteHost = "odysseyclassic.info"
     sckPing(3).RemotePort = 5752
     sckPing(3).connect
     
     'Condemned
-    sckPing(4).RemoteHost = "libertyarchives.info"
+    sckPing(4).RemoteHost = "odysseyclassic.info"
     sckPing(4).RemotePort = 5753
     sckPing(4).connect
     
     'Fankenstein
-    sckPing(5).RemoteHost = "libertyarchives.info"
+    sckPing(5).RemoteHost = "odysseyclassic.info"
     sckPing(5).RemotePort = 5751
     sckPing(5).connect
     
