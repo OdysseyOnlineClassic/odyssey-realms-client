@@ -131,32 +131,27 @@ Private Sub btnPlay_Click()
             CacheDirectory = App.Path + "\classic"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5756
-        Case 1 'PK Island
-            ServerDescription = "PK Island"
-            CacheDirectory = App.Path + "\pkisland"
-            ServerIP = "odysseyclassic.info"
-            ServerPort = 5758
+        Case 1 'God Sandbox
+            ServerDescription = "God Sandbox"
+            CacheDirectory = App.Path + "\sandbox"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5752
         Case 2 'Ethia
             ServerDescription = "Ethia"
             CacheDirectory = App.Path + "\ethia"
-            ServerIP = "odysseyclassic.info"
+            ServerIP = "libertyarchives.info"
             ServerPort = 5750
-        Case 3 'God Sandbox
-            ServerDescription = "God Sandbox"
-            CacheDirectory = App.Path + "\sandbox"
-            ServerIP = "odysseyclassic.info"
-            ServerPort = 5752
-        Case 4 'Condemned
+        Case 3 'Condemned
             ServerDescription = "Condemned"
             CacheDirectory = App.Path + "\condemned"
-            ServerIP = "odysseyclassic.info"
+            ServerIP = "libertyarchives.info"
             ServerPort = 5753
-        Case 5 'Fankenstein
+        Case 4 'Fankenstein
             ServerDescription = "Fankenstein"
             CacheDirectory = App.Path + "\fankenstein"
-            ServerIP = "odysseyclassic.info"
+            ServerIP = "libertyarchives.info"
             ServerPort = 5751
-        Case 6 '127.0.0.1
+        Case 5 '127.0.0.1
             ServerDescription = "Local Host"
             CacheDirectory = App.Path + "\localhost"
             ServerIP = "127.0.0.1"
@@ -171,7 +166,6 @@ Private Sub btnPlay_Click()
     sckPing(2).Close
     sckPing(3).Close
     sckPing(4).Close
-    sckPing(5).Close
     On Error GoTo 0
     
     Unload Me
@@ -193,22 +187,21 @@ Private Sub Form_Load()
     lstServers.Clear
     
     lstServers.AddItem "Classic"
-    lstServers.AddItem "PK Island"
-    lstServers.AddItem "Ethia"
     lstServers.AddItem "God Sandbox"
-    lstServers.AddItem "Condemned"
-    lstServers.AddItem "Fankenstein"
-    If Exists("Odyssey.vbp") Then lstServers.AddItem "Local Host (Source Testing)"
+    If Exists("Player_Made_Servers.txt") Then lstServers.AddItem "Ethia"
+    If Exists("Player_Made_Servers.txt") Then lstServers.AddItem "Condemned"
+    If Exists("Player_Made_Servers.txt") Then lstServers.AddItem "Fankenstein"
+    If Exists("Odyssey.vbp") Then lstServers.AddItem "---Local Host---"
        
        
     'Classic
     sckPing(0).RemoteHost = "odysseyclassic.info"
     sckPing(0).RemotePort = 5756
     sckPing(0).connect
-       
-    'PK Island
-    sckPing(1).RemoteHost = "odysseyclassic.info"
-    sckPing(1).RemotePort = 5758
+    
+    'God Sandbox
+    sckPing(1).RemoteHost = "libertyarchives.info"
+    sckPing(1).RemotePort = 5752
     sckPing(1).connect
     
     'Ethia
@@ -216,20 +209,15 @@ Private Sub Form_Load()
     sckPing(2).RemotePort = 5750
     sckPing(2).connect
     
-    'God Sandbox
+    'Condemned
     sckPing(3).RemoteHost = "odysseyclassic.info"
-    sckPing(3).RemotePort = 5752
+    sckPing(3).RemotePort = 5753
     sckPing(3).connect
     
-    'Condemned
-    sckPing(4).RemoteHost = "odysseyclassic.info"
-    sckPing(4).RemotePort = 5753
-    sckPing(4).connect
-    
     'Fankenstein
-    sckPing(5).RemoteHost = "odysseyclassic.info"
-    sckPing(5).RemotePort = 5751
-    sckPing(5).connect
+    sckPing(4).RemoteHost = "odysseyclassic.info"
+    sckPing(4).RemotePort = 5751
+    sckPing(4).connect
     
     lstServers.ListIndex = 0
 End Sub
