@@ -124,8 +124,7 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Sub btnPlay_Click()
-    Select Case lstServers.ListIndex
-
+    Select Case lstServers.ItemData(lstServers.ListIndex)
         Case 0 'Classic
             ServerDescription = "Odyssey Realms"
             CacheDirectory = App.Path + "\classic"
@@ -187,11 +186,25 @@ Private Sub Form_Load()
     lstServers.Clear
     
     lstServers.AddItem "Classic"
+    lstServers.ItemData(lstServers.ListCount - 1) = 0
     lstServers.AddItem "God Sandbox"
-    If Exists("Player_Made_Servers.txt") Then lstServers.AddItem "Ethia"
-    If Exists("Player_Made_Servers.txt") Then lstServers.AddItem "Condemned"
-    If Exists("Player_Made_Servers.txt") Then lstServers.AddItem "Fankenstein"
-    If Exists("Odyssey.vbp") Then lstServers.AddItem "---Local Host---"
+    lstServers.ItemData(lstServers.ListCount - 1) = 1
+    If Exists("Player_Made_Servers.txt") Then
+        lstServers.AddItem "Ethia"
+        lstServers.ItemData(lstServers.ListCount - 1) = 2
+    End If
+    If Exists("Player_Made_Servers.txt") Then
+        lstServers.AddItem "Condemned"
+        lstServers.ItemData(lstServers.ListCount - 1) = 3
+    End If
+    If Exists("Player_Made_Servers.txt") Then
+        lstServers.AddItem "Fankenstein"
+        lstServers.ItemData(lstServers.ListCount - 1) = 4
+    End If
+    If Exists("Odyssey.vbp") Then
+        lstServers.AddItem "---Local Host---"
+        lstServers.ItemData(lstServers.ListCount - 1) = 5
+    End If
        
        
     'Classic
