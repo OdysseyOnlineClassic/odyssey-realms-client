@@ -134,22 +134,22 @@ Private Sub btnPlay_Click()
             ServerDescription = "God Sandbox"
             CacheDirectory = App.Path + "\sandbox"
             ServerIP = "libertyarchives.info"
-            ServerPort = 5752
+            ServerPort = 5751
         Case 2 'Ethia
-            ServerDescription = "Ethia"
+            ServerDescription = "Fankenstein"
             CacheDirectory = App.Path + "\ethia"
             ServerIP = "libertyarchives.info"
-            ServerPort = 5750
-        Case 3 'Condemned
-            ServerDescription = "Condemned"
-            CacheDirectory = App.Path + "\condemned"
-            ServerIP = "libertyarchives.info"
             ServerPort = 5753
+        Case 3 'Forsaken
+            ServerDescription = "Forsaken"
+            CacheDirectory = App.Path + "\forsaken"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5752
         Case 4 'Fankenstein
             ServerDescription = "Fankenstein"
             CacheDirectory = App.Path + "\fankenstein"
             ServerIP = "libertyarchives.info"
-            ServerPort = 5751
+            ServerPort = 5754
         Case 5 '127.0.0.1
             ServerDescription = "Local Host"
             CacheDirectory = App.Path + "\localhost"
@@ -194,7 +194,7 @@ Private Sub Form_Load()
         lstServers.ItemData(lstServers.ListCount - 1) = 2
     End If
     If Exists("Player_Made_Servers.txt") Then
-        lstServers.AddItem "Condemned"
+        lstServers.AddItem "Forsaken"
         lstServers.ItemData(lstServers.ListCount - 1) = 3
     End If
     If Exists("Player_Made_Servers.txt") Then
@@ -214,22 +214,22 @@ Private Sub Form_Load()
     
     'God Sandbox
     sckPing(1).RemoteHost = "libertyarchives.info"
-    sckPing(1).RemotePort = 5752
+    sckPing(1).RemotePort = 5751
     sckPing(1).connect
     
     'Ethia
-    sckPing(2).RemoteHost = "odysseyclassic.info"
-    sckPing(2).RemotePort = 5750
+    sckPing(2).RemoteHost = "libertyarchives.info"
+    sckPing(2).RemotePort = 5753
     sckPing(2).connect
     
-    'Condemned
-    sckPing(3).RemoteHost = "odysseyclassic.info"
-    sckPing(3).RemotePort = 5753
+    'Forsaken
+    sckPing(3).RemoteHost = "libertyarchives.info"
+    sckPing(3).RemotePort = 5752
     sckPing(3).connect
     
     'Fankenstein
-    sckPing(4).RemoteHost = "odysseyclassic.info"
-    sckPing(4).RemotePort = 5751
+    sckPing(4).RemoteHost = "libertyarchives.info"
+    sckPing(4).RemotePort = 5754
     sckPing(4).connect
     
     lstServers.ListIndex = 0

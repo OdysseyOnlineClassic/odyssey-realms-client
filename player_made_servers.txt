@@ -1,0 +1,9 @@
+This files allows player made servers to be listed on the official Odyssey Realms client. Do not delete it. 
+If you would like us to host a server for you, we will do so for free on our dedicated server...just ask. 
+
+
+Current player made servers:
+
+- Ethia
+- Forsaken
+- Fankenstein
