@@ -126,31 +126,36 @@ Option Explicit
 Private Sub btnPlay_Click()
     Select Case lstServers.ItemData(lstServers.ListIndex)
         Case 0 'Classic
-            ServerDescription = "Odyssey Realms"
+            ServerDescription = "Classic"
             CacheDirectory = App.Path + "\classic"
             ServerIP = "odysseyclassic.info"
-            ServerPort = 5756
+            ServerPort = 5750
         Case 1 'God Sandbox
             ServerDescription = "God Sandbox"
             CacheDirectory = App.Path + "\sandbox"
             ServerIP = "libertyarchives.info"
             ServerPort = 5751
-        Case 2 'Ethia
-            ServerDescription = "Fankenstein"
-            CacheDirectory = App.Path + "\ethia"
-            ServerIP = "libertyarchives.info"
-            ServerPort = 5753
-        Case 3 'Forsaken
+        Case 2 'Forsaken
             ServerDescription = "Forsaken"
             CacheDirectory = App.Path + "\forsaken"
             ServerIP = "libertyarchives.info"
             ServerPort = 5752
-        Case 4 'Fankenstein
+        Case 3 'Condemned
+            ServerDescription = "Condemned"
+            CacheDirectory = App.Path + "\condemned"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5753
+        Case 4 'Ethia
+            ServerDescription = "Ethia"
+            CacheDirectory = App.Path + "\ethia"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5754
+        Case 5 'Fankenstein
             ServerDescription = "Fankenstein"
             CacheDirectory = App.Path + "\fankenstein"
             ServerIP = "libertyarchives.info"
-            ServerPort = 5754
-        Case 5 '127.0.0.1
+            ServerPort = 5755
+        Case 6 '127.0.0.1
             ServerDescription = "Local Host"
             CacheDirectory = App.Path + "\localhost"
             ServerIP = "127.0.0.1"
@@ -165,6 +170,7 @@ Private Sub btnPlay_Click()
     sckPing(2).Close
     sckPing(3).Close
     sckPing(4).Close
+    sckPing(5).Close
     On Error GoTo 0
     
     Unload Me
@@ -190,26 +196,30 @@ Private Sub Form_Load()
     lstServers.AddItem "God Sandbox"
     lstServers.ItemData(lstServers.ListCount - 1) = 1
     If Exists("Player_Made_Servers.txt") Then
-        lstServers.AddItem "Ethia"
+        lstServers.AddItem "Forsaken"
         lstServers.ItemData(lstServers.ListCount - 1) = 2
     End If
     If Exists("Player_Made_Servers.txt") Then
-        lstServers.AddItem "Forsaken"
+        lstServers.AddItem "Condemned"
         lstServers.ItemData(lstServers.ListCount - 1) = 3
     End If
     If Exists("Player_Made_Servers.txt") Then
-        lstServers.AddItem "Fankenstein"
+        lstServers.AddItem "Ethia"
         lstServers.ItemData(lstServers.ListCount - 1) = 4
+    End If
+    If Exists("Player_Made_Servers.txt") Then
+        lstServers.AddItem "Fankenstein"
+        lstServers.ItemData(lstServers.ListCount - 1) = 5
     End If
     If Exists("Odyssey.vbp") Then
         lstServers.AddItem "---Local Host---"
-        lstServers.ItemData(lstServers.ListCount - 1) = 5
+        lstServers.ItemData(lstServers.ListCount - 1) = 6
     End If
        
        
     'Classic
     sckPing(0).RemoteHost = "odysseyclassic.info"
-    sckPing(0).RemotePort = 5756
+    sckPing(0).RemotePort = 5750
     sckPing(0).connect
     
     'God Sandbox
@@ -217,22 +227,27 @@ Private Sub Form_Load()
     sckPing(1).RemotePort = 5751
     sckPing(1).connect
     
-    'Ethia
+    'Forsaken
     sckPing(2).RemoteHost = "libertyarchives.info"
-    sckPing(2).RemotePort = 5753
+    sckPing(2).RemotePort = 5752
     sckPing(2).connect
     
-    'Forsaken
+    'Condemned
     sckPing(3).RemoteHost = "libertyarchives.info"
-    sckPing(3).RemotePort = 5752
+    sckPing(3).RemotePort = 5753
     sckPing(3).connect
     
-    'Fankenstein
+    'Ethia
     sckPing(4).RemoteHost = "libertyarchives.info"
     sckPing(4).RemotePort = 5754
     sckPing(4).connect
     
+    'Fankenstein
+    sckPing(5).RemoteHost = "libertyarchives.info"
+    sckPing(5).RemotePort = 5755
+    sckPing(5).connect
     lstServers.ListIndex = 0
+    
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
