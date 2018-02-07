@@ -1369,15 +1369,15 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
                 If Len(St) > 1 Then
-                    MsgBox "You have been booted from The Odyssey by " + Player(A).name + ": " + Mid$(St, 2), vbOKOnly + vbExclamation, TitleString
+                    MsgBox "You have been booted from The Odyssey Realms Registry by " + Player(A).name + ": " + Mid$(St, 2), vbOKOnly + vbExclamation, TitleString
                 Else
-                    MsgBox "You have been booted from The Odyssey by " + Player(A).name + "!", vbOKOnly + vbExclamation, TitleString
+                    MsgBox "You have been booted from The Odyssey Realms Registry by " + Player(A).name + "!", vbOKOnly + vbExclamation, TitleString
                 End If
             Else
                 If Len(St) > 1 Then
-                    MsgBox "You have been booted from The Odyssey: " + Mid$(St, 2), vbOKOnly + vbExclamation, TitleString
+                    MsgBox "You have been booted from The Odyssey Realms Registry: " + Mid$(St, 2), vbOKOnly + vbExclamation, TitleString
                 Else
-                    MsgBox "You have been booted from The Odyssey!", vbOKOnly + vbExclamation, TitleString
+                    MsgBox "You have been booted from The Odyssey Realms Registry!", vbOKOnly + vbExclamation, TitleString
                 End If
             End If
             CloseClientSocket 0
