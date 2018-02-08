@@ -159,7 +159,7 @@ Private Sub btnPlay_Click()
             ServerDescription = "Local Host"
             CacheDirectory = App.Path + "\localhost"
             ServerIP = "127.0.0.1"
-            ServerPort = 5756
+            ServerPort = 5700
     End Select
     
     On Error Resume Next

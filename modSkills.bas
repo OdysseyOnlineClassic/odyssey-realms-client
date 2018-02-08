@@ -79,11 +79,11 @@ Sub ProcessSkillLevelUp(St As String)
 
     Select Case TheSkill
     Case 1    'Fishing
-        PrintChat "Your fishing skill has increased to level " + CStr(Character.Skill(1).Level) + "!", 12
+        PrintChat "Your fishing skill is now level " + CStr(Character.Skill(1).Level) + "!", 12
     Case 2    'Mining
-        PrintChat "Your mining skill has increased to level " + CStr(Character.Skill(2).Level) + "!", 12
+        PrintChat "Your mining skill is now level " + CStr(Character.Skill(2).Level) + "!", 12
     Case 3    'Lumberjacking
-        PrintChat "Your lumberjacking skill has increased to level " + CStr(Character.Skill(3).Level) + "!", 12
+        PrintChat "Your lumberjacking skill is now level " + CStr(Character.Skill(3).Level) + "!", 12
     'Case 4    'Cooking
     '    PrintChat "Your cooking skill has increased to level " + CStr(Character.Skill(4).Level) + "!", 12
     'Case 5    'Enchanting
