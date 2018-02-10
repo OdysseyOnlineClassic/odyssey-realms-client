@@ -198,13 +198,23 @@ Private Sub Form_Load()
     If Exists("Player_Made_Servers.txt") Then
         lstServers.AddItem "Forsaken"
         lstServers.ItemData(lstServers.ListCount - 1) = 2
+<<<<<<< HEAD
+        lstServers.AddItem "Condemned"
+=======
     End If
     If Exists("Player_Made_Servers.txt") Then
+<<<<<<< HEAD
         lstServers.AddItem "Condemned"
         lstServers.ItemData(lstServers.ListCount - 1) = 3
     End If
     If Exists("Player_Made_Servers.txt") Then
         lstServers.AddItem "Ethia"
+=======
+        lstServers.AddItem "Forsaken"
+>>>>>>> 3f4883b0ffac0fdc86d2f6b010f848931ec273ed
+        lstServers.ItemData(lstServers.ListCount - 1) = 3
+        lstServers.AddItem "Fankenstein"
+>>>>>>> a12ac6fde3c595511726a05f6a8070b4b4b18aac
         lstServers.ItemData(lstServers.ListCount - 1) = 4
     End If
     If Exists("Player_Made_Servers.txt") Then
@@ -223,6 +233,10 @@ Private Sub Form_Load()
     sckPing(0).connect
     
     'God Sandbox
+<<<<<<< HEAD
+    sckPing(1).RemoteHost = "odysseyclassic.info"
+    sckPing(1).RemotePort = 5752
+=======
     sckPing(1).RemoteHost = "libertyarchives.info"
     sckPing(1).RemotePort = 5751
     sckPing(1).connect
@@ -242,10 +256,18 @@ Private Sub Form_Load()
     sckPing(4).RemotePort = 5754
     sckPing(4).connect
     
+<<<<<<< HEAD
     'Fankenstein
     sckPing(5).RemoteHost = "libertyarchives.info"
     sckPing(5).RemotePort = 5755
     sckPing(5).connect
+=======
+    'LocalHost
+    sckPing(5).RemoteHost = "127.0.0.1"
+    sckPing(5).RemotePort = 5756
+    sckPing(5).connect
+    
+>>>>>>> a12ac6fde3c595511726a05f6a8070b4b4b18aac
     lstServers.ListIndex = 0
     
 End Sub
@@ -261,9 +283,14 @@ Private Sub sckPing_Connect(Index As Integer)
 End Sub
 
 Private Sub sckPing_DataArrival(Index As Integer, ByVal bytesTotal As Long)
-    Dim Receive As String
-    sckPing(Index).GetData Receive, vbString, bytesTotal
-    lstServers.List(Index) = lstServers.List(Index) + " (" + Receive + ")"
-    sckPing(Index).Close
+    Dim A As Long, Receive As String
+    For A = 0 To lstServers.ListCount - 1
+        If lstServers.ItemData(A) = Index Then
+            sckPing(A).GetData Receive, vbString, bytesTotal
+            lstServers.List(A) = lstServers.List(A) + " (" + Receive + ")"
+            sckPing(A).Close
+            Exit Sub
+        End If
+    Next A
 End Sub
 

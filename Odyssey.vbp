@@ -71,7 +71,11 @@ HelpContextID="0"
 CompatibleMode="0"
 MajorVer=2
 MinorVer=0
+<<<<<<< HEAD
 RevisionVer=0
+=======
+RevisionVer=473
+>>>>>>> a12ac6fde3c595511726a05f6a8070b4b4b18aac
 AutoIncrementVer=1
 ServerSupportFiles=0
 VersionCompanyName="Odyssey Realms"
