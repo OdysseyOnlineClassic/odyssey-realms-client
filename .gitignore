@@ -18,3 +18,11 @@ classic/itemprecache.dat
 classic/hcache.dat
 classic/cache1.dat
 *.ini
+*.dat
+*.ASM
+script.bas
+SCRIPT.BIN
+SCRIPT.LOG
+SCRIPT.ASM
+Odyssey.vbw
+*.vbw
