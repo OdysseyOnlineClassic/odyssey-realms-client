@@ -1874,6 +1874,7 @@ Sub CloseClientSocket(Action As Byte)
     If frmWait_Loaded = True Then Unload frmWait
     If frmMain_Loaded = True Then Unload frmMain
     frmMain_Showing = False
+    
     If frmLogin_Loaded = True And Action <> 1 Then Unload frmLogin
     If frmAccount_Loaded = True And Action <> 2 Then Unload frmAccount
     If frmNewCharacter_Loaded = True Then Unload frmNewCharacter

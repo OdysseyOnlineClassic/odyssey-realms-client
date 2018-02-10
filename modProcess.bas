@@ -657,6 +657,7 @@ Sub ProcessString(PacketID As Long, St As String)
             Next A
         End With
         Load frmMain
+        Unload frmWait
         frmMain.WindowState = 0
         SetHP GetMaxHP
         SetMana GetMaxMana
@@ -1367,6 +1368,7 @@ Sub ProcessString(PacketID As Long, St As String)
     Case 67    'Booted
         If Len(St) >= 1 Then
             A = Asc(Mid$(St, 1, 1))
+            blnPlaying = False
             If A >= 1 Then
                 If Len(St) > 1 Then
                     MsgBox "You have been booted from The Odyssey Realms Registry by " + Player(A).name + ": " + Mid$(St, 2), vbOKOnly + vbExclamation, TitleString
@@ -2510,7 +2512,7 @@ Function WindowProc(ByVal hw As Long, ByVal uMsg As Long, ByVal wParam As Long, 
         Case FD_CLOSE
             If blnPlaying = True Then
                 CloseClientSocket 5
-                frmWait.Visible = True
+                frmWait.Show
                 WaitForConnect "Error Connecting - Waiting"
             End If
         Case FD_CONNECT
