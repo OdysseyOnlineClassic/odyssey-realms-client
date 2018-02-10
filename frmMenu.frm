@@ -195,7 +195,7 @@ Begin VB.Form frmMenu
       Appearance      =   0  'Flat
       BackColor       =   &H0044342E&
       BorderStyle     =   1  'Fixed Single
-      Caption         =   "Chatroom"
+      Caption         =   "Discord"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   15.75
@@ -448,9 +448,9 @@ Dim uDirectory As String
             uParams = 0&
             uDirectory = 0&
             RunShellExecute uTopic, uFile, uParams, uDirectory, 1
-        Case 8    'Chatroom
+        Case 8    'Discord
             uTopic = "Open"
-            uFile = TheIRC
+            uFile = TheDiscord
             uParams = 0&
             uDirectory = 0&
             RunShellExecute uTopic, uFile, uParams, uDirectory, 1
