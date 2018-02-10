@@ -193,34 +193,30 @@ Private Sub Form_Load()
     
     lstServers.AddItem "Classic"
     lstServers.ItemData(lstServers.ListCount - 1) = 0
+    
     lstServers.AddItem "God Sandbox"
     lstServers.ItemData(lstServers.ListCount - 1) = 1
+    
     If Exists("Player_Made_Servers.txt") Then
         lstServers.AddItem "Forsaken"
         lstServers.ItemData(lstServers.ListCount - 1) = 2
-<<<<<<< HEAD
-        lstServers.AddItem "Condemned"
-=======
     End If
+    
     If Exists("Player_Made_Servers.txt") Then
-<<<<<<< HEAD
         lstServers.AddItem "Condemned"
         lstServers.ItemData(lstServers.ListCount - 1) = 3
     End If
+    
     If Exists("Player_Made_Servers.txt") Then
         lstServers.AddItem "Ethia"
-=======
-        lstServers.AddItem "Forsaken"
->>>>>>> 3f4883b0ffac0fdc86d2f6b010f848931ec273ed
-        lstServers.ItemData(lstServers.ListCount - 1) = 3
-        lstServers.AddItem "Fankenstein"
->>>>>>> a12ac6fde3c595511726a05f6a8070b4b4b18aac
         lstServers.ItemData(lstServers.ListCount - 1) = 4
     End If
+    
     If Exists("Player_Made_Servers.txt") Then
         lstServers.AddItem "Fankenstein"
         lstServers.ItemData(lstServers.ListCount - 1) = 5
     End If
+    
     If Exists("Odyssey.vbp") Then
         lstServers.AddItem "---Local Host---"
         lstServers.ItemData(lstServers.ListCount - 1) = 6
@@ -233,10 +229,6 @@ Private Sub Form_Load()
     sckPing(0).connect
     
     'God Sandbox
-<<<<<<< HEAD
-    sckPing(1).RemoteHost = "odysseyclassic.info"
-    sckPing(1).RemotePort = 5752
-=======
     sckPing(1).RemoteHost = "libertyarchives.info"
     sckPing(1).RemotePort = 5751
     sckPing(1).connect
@@ -256,18 +248,16 @@ Private Sub Form_Load()
     sckPing(4).RemotePort = 5754
     sckPing(4).connect
     
-<<<<<<< HEAD
     'Fankenstein
     sckPing(5).RemoteHost = "libertyarchives.info"
     sckPing(5).RemotePort = 5755
     sckPing(5).connect
-=======
+
     'LocalHost
-    sckPing(5).RemoteHost = "127.0.0.1"
-    sckPing(5).RemotePort = 5756
-    sckPing(5).connect
+    sckPing(6).RemoteHost = "127.0.0.1"
+    sckPing(6).RemotePort = 5700
+    sckPing(6).connect
     
->>>>>>> a12ac6fde3c595511726a05f6a8070b4b4b18aac
     lstServers.ListIndex = 0
     
 End Sub

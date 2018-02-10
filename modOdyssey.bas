@@ -1,4 +1,5 @@
 Attribute VB_Name = "modOdyssey"
+
 Option Explicit
 
 Public Const ClientVer = 3
