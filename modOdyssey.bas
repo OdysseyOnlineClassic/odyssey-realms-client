@@ -167,6 +167,10 @@ Sub Main()
             End If
         End If
         If blnPlaying = True Then
+            If timeGetTime >= SendPing Then
+                SendPingPacket
+                SendPing = timeGetTime + 5000
+            End If
             If Freeze = False Then
                 CheckKeys
                 MoveCharacter
@@ -181,10 +185,7 @@ Sub Main()
                     End If
                 End With
             End If
-            If Tick >= SendPing Then
-                SendPingPacket
-                SendPing = Tick + 5000
-            End If
+            
         End If
         While timeGetTime - Tick < 6
             If MyDoEvents <> 0 Then

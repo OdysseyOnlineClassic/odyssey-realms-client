@@ -159,7 +159,7 @@ Private Sub btnPlay_Click()
             ServerDescription = "Local Host"
             CacheDirectory = App.Path + "\localhost"
             ServerIP = "127.0.0.1"
-            ServerPort = 5700
+            ServerPort = 5750
     End Select
     
     On Error Resume Next
@@ -197,22 +197,16 @@ Private Sub Form_Load()
     lstServers.AddItem "God Sandbox"
     lstServers.ItemData(lstServers.ListCount - 1) = 1
     
-    If Exists("Player_Made_Servers.txt") Then
+    If Exists("Player_Made_Servers.txt") Then 'Player made servers
         lstServers.AddItem "Forsaken"
         lstServers.ItemData(lstServers.ListCount - 1) = 2
-    End If
-    
-    If Exists("Player_Made_Servers.txt") Then
+        
         lstServers.AddItem "Condemned"
         lstServers.ItemData(lstServers.ListCount - 1) = 3
-    End If
-    
-    If Exists("Player_Made_Servers.txt") Then
+        
         lstServers.AddItem "Ethia"
         lstServers.ItemData(lstServers.ListCount - 1) = 4
-    End If
-    
-    If Exists("Player_Made_Servers.txt") Then
+        
         lstServers.AddItem "Fankenstein"
         lstServers.ItemData(lstServers.ListCount - 1) = 5
     End If
@@ -255,7 +249,7 @@ Private Sub Form_Load()
 
     'LocalHost
     sckPing(6).RemoteHost = "127.0.0.1"
-    sckPing(6).RemotePort = 5700
+    sckPing(6).RemotePort = 5750
     sckPing(6).connect
     
     lstServers.ListIndex = 0
