@@ -361,7 +361,7 @@ Public Character As CharacterData
 Attribute Character.VB_VarUserMemId = 1073741840
 Public Macro(0 To 9) As MacroData
 Attribute Macro.VB_VarUserMemId = 1073741841
-Public Bug(1 To 500) As BugReportData
+Public Bug() As BugReportData
 Public World As WorldProperties
 Attribute World.VB_VarUserMemId = 1073741842
 

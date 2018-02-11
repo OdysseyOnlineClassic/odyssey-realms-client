@@ -310,6 +310,13 @@ Begin VB.Form frmBugReports
       Top             =   6240
       Width           =   2475
    End
+   Begin VB.Menu lstOptions 
+      Caption         =   "List Options"
+      Visible         =   0   'False
+      Begin VB.Menu lstRemove 
+         Caption         =   "Remove Bug Report"
+      End
+   End
 End
 Attribute VB_Name = "frmBugReports"
 Attribute VB_GlobalNameSpace = False
@@ -323,27 +330,73 @@ Private Sub Button_Click(Index As Integer)
         Case 0 'Cancel
             Unload Me
         Case 1 'Update
-        
+            
     End Select
+End Sub
+
+Private Sub lstRemove_Click()
+Dim A As Long
+    If MsgBox("Are you sure you wish to delete this bug report?", vbYesNo + vbCritical) = vbYes Then
+        With lstReports
+            SendSocket Chr$(92) + DoubleChar(.ItemData(.ListIndex))
+            .RemoveItem .ListIndex
+            txtPlayer = vbNullString
+            txtIP = vbNullString
+            txtDescription = vbNullString
+            For A = 0 To 2
+                optStatus(A).Enabled = False
+                optStatus(A).value = False
+            Next A
+        End With
+    End If
+End Sub
+
+Private Sub lstReports_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim A As Long
+    With lstReports
+        If .ListCount > 0 Then
+            A = .TopIndex + Int(Y / (.Height / 10))
+            If A < .ListCount Then
+                .ListIndex = A
+            Else
+                .ListIndex = -1
+            End If
+        End If
+    End With
 End Sub
 
 Private Sub lstReports_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 Dim A As Long, B As Long
 Dim St As String
-    St = lstReports.List(lstReports.ListIndex)
-    A = InStr(St, "#") + 1
-    A = Val(Mid$(St, A, InStr(St, ":") - A))
-    With Bug(A)
-        txtPlayer = .PlayerName + " - (" + .PlayerUser + ")"
-        txtIP = .PlayerIP
-        txtDescription = .Description
-        If .Status < 3 Then
-            For B = 0 To 2
-                optStatus(B).Enabled = True
-            Next B
-            optStatus(.Status - 1).value = True
-        Else
-            optStatus(2).value = True
+    With lstReports
+        If .ListCount > 0 Then
+            If .ListIndex >= 0 Then
+                A = .ItemData(.ListIndex)
+                With Bug(A)
+                    txtPlayer = .PlayerName + " - (" + .PlayerUser + ")"
+                    txtIP = .PlayerIP
+                    txtDescription = .Description
+                    If .status < 3 Then
+                        For B = 0 To 2
+                            optStatus(B).Enabled = True
+                        Next B
+                        optStatus(.status - 1).value = True
+                    Else
+                        optStatus(2).value = True
+                    End If
+                End With
+                If Button = 2 Then
+                    Me.PopupMenu lstOptions, , X + 300, Y + 500
+                End If
+            Else
+                txtPlayer = vbNullString
+                txtIP = vbNullString
+                txtDescription = vbNullString
+                For B = 0 To 2
+                    optStatus(B).Enabled = False
+                    optStatus(B).value = False
+                Next B
+            End If
         End If
     End With
 End Sub
