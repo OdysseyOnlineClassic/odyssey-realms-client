@@ -2,7 +2,7 @@ Attribute VB_Name = "modOdyssey"
 
 Option Explicit
 
-Public Const ClientVer = 3
+Public Const ClientVer = 4
 Public Const TitleString = "Odyssey Realms Registry"
 Public Const TheWebSite = "http://www.odysseyclassic.info"
 Public Const TheForum = "http://www.odysseyclassic.info/forum"
