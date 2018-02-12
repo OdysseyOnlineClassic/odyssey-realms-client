@@ -185,7 +185,7 @@ Begin VB.Form frmGuild
          EndProperty
          ForeColor       =   &H009AADC2&
          Height          =   255
-         Left            =   4800
+         Left            =   4320
          TabIndex        =   26
          Top             =   120
          Width           =   1335
@@ -246,7 +246,7 @@ Begin VB.Form frmGuild
          EndProperty
          ForeColor       =   &H009AADC2&
          Height          =   255
-         Left            =   3960
+         Left            =   3360
          TabIndex        =   23
          Top             =   120
          Width           =   735
@@ -757,7 +757,7 @@ Private Sub btnOk_Click()
     Unload Me
 End Sub
 
-Private Sub btnRank_Click(index As Integer)
+Private Sub btnRank_Click(Index As Integer)
     Dim SelectedIndex As Long
     SelectedIndex = -1
     On Error Resume Next
@@ -765,16 +765,16 @@ Private Sub btnRank_Click(index As Integer)
     On Error GoTo 0
 
     If SelectedIndex > -1 And Character.GuildRank >= 2 Then
-        If Character.Name = lstViewMembers.SelectedItem Then
+        If Character.name = lstViewMembers.SelectedItem Then
             Exit Sub
         End If
 
-        If index = 3 Then
+        If Index = 3 Then
             If Character.GuildRank = 3 Then
-                SendSocket Chr$(36) + Chr$(SelectedIndex) + Chr$(index)
+                SendSocket Chr$(36) + Chr$(SelectedIndex) + Chr$(Index)
             End If
         Else
-            SendSocket Chr$(36) + Chr$(SelectedIndex) + Chr$(index)
+            SendSocket Chr$(36) + Chr$(SelectedIndex) + Chr$(Index)
         End If
 
         UpdateForm
@@ -795,7 +795,7 @@ Private Sub btnRemoveMember_Click()
     On Error GoTo 0
 
     If SelectedIndex > -1 And Character.GuildRank >= 2 Then
-        If Character.Name = lstViewMembers.SelectedItem Then
+        If Character.name = lstViewMembers.SelectedItem Then
             Exit Sub
         End If
 
@@ -895,8 +895,8 @@ Private Sub Form_Load()
 
     Dim A As Long
     For A = 1 To MaxGuilds
-        If Guild(A).Name <> "" Then
-            AddGuild A, Guild(A).Name, Guild(A).MemberCount, False
+        If Guild(A).name <> "" Then
+            AddGuild A, Guild(A).name, Guild(A).MemberCount, False
             If CurrentGuild = A Then
                 lstGuilds_ItemClick lstGuilds.ListItems(lstGuilds.ListItems.count)
             End If
@@ -985,7 +985,7 @@ Private Sub timeReEnable_Timer()
     End If
 End Sub
 
-Public Sub AddMember(Name As String, GuildIndex As Long, Rank As Long, Kills As Long, Deaths As Long, JoinedDate As Long)
+Public Sub AddMember(name As String, GuildIndex As Long, Rank As Long, Kills As Long, Deaths As Long, JoinedDate As Long)
     If frmGuild.Visible = False Then Exit Sub
 
     Dim Item As cListItem
@@ -993,7 +993,7 @@ Public Sub AddMember(Name As String, GuildIndex As Long, Rank As Long, Kills As 
     Dim RankString As String
     RankString = Choose(Rank + 1, "Initiate", "Member", "Lord", "Founder")
 
-    Set Item = lstViewMembers.ListItems.Add(, GuildIndex, Name)
+    Set Item = lstViewMembers.ListItems.Add(, GuildIndex, name)
 
     With Item.SubItems(1)
         .Caption = RankString
@@ -1026,13 +1026,13 @@ Public Sub AddMember(Name As String, GuildIndex As Long, Rank As Long, Kills As 
     lblMembers.Caption = CStr(MemberCount)
 End Sub
 
-Public Sub AddGuild(GuildIndex As Long, Name As String, Members As Byte, Optional Resort As Boolean = True)
+Public Sub AddGuild(GuildIndex As Long, name As String, Members As Byte, Optional Resort As Boolean = True)
     Dim Item As cListItem
 
-    Set Item = lstGuilds.ListItems.Add(, GuildIndex, Name)
+    Set Item = lstGuilds.ListItems.Add(, GuildIndex, name)
 
     With Item.SubItems(1)
-        .Caption = Name
+        .Caption = name
     End With
     With Item.SubItems(2)
         .Caption = Members

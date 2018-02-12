@@ -144,7 +144,7 @@ Sub ProcessString(PacketID As Long, St As String)
                 .Gender = Asc(Mid$(St, 2, 1))
                 .Sprite = Asc(Mid$(St, 3, 1)) * 256 + Asc(Mid$(St, 4, 1))
                 .Level = Asc(Mid$(St, 5, 1))
-                .Status = Asc(Mid$(St, 6, 1))
+                .status = Asc(Mid$(St, 6, 1))
                 .Guild = Asc(Mid$(St, 7, 1))
                 .GuildRank = Asc(Mid$(St, 8, 1))
                 .Access = Asc(Mid$(St, 9, 1))
@@ -203,13 +203,13 @@ Sub ProcessString(PacketID As Long, St As String)
                 .Ignore = False
                 .IsDead = False
                 .Sprite = Asc(Mid$(St, 2, 1)) * 256 + Asc(Mid$(St, 3, 1))
-                .Status = Asc(Mid$(St, 4, 1))
+                .status = Asc(Mid$(St, 4, 1))
                 .Guild = Asc(Mid$(St, 5, 1))
                 .MaxHP = Asc(Mid$(St, 6, 1))
                 .name = Mid$(St, 7)
                 If CMap > 0 Then
-                    If Not .Status = 25 Then
-                        If .Status = 2 Then
+                    If Not .status = 25 Then
+                        If .status = 2 Then
                             PrintChat "All hail " + .name + ", a new adventurer in this land!", 3
                         Else
                             PrintChat .name + " has joined the game!", 3
@@ -225,7 +225,7 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
                 With Player(A)
-                    If Not .Status = 25 Then
+                    If Not .status = 25 Then
                         PrintChat .name + " has left the game!", 3
                     End If
                     PlayerLeftMap A
@@ -244,7 +244,7 @@ Sub ProcessString(PacketID As Long, St As String)
                 .Y = Asc(Mid$(St, 3, 1))
                 .D = Asc(Mid$(St, 4, 1))
                 .Sprite = Asc(Mid$(St, 5, 1)) * 256 + Asc(Mid$(St, 6, 1))
-                .Status = Asc(Mid$(St, 7, 1))
+                .status = Asc(Mid$(St, 7, 1))
                 .XO = .X * 32
                 .YO = .Y * 32
                 AddPlayerLight A
@@ -308,7 +308,7 @@ Sub ProcessString(PacketID As Long, St As String)
                 B = 0
                 For A = 1 To MaxUsers
                     With Player(A)
-                        If .Sprite > 0 And A <> Character.Index And Not .Status = 25 Then
+                        If .Sprite > 0 And A <> Character.Index And Not .status = 25 Then
                             B = B + 1
                             St1 = St1 + ", " + .name
                         End If
@@ -500,7 +500,7 @@ Sub ProcessString(PacketID As Long, St As String)
             'Case 47    'E-mail needed
                 'PrintChat "You have not entered an email address for your account.  Type /email to enter it.  This is the only way to recover your account if it is lost or stolen!", 7
             Case 48    'Server is being backed up
-                'PrintChat "Autosaving Server to .dat", 7
+                PrintChat "Autosaving Server to .dat", 7
             End Select
         End If
 
@@ -1054,7 +1054,7 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
                 With Player(A)
-                    If .Status = 1 Then
+                    If .status = 1 Then
                         PrintChat "You have put the evil murderer " + .name + " to justice!", 12
                     Else
                         PrintChat "You have murdered " + .name + " in cold blood!", 12
@@ -1166,7 +1166,7 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
                 With Player(A)
-                    If Character.Status = 1 Then
+                    If Character.status = 1 Then
                         PrintChat .name + " has put you to justice!", 12
                     Else
                         PrintChat .name + " has murdered you in cold blood!", 12
@@ -1198,7 +1198,7 @@ Sub ProcessString(PacketID As Long, St As String)
             Index = GetInt(Mid$(St, 1, 2))
             If UBound(Bug) < Index Then ReDim Preserve Bug(1 To Index)
             With Bug(Index)
-                .Status = Asc(Mid$(St, 3, 1))
+                .status = Asc(Mid$(St, 3, 1))
                 St = Mid$(St, 4)
                 .Title = Mid$(St, 1, InStr(St, Chr$(0)) - 1)
                 St = Mid$(St, Len(.Title) + 2)
@@ -1270,7 +1270,7 @@ Sub ProcessString(PacketID As Long, St As String)
                 With Player(A)
                     .IsDead = True
                     If Not A = B Then
-                        If .Status = 1 Then
+                        If .status = 1 Then
                             If .Map = CMap Then
                                 PlayWav 8
                                 CreateFloatText "Dead!", 12, .X, .Y
@@ -1339,10 +1339,10 @@ Sub ProcessString(PacketID As Long, St As String)
         If Len(St) = 1 Then
             Character.Access = Asc(Mid$(St, 1, 1))
             If Character.Access > 0 Then
-                Character.Status = 3
+                Character.status = 3
             Else
                 CWalkStep = 4
-                Character.Status = 0
+                Character.status = 0
             End If
         End If
 
@@ -1788,9 +1788,9 @@ Sub ProcessString(PacketID As Long, St As String)
             A = Asc(Mid$(St, 1, 1))
             If A >= 1 Then
                 If A = Character.Index Then
-                    Character.Status = Asc(Mid$(St, 2, 1))
+                    Character.status = Asc(Mid$(St, 2, 1))
                 Else
-                    Player(A).Status = Asc(Mid$(St, 2, 1))
+                    Player(A).status = Asc(Mid$(St, 2, 1))
                 End If
                 UpdatePlayerColor A
             End If
