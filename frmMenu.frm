@@ -3,7 +3,7 @@ Begin VB.Form frmMenu
    BackColor       =   &H0061514B&
    BorderStyle     =   0  'None
    Caption         =   "The Odyssey Online Classic"
-   ClientHeight    =   4515
+   ClientHeight    =   3915
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   4485
@@ -13,7 +13,7 @@ Begin VB.Form frmMenu
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   4515
+   ScaleHeight     =   3915
    ScaleWidth      =   4485
    StartUpPosition =   2  'CenterScreen
    Begin VB.Label lblCurrentServer 
@@ -51,7 +51,7 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   255
       Left            =   1560
-      TabIndex        =   15
+      TabIndex        =   14
       Top             =   2760
       Width           =   1455
    End
@@ -60,10 +60,10 @@ Begin VB.Form frmMenu
       Appearance      =   0  'Flat
       BackColor       =   &H0044342E&
       BorderStyle     =   1  'Fixed Single
-      Caption         =   "FB Group"
+      Caption         =   "Facebook Group"
       BeginProperty Font 
          Name            =   "Times New Roman"
-         Size            =   15.75
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -71,12 +71,12 @@ Begin VB.Form frmMenu
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   420
+      Height          =   300
       Index           =   15
-      Left            =   2280
-      TabIndex        =   14
-      Top             =   3960
-      Width           =   2100
+      Left            =   120
+      TabIndex        =   13
+      Top             =   3120
+      Width           =   1260
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -86,7 +86,7 @@ Begin VB.Form frmMenu
       Caption         =   "Facebook Page"
       BeginProperty Font 
          Name            =   "Times New Roman"
-         Size            =   15.75
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -94,12 +94,12 @@ Begin VB.Form frmMenu
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   420
+      Height          =   300
       Index           =   14
-      Left            =   120
-      TabIndex        =   13
-      Top             =   3960
-      Width           =   2100
+      Left            =   3000
+      TabIndex        =   12
+      Top             =   3120
+      Width           =   1260
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -109,7 +109,7 @@ Begin VB.Form frmMenu
       Caption         =   "Youtube"
       BeginProperty Font 
          Name            =   "Times New Roman"
-         Size            =   15.75
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -117,12 +117,12 @@ Begin VB.Form frmMenu
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   420
+      Height          =   300
       Index           =   13
-      Left            =   120
-      TabIndex        =   12
-      Top             =   3480
-      Width           =   2100
+      Left            =   1560
+      TabIndex        =   11
+      Top             =   3120
+      Width           =   1260
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -132,7 +132,7 @@ Begin VB.Form frmMenu
       Caption         =   "Reddit"
       BeginProperty Font 
          Name            =   "Times New Roman"
-         Size            =   15.75
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -140,12 +140,12 @@ Begin VB.Form frmMenu
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   420
+      Height          =   300
       Index           =   12
       Left            =   2280
-      TabIndex        =   11
+      TabIndex        =   10
       Top             =   3480
-      Width           =   2100
+      Width           =   1260
    End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
@@ -163,7 +163,7 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   255
       Left            =   1680
-      TabIndex        =   10
+      TabIndex        =   9
       Top             =   240
       Width           =   1335
    End
@@ -186,7 +186,7 @@ Begin VB.Form frmMenu
       Height          =   420
       Index           =   9
       Left            =   120
-      TabIndex        =   9
+      TabIndex        =   8
       Top             =   1320
       Width           =   2100
    End
@@ -198,7 +198,7 @@ Begin VB.Form frmMenu
       Caption         =   "Discord"
       BeginProperty Font 
          Name            =   "Times New Roman"
-         Size            =   15.75
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -206,35 +206,12 @@ Begin VB.Form frmMenu
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   420
+      Height          =   300
       Index           =   8
-      Left            =   2280
-      TabIndex        =   8
-      Top             =   3000
-      Width           =   2100
-   End
-   Begin VB.Label lblMenu 
-      Alignment       =   2  'Center
-      Appearance      =   0  'Flat
-      BackColor       =   &H0044342E&
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Forum"
-      BeginProperty Font 
-         Name            =   "Times New Roman"
-         Size            =   15.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H009AADC2&
-      Height          =   420
-      Index           =   7
-      Left            =   120
+      Left            =   720
       TabIndex        =   7
-      Top             =   3000
-      Width           =   2100
+      Top             =   3480
+      Width           =   1260
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
