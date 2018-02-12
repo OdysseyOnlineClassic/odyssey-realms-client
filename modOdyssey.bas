@@ -10,7 +10,7 @@ Public Const TheDiscord = "https://discord.gg/agBsswA"
 Public Const TheSubReddit = "https://www.reddit.com/r/odysseyonlineclassic"
 Public Const TheYoutubeChannel = "https://www.youtube.com/channel/UC7ZLcAfhim5cm1na-rgSANg/"
 Public Const TheFacebookPage = "https://www.facebook.com/odysseyonlineclassic/"
-Public Const TheFacebookGroup = "https://www.facebook.com/groups/odyssey.classic.history.book/"
+Public Const TheFacebookGroup = "https://www.facebook.com/groups/odyssey.online.classic/"
 
 Public ServerIP As String
 Public ServerPort As Long
@@ -1054,7 +1054,7 @@ Function IsVacant(X As Byte, Y As Byte) As Boolean
             If .Map = CMap Then
                 If .X = X Then
                     If .Y = Y Then
-                        If Not .Status = 25 Then
+                        If Not .status = 25 Then
                             If .IsDead = False Then
                                 If Character.Guild > 0 Then
                                     If Player(A).Guild = 0 Then
@@ -1422,7 +1422,7 @@ Sub CheckKeys()
                         If A = MaxMonsters + 1 Then
                             For A = 1 To MaxUsers
                                 With Player(A)
-                                    If .Map = CMap And .Sprite > 0 And .X = tx And .Y = ty And .IsDead = False And Not .Status = 25 Then
+                                    If .Map = CMap And .Sprite > 0 And .X = tx And .Y = ty And .IsDead = False And Not .status = 25 Then
                                         If Not Player(A).Guild = Character.Guild Or Character.Guild = 0 Then
                                             If Character.Guild > 0 Then
                                                 If Player(A).Guild = 0 Then
@@ -1615,7 +1615,7 @@ Sub DrawNextFrame()
     For A = 1 To MaxUsers
         With Player(A)
             If .Map = CMap Then
-                If Not .Status = 25 Then
+                If Not .status = 25 Then
                     If .Sprite <= MaxSprite Then
                         'Draw Player
                         If .A > 0 Then
@@ -1705,28 +1705,28 @@ Sub DrawNextFrame()
     End With
 
     If Character.Guild > 0 Then
-        If Character.Status = 1 And CurFrame = 0 Then
+        If Character.status = 1 And CurFrame = 0 Then
             Draw3dText HDCBuffer, r, Character.name, QBColor(4), 2
         Else
-            If Character.Status > 1 Then
-                Draw3dText HDCBuffer, r, Character.name, StatusColors(Character.Status), 2
+            If Character.status > 1 Then
+                Draw3dText HDCBuffer, r, Character.name, StatusColors(Character.status), 2
             Else
                 Draw3dText HDCBuffer, r, Character.name, QBColor(11), 2
             End If
         End If
     Else
-        If Character.Status = 2 Then
+        If Character.status = 2 Then
             Draw3dText HDCBuffer, r, Character.name, QBColor(14), 2
-        ElseIf Character.Status = 3 Then
+        ElseIf Character.status = 3 Then
             Draw3dText HDCBuffer, r, Character.name, QBColor(9), 2
-        ElseIf Character.Status = 1 And CurFrame = 0 Then
+        ElseIf Character.status = 1 And CurFrame = 0 Then
             Draw3dText HDCBuffer, r, Character.name, QBColor(4), 2
         Else
-            Draw3dText HDCBuffer, r, Character.name, StatusColors(Character.Status), 2
+            Draw3dText HDCBuffer, r, Character.name, StatusColors(Character.status), 2
         End If
     End If
 
-    If Character.Status = 24 Then    'Rainbow
+    If Character.status = 24 Then    'Rainbow
         Draw3dText HDCBuffer, r, Character.name, StatusColors((Int(Rnd * 23))), 2
     End If
 
@@ -1738,20 +1738,20 @@ Sub DrawNextFrame()
                     r.Right = .XO + 64
                     r.Top = .YO - 32
                     r.Bottom = .YO - 16
-                    If .Status = 9 Or .Status = 25 Then
-                        If Character.Access Then Draw3dText HDCBuffer, r, .name, StatusColors(.Status), 2
+                    If .status = 9 Or .status = 25 Then
+                        If Character.Access Then Draw3dText HDCBuffer, r, .name, StatusColors(.status), 2
                     Else
-                        If .Status = 1 And CurFrame = 0 Then
+                        If .status = 1 And CurFrame = 0 Then
                             Draw3dText HDCBuffer, r, .name, QBColor(4), 2
-                        ElseIf .Status = 1 And CurFrame = 1 Then
+                        ElseIf .status = 1 And CurFrame = 1 Then
                             Draw3dText HDCBuffer, r, .name, QBColor(.Color), 2
-                        ElseIf .Status = 0 Then
+                        ElseIf .status = 0 Then
                             Draw3dText HDCBuffer, r, .name, QBColor(.Color), 2
                         Else
-                            If .Status = 24 Then  'Rainbow
+                            If .status = 24 Then  'Rainbow
                                 Draw3dText HDCBuffer, r, .name, StatusColors((Int(Rnd * 23))), 2
                             Else
-                                Draw3dText HDCBuffer, r, .name, StatusColors(.Status), 2
+                                Draw3dText HDCBuffer, r, .name, StatusColors(.status), 2
                             End If
                         End If
                     End If
@@ -2373,9 +2373,9 @@ End Function
 Public Sub CheckCheats()
     If blnPlaying = True Then
         
-        FindPrograms UCase$(GetCurrentWindows(1))
-        FindPrograms UCase$(GetCurrentWindows(2))
-        FindPrograms UCase$(GetCurrentWindows(3))
+        'FindPrograms UCase$(GetCurrentWindows(1))
+        'FindPrograms UCase$(GetCurrentWindows(2))
+        'FindPrograms UCase$(GetCurrentWindows(3))
         
         If Not CMap ^ 2 + 5 = CMap2 Then
             SendSocket Chr$(HackCode) + "CMap Walkover"
