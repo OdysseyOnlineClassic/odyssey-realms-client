@@ -17,6 +17,14 @@ Begin VB.Form frmServerList
    ScaleWidth      =   3840
    StartUpPosition =   2  'CenterScreen
    Begin MSWinsockLib.Winsock sckPing 
+      Index           =   7
+      Left            =   960
+      Top             =   2400
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
+   Begin MSWinsockLib.Winsock sckPing 
       Index           =   6
       Left            =   840
       Top             =   2400
@@ -135,9 +143,9 @@ Private Sub btnPlay_Click()
             CacheDirectory = App.Path + "\sandbox"
             ServerIP = "libertyarchives.info"
             ServerPort = 5751
-        Case 2 'Forsaken
-            ServerDescription = "Forsaken"
-            CacheDirectory = App.Path + "\forsaken"
+        Case 2 'Tales of Destiny
+            ServerDescription = "Tales of Destiny"
+            CacheDirectory = App.Path + "\talesofdestiny"
             ServerIP = "libertyarchives.info"
             ServerPort = 5752
         Case 3 'Condemned
@@ -155,7 +163,12 @@ Private Sub btnPlay_Click()
             CacheDirectory = App.Path + "\fankenstein"
             ServerIP = "libertyarchives.info"
             ServerPort = 5755
-        Case 6 '127.0.0.1
+        Case 6 'Relentless
+            ServerDescription = "Relentless"
+            CacheDirectory = App.Path + "\relentless"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5756
+        Case 7 '127.0.0.1
             ServerDescription = "Local Host"
             CacheDirectory = App.Path + "\localhost"
             ServerIP = "127.0.0.1"
@@ -171,6 +184,8 @@ Private Sub btnPlay_Click()
     sckPing(3).Close
     sckPing(4).Close
     sckPing(5).Close
+    sckPing(6).Close
+    sckPing(7).Close
     On Error GoTo 0
     
     Unload Me
@@ -198,7 +213,7 @@ Private Sub Form_Load()
     lstServers.ItemData(lstServers.ListCount - 1) = 1
     
     If Exists("Player_Made_Servers.txt") Then 'Player made servers
-        lstServers.AddItem "Forsaken"
+        lstServers.AddItem "Tales of Destiny"
         lstServers.ItemData(lstServers.ListCount - 1) = 2
         
         lstServers.AddItem "Condemned"
@@ -209,11 +224,14 @@ Private Sub Form_Load()
         
         lstServers.AddItem "Fankenstein"
         lstServers.ItemData(lstServers.ListCount - 1) = 5
+        
+        lstServers.AddItem "Relentless"
+        lstServers.ItemData(lstServers.ListCount - 1) = 6
     End If
     
     If Exists("Odyssey.vbp") Then
         lstServers.AddItem "---Local Host---"
-        lstServers.ItemData(lstServers.ListCount - 1) = 6
+        lstServers.ItemData(lstServers.ListCount - 1) = 7
     End If
        
        
@@ -227,7 +245,7 @@ Private Sub Form_Load()
     sckPing(1).RemotePort = 5751
     sckPing(1).connect
     
-    'Forsaken
+    'Tales of Destiny
     sckPing(2).RemoteHost = "libertyarchives.info"
     sckPing(2).RemotePort = 5752
     sckPing(2).connect
@@ -247,10 +265,15 @@ Private Sub Form_Load()
     sckPing(5).RemotePort = 5755
     sckPing(5).connect
 
-    'LocalHost
-    sckPing(6).RemoteHost = "127.0.0.1"
-    sckPing(6).RemotePort = 5750
+    'Relentless
+    sckPing(6).RemoteHost = "libertyarchives.info"
+    sckPing(6).RemotePort = 5756
     sckPing(6).connect
+    
+    'LocalHost
+    sckPing(7).RemoteHost = "127.0.0.1"
+    sckPing(7).RemotePort = 5750
+    sckPing(7).connect
     
     lstServers.ListIndex = 0
     
