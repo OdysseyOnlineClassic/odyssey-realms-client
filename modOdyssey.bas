@@ -5,7 +5,6 @@ Option Explicit
 Public Const ClientVer = 4
 Public Const TitleString = "Odyssey Realms Registry"
 Public Const TheWebSite = "http://www.odysseyclassic.info"
-Public Const TheForum = "http://www.odysseyclassic.info/forum"
 Public Const TheDiscord = "https://discord.gg/agBsswA"
 Public Const TheSubReddit = "https://www.reddit.com/r/odysseyonlineclassic"
 Public Const TheYoutubeChannel = "https://www.youtube.com/channel/UC7ZLcAfhim5cm1na-rgSANg/"
@@ -1089,9 +1088,7 @@ Sub OpenMapEdit()
     FileByteArray() = StrConv(File, vbFromUnicode)
     ReDim Preserve FileByteArray(UBound(FileByteArray) + 1)
 
-    'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
     GetBitmapDimensions GetGfxPath + "tiles.rsc", Width, Height
-    'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
 
 
 

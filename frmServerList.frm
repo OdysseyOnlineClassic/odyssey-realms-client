@@ -4,7 +4,7 @@ Begin VB.Form frmServerList
    BackColor       =   &H0061514B&
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Odyssey - Select Server"
-   ClientHeight    =   3645
+   ClientHeight    =   4530
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   3840
@@ -13,9 +13,17 @@ Begin VB.Form frmServerList
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3645
+   ScaleHeight     =   4530
    ScaleWidth      =   3840
    StartUpPosition =   2  'CenterScreen
+   Begin MSWinsockLib.Winsock sckPing 
+      Index           =   8
+      Left            =   1080
+      Top             =   2400
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
    Begin MSWinsockLib.Winsock sckPing 
       Index           =   7
       Left            =   960
@@ -93,7 +101,7 @@ Begin VB.Form frmServerList
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   2730
+      Height          =   3630
       ItemData        =   "frmServerList.frx":0E42
       Left            =   120
       List            =   "frmServerList.frx":0E49
@@ -120,7 +128,7 @@ Begin VB.Form frmServerList
       Height          =   375
       Left            =   1080
       TabIndex        =   1
-      Top             =   3120
+      Top             =   3960
       Width           =   1695
    End
 End
@@ -135,47 +143,53 @@ Private Sub btnPlay_Click()
     Select Case lstServers.ItemData(lstServers.ListIndex)
         Case 0 'Classic
             ServerDescription = "Classic"
-            CacheDirectory = App.Path + "\classic"
+            CacheDirectory = GetCachePath + "\classic"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5750
         Case 1 'God Sandbox
             ServerDescription = "God Sandbox"
-            CacheDirectory = App.Path + "\sandbox"
+            CacheDirectory = GetCachePath + "\sandbox"
             ServerIP = "libertyarchives.info"
             ServerPort = 5751
         Case 2 'Tales of Destiny
             ServerDescription = "Tales of Destiny"
-            CacheDirectory = App.Path + "\talesofdestiny"
+            CacheDirectory = GetCachePath + "\talesofdestiny"
             ServerIP = "libertyarchives.info"
             ServerPort = 5752
         Case 3 'Condemned
             ServerDescription = "Condemned"
-            CacheDirectory = App.Path + "\condemned"
+            CacheDirectory = GetCachePath + "\condemned"
             ServerIP = "libertyarchives.info"
             ServerPort = 5753
         Case 4 'Ethia
             ServerDescription = "Ethia"
-            CacheDirectory = App.Path + "\ethia"
+            CacheDirectory = GetCachePath + "\ethia"
             ServerIP = "libertyarchives.info"
             ServerPort = 5754
         Case 5 'Fankenstein
             ServerDescription = "Fankenstein"
-            CacheDirectory = App.Path + "\fankenstein"
+            CacheDirectory = GetCachePath + "\fankenstein"
             ServerIP = "libertyarchives.info"
             ServerPort = 5755
         Case 6 'Relentless
             ServerDescription = "Relentless"
-            CacheDirectory = App.Path + "\relentless"
+            CacheDirectory = GetCachePath + "\relentless"
             ServerIP = "libertyarchives.info"
             ServerPort = 5756
-        Case 7 '127.0.0.1
+        Case 7 'REDRUM PK
+            ServerDescription = "REDRUM PK"
+            CacheDirectory = GetCachePath + "\redrumpk"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5757
+        Case 8 '127.0.0.1
             ServerDescription = "Local Host"
-            CacheDirectory = App.Path + "\localhost"
+            CacheDirectory = GetCachePath + "\localhost"
             ServerIP = "127.0.0.1"
             ServerPort = 5750
     End Select
     
     On Error Resume Next
+    MkDir GetCachePath
     MkDir CacheDirectory
     CheckCache
     sckPing(0).Close
@@ -186,6 +200,7 @@ Private Sub btnPlay_Click()
     sckPing(5).Close
     sckPing(6).Close
     sckPing(7).Close
+    sckPing(8).Close
     On Error GoTo 0
     
     Unload Me
@@ -227,11 +242,15 @@ Private Sub Form_Load()
         
         lstServers.AddItem "Relentless"
         lstServers.ItemData(lstServers.ListCount - 1) = 6
+        
+        lstServers.AddItem "REDRUM PK"
+        lstServers.ItemData(lstServers.ListCount - 1) = 7
+        
     End If
     
     If Exists("Odyssey.vbp") Then
         lstServers.AddItem "---Local Host---"
-        lstServers.ItemData(lstServers.ListCount - 1) = 7
+        lstServers.ItemData(lstServers.ListCount - 1) = 8
     End If
        
        
@@ -270,10 +289,15 @@ Private Sub Form_Load()
     sckPing(6).RemotePort = 5756
     sckPing(6).connect
     
-    'LocalHost
-    sckPing(7).RemoteHost = "127.0.0.1"
-    sckPing(7).RemotePort = 5750
+    'REDRUM PK
+    sckPing(7).RemoteHost = "libertyarchives.info"
+    sckPing(7).RemotePort = 5757
     sckPing(7).connect
+    
+    'LocalHost
+    sckPing(8).RemoteHost = "127.0.0.1"
+    sckPing(8).RemotePort = 5750
+    sckPing(8).connect
     
     lstServers.ListIndex = 0
     

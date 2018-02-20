@@ -13,3 +13,8 @@ End Function
 Function GetMusicPath()
     GetMusicPath = App.Path + "\" + MUSICPATH
 End Function
+
+Function GetCachePath()
+    GetCachePath = App.Path + "\" + CACHEPATH
+End Function
+

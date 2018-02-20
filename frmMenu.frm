@@ -374,9 +374,7 @@ Private Sub Form_Load()
     FileByteArray() = StrConv(File, vbFromUnicode)
     ReDim Preserve FileByteArray(UBound(FileByteArray) + 1)
 
-    'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
     frmMenu.Picture = LoadPicture(File)
-    'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
 
     lblCurrentServer = ServerDescription
 End Sub
@@ -413,18 +411,6 @@ Dim uDirectory As String
             uParams = 0&
             uDirectory = 0&
             RunShellExecute uTopic, uFile, uParams, uDirectory, 1
-        'Case 6    'Map Editor
-            'uTopic = "Open"
-            'uFile = "mapeditor.exe"
-            'uParams = 0&
-            'uDirectory = GetGfxPath
-            'RunShellExecute sTopic, sFile, sParams, sDirectory, 1
-        Case 7    'Forum
-            uTopic = "Open"
-            uFile = TheForum
-            uParams = 0&
-            uDirectory = 0&
-            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         Case 8    'Discord
             uTopic = "Open"
             uFile = TheDiscord
@@ -436,18 +422,6 @@ Dim uDirectory As String
             Load frmServerList
             frmServerList.Show
             frmServerList.Refresh
-        'Case 10    'Updater
-            'sTopic = "Open"
-            'sFile = "updater.exe"
-            'sParams = 0&
-            'sDirectory = 0&
-            'RunShellExecute uTopic, uFile, uParams, uDirectory, 1
-        'Case 11    'Mega Pack Installer
-            'uTopic = "Open"
-            'uFile = "mega-pack-installer.exe"
-            'uParams = 0&
-            'uDirectory = 0&
-            'RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         Case 12    'Reddit
             uTopic = "Open"
             uFile = TheSubReddit

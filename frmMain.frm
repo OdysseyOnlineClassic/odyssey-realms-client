@@ -651,7 +651,7 @@ Begin VB.Form frmMain
          NoFolders       =   0   'False
          Transparent     =   0   'False
          ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-         Location        =   "http:///"
+         Location        =   ""
       End
       Begin VB.CommandButton BrowserClose 
          Caption         =   "Close"
@@ -4763,18 +4763,13 @@ Private Sub Form_Load()
     FileByteArray() = StrConv(File, vbFromUnicode)
     ReDim Preserve FileByteArray(UBound(FileByteArray) + 1)
 
-    'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
     frmMain.Picture = LoadPicture(File)
-    'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
-
 
     File = GetGfxPath + "stats.rsc"
     FileByteArray() = StrConv(File, vbFromUnicode)
     ReDim Preserve FileByteArray(UBound(FileByteArray) + 1)
 
-    'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
     frmMain.picStats.Picture = LoadPicture(File)
-    'EncryptDataFile FileByteArray(0), FileLen(File) Mod 87 + 5
 
     InitializeLighting
     OutdoorLight = 150

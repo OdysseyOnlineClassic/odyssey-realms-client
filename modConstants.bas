@@ -1,6 +1,7 @@
 Attribute VB_Name = "modConstants"
 Option Explicit
 
+Public Const CACHEPATH = "Data\Cache\"
 Public Const GFXPATH = "Data\GFX\"
 Public Const SOUNDPATH = "Data\SFX\Sound\"
 Public Const MUSICPATH = "Data\SFX\Music\"

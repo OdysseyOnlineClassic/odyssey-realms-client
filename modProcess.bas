@@ -426,7 +426,7 @@ Sub ProcessString(PacketID As Long, St As String)
             Case 8    'You cannot use that
                 PrintChat "You cannot use that object.", 7
             Case 9    'Friendly Zone - can't attack
-                Call PrintInfoText("You cannot fight in a friendly area!.", 14)
+                Call PrintInfoText("You cannot fight in a friendly area!", 14)
                 'PrintChat "This is a friendly area, you cannot attack here!", 7
             Case 10    'Cannot attack immortal
                 PrintChat "You may not attack an immortal!", 7
