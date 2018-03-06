@@ -157,7 +157,7 @@ Private Sub btnPlay_Click()
         Case 1 'God Sandbox
             ServerDescription = "God Sandbox"
             CacheDirectory = GetCachePath + "\sandbox"
-            ServerIP = "libertyarchives.info"
+            ServerIP = "odysseyclassic.info"
             ServerPort = 5751
         Case 2 'Tales of Destiny
             ServerDescription = "Tales of Destiny"

@@ -40,7 +40,7 @@ Begin VB.Form frmAccount
       Top             =   120
       Width           =   3015
    End
-   Begin VB.TextBox txtPass 
+   Begin VB.TextBox txtPass1 
       Appearance      =   0  'Flat
       BackColor       =   &H0044342E&
       ForeColor       =   &H009AADC2&
@@ -158,7 +158,7 @@ Begin VB.Form frmAccount
       Top             =   120
       Width           =   2175
    End
-   Begin VB.Label lblPass 
+   Begin VB.Label lblPass1 
       Alignment       =   1  'Right Justify
       BackColor       =   &H0061514B&
       Caption         =   "Password:"
@@ -239,6 +239,10 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     frmAccount_Loaded = False
+End Sub
+
+Private Sub lblPass_Click()
+
 End Sub
 
 Private Sub txtPass1_Change()
