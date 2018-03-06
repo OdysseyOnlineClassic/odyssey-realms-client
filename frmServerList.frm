@@ -277,7 +277,7 @@ Private Sub Form_Load()
     sckPing(0).connect
     
     'God Sandbox
-    sckPing(1).RemoteHost = "libertyarchives.info"
+    sckPing(1).RemoteHost = "odysseyclassic.info"
     sckPing(1).RemotePort = 5751
     sckPing(1).connect
     
