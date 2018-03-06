@@ -4,7 +4,7 @@ Object = "{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}#1.1#0"; "ieframe.dll"
 Begin VB.Form frmMain 
    BackColor       =   &H0044342E&
    BorderStyle     =   0  'None
-   Caption         =   "Odyssey Classic"
+   Caption         =   "Odyssey Realms"
    ClientHeight    =   9000
    ClientLeft      =   0
    ClientTop       =   15
@@ -651,7 +651,7 @@ Begin VB.Form frmMain
          NoFolders       =   0   'False
          Transparent     =   0   'False
          ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-         Location        =   ""
+         Location        =   "http:///"
       End
       Begin VB.CommandButton BrowserClose 
          Caption         =   "Close"

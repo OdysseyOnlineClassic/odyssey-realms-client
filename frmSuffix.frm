@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmSuffix 
-   Caption         =   "The Odyssey Online Classic [Editing Suffix]"
+   Caption         =   "Odyssey Realms [Editing Suffix]"
    ClientHeight    =   5340
    ClientLeft      =   60
    ClientTop       =   450

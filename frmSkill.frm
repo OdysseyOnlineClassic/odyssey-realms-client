@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmSkill 
-   Caption         =   "Edit Skill"
+   Caption         =   "Odyssey Realms [Edit Spell]"
    ClientHeight    =   5655
    ClientLeft      =   60
    ClientTop       =   450

@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmBugReports 
    BackColor       =   &H0061514B&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "The Odyssey Online Classic [Bug Reports]"
+   Caption         =   "Odyssey Realms [Bug Reports]"
    ClientHeight    =   6735
    ClientLeft      =   45
    ClientTop       =   375
@@ -163,7 +163,7 @@ Begin VB.Form frmBugReports
       Top             =   3360
       Width           =   5175
    End
-   Begin VB.Label Label 
+   Begin VB.Label lblBugStatus 
       BackStyle       =   0  'Transparent
       Caption         =   "Bug resolve status:"
       BeginProperty Font 
@@ -183,7 +183,7 @@ Begin VB.Form frmBugReports
       Top             =   5520
       Width           =   5175
    End
-   Begin VB.Label Label 
+   Begin VB.Label lblSubmittedIP 
       BackStyle       =   0  'Transparent
       Caption         =   "IP Address:"
       BeginProperty Font 
@@ -203,7 +203,7 @@ Begin VB.Form frmBugReports
       Top             =   2520
       Width           =   2535
    End
-   Begin VB.Label Label 
+   Begin VB.Label lblBugDescription 
       BackStyle       =   0  'Transparent
       Caption         =   "Bug description:"
       BeginProperty Font 
@@ -223,7 +223,7 @@ Begin VB.Form frmBugReports
       Top             =   3120
       Width           =   5295
    End
-   Begin VB.Label Label 
+   Begin VB.Label lblSubmittedUser 
       BackStyle       =   0  'Transparent
       Caption         =   "Submitted by Player - User:"
       BeginProperty Font 
@@ -243,7 +243,7 @@ Begin VB.Form frmBugReports
       Top             =   2520
       Width           =   2535
    End
-   Begin VB.Label Label 
+   Begin VB.Label lblSubmittedTitle 
       BackStyle       =   0  'Transparent
       Caption         =   "Submitted bug reports requiring attention:"
       BeginProperty Font 

@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmReportBug 
    BackColor       =   &H0061514B&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "The Odyssey Online Classic [Bug Reporting]"
+   Caption         =   "Odyssey Realms [Submit Bug Report]"
    ClientHeight    =   6390
    ClientLeft      =   45
    ClientTop       =   375

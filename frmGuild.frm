@@ -3,7 +3,7 @@ Object = "{E910F8E1-8996-4EE9-90F1-3E7C64FA9829}#1.1#0"; "vbaListView6.ocx"
 Begin VB.Form frmGuild 
    BackColor       =   &H0061514B&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "The Odyssey Online Classic [Guild]"
+   Caption         =   "Odyssey Realms [Guild]"
    ClientHeight    =   7440
    ClientLeft      =   90
    ClientTop       =   345

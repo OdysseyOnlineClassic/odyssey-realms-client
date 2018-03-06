@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmScan 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "Scan"
+   Caption         =   "Odyssey Realms [Scan Player]"
    ClientHeight    =   6210
    ClientLeft      =   45
    ClientTop       =   435

@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmNewCharacter 
    BackColor       =   &H0061514B&
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [New Character]"
+   Caption         =   "Odyssey Realms [New Character]"
    ClientHeight    =   6240
    ClientLeft      =   45
    ClientTop       =   330

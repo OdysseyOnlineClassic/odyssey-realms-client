@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmNewPass 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Change Password]"
+   Caption         =   "Odyssey Realms [Change Password]"
    ClientHeight    =   1785
    ClientLeft      =   75
    ClientTop       =   300

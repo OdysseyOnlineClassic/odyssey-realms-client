@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmBan 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Ban]"
+   Caption         =   "Odyssey Realms [Ban]"
    ClientHeight    =   4290
    ClientLeft      =   150
    ClientTop       =   345
@@ -135,7 +135,7 @@ Begin VB.Form frmBan
       Top             =   1440
       Width           =   2055
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblName 
       Caption         =   "Name:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -152,7 +152,7 @@ Begin VB.Form frmBan
       Top             =   480
       Width           =   855
    End
-   Begin VB.Label Label2 
+   Begin VB.Label lblBanReason 
       Caption         =   "Reason:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -169,7 +169,7 @@ Begin VB.Form frmBan
       Top             =   2520
       Width           =   1095
    End
-   Begin VB.Label Label3 
+   Begin VB.Label lblBanner 
       Caption         =   "Banner:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -186,7 +186,7 @@ Begin VB.Form frmBan
       Top             =   960
       Width           =   1215
    End
-   Begin VB.Label Label4 
+   Begin VB.Label lblDaysLeft 
       Caption         =   "Days Left:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -221,7 +221,7 @@ Begin VB.Form frmBan
       Top             =   3360
       Width           =   495
    End
-   Begin VB.Label Label5 
+   Begin VB.Label lblNumberTitle 
       Caption         =   "Number:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -255,7 +255,7 @@ Begin VB.Form frmBan
       Top             =   0
       Width           =   2055
    End
-   Begin VB.Label Label6 
+   Begin VB.Label lblComputerID 
       Caption         =   "ComputerID:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -272,7 +272,7 @@ Begin VB.Form frmBan
       Top             =   1920
       Width           =   1215
    End
-   Begin VB.Label Label7 
+   Begin VB.Label lblIPAddress 
       Caption         =   "IP Address:"
       BeginProperty Font 
          Name            =   "Times New Roman"

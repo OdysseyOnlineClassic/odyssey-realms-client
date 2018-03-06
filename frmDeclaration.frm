@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmDeclaration 
    BackColor       =   &H0061514B&
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Delcaration]"
+   Caption         =   "Odyssey Realms [Delcaration]"
    ClientHeight    =   1635
    ClientLeft      =   90
    ClientTop       =   345
@@ -79,7 +79,7 @@ Begin VB.Form frmDeclaration
       Top             =   1080
       Width           =   1860
    End
-   Begin VB.Label Label2 
+   Begin VB.Label lblDeclarationGuild 
       BackColor       =   &H0061514B&
       Caption         =   "Declaration Guild:"
       ForeColor       =   &H009AADC2&
@@ -89,7 +89,7 @@ Begin VB.Form frmDeclaration
       Top             =   600
       Width           =   1335
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblDeclarationType 
       BackColor       =   &H0061514B&
       Caption         =   "Declaration Type:"
       ForeColor       =   &H009AADC2&

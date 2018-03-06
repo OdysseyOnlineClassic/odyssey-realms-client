@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmMapProperties 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Map Properties]"
+   Caption         =   "Odyssey Realms [Map Properties]"
    ClientHeight    =   7575
    ClientLeft      =   45
    ClientTop       =   330
@@ -1058,13 +1058,13 @@ Private Sub sclMIDI_Scroll()
 End Sub
 
 
-Private Sub sclRate_Change(index As Integer)
-    lblRate(index) = sclRate(index)
+Private Sub sclRate_Change(Index As Integer)
+    lblRate(Index) = sclRate(Index)
 End Sub
 
 
-Private Sub sclRate_Scroll(index As Integer)
-    sclRate_Change (index)
+Private Sub sclRate_Scroll(Index As Integer)
+    sclRate_Change (Index)
 End Sub
 
 Private Sub txtBootMap_LostFocus()

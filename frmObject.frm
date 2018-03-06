@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmObject 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Editing Object]"
+   Caption         =   "Odyssey Realms [Editing Object]"
    ClientHeight    =   6015
    ClientLeft      =   105
    ClientTop       =   330
@@ -579,12 +579,12 @@ Private Sub btnOk_Click()
     Me.Hide
 End Sub
 
-Private Sub chkData_Click(index As Integer)
-    lblData(index) = chkData(index)
+Private Sub chkData_Click(Index As Integer)
+    lblData(Index) = chkData(Index)
 End Sub
 
-Private Sub cmbData_Click(index As Integer)
-    lblData(index) = cmbData(index).ListIndex
+Private Sub cmbData_Click(Index As Integer)
+    lblData(Index) = cmbData(Index).ListIndex
 End Sub
 
 
@@ -690,61 +690,61 @@ Private Sub Form_Load()
 
     frmObject_Loaded = True
 End Sub
-Sub SetData(index As Integer, DataType As Integer, St As String)
+Sub SetData(Index As Integer, DataType As Integer, St As String)
     Select Case DataType
     Case 0
-        lblData(index).Visible = False
-        sclData(index).Visible = False
-        chkData(index).Visible = False
-        cmbData(index).Visible = False
+        lblData(Index).Visible = False
+        sclData(Index).Visible = False
+        chkData(Index).Visible = False
+        cmbData(Index).Visible = False
     Case 1
-        lblData(index).Visible = True
-        sclData(index).Visible = True
-        chkData(index).Visible = False
-        cmbData(index).Visible = False
-        sclData(index) = Val(ObjData(index))
-        lblData(index) = ObjData(index)
+        lblData(Index).Visible = True
+        sclData(Index).Visible = True
+        chkData(Index).Visible = False
+        cmbData(Index).Visible = False
+        sclData(Index) = Val(ObjData(Index))
+        lblData(Index) = ObjData(Index)
     Case 2
-        lblData(index).Visible = True
-        sclData(index).Visible = False
-        chkData(index).Visible = True
-        cmbData(index).Visible = False
-        If Val(ObjData(index)) = 0 Then
-            chkData(index) = 0
-            lblData(index) = 0
+        lblData(Index).Visible = True
+        sclData(Index).Visible = False
+        chkData(Index).Visible = True
+        cmbData(Index).Visible = False
+        If Val(ObjData(Index)) = 0 Then
+            chkData(Index) = 0
+            lblData(Index) = 0
         Else
-            chkData(index) = 1
-            lblData(index) = 1
+            chkData(Index) = 1
+            lblData(Index) = 1
         End If
     Case 3
-        lblData(index).Visible = True
-        sclData(index).Visible = False
-        chkData(index).Visible = False
-        cmbData(index).Visible = True
-        If Val(ObjData(index)) < cmbData(index).ListCount Then
-            cmbData(index).ListIndex = Val(ObjData(index))
-            lblData(index) = ObjData(index)
+        lblData(Index).Visible = True
+        sclData(Index).Visible = False
+        chkData(Index).Visible = False
+        cmbData(Index).Visible = True
+        If Val(ObjData(Index)) < cmbData(Index).ListCount Then
+            cmbData(Index).ListIndex = Val(ObjData(Index))
+            lblData(Index) = ObjData(Index)
         Else
-            cmbData(index).ListIndex = cmbData(index).ListCount - 1
-            lblData(index) = cmbData(index).ListCount - 1
+            cmbData(Index).ListIndex = cmbData(Index).ListCount - 1
+            lblData(Index) = cmbData(Index).ListCount - 1
         End If
     End Select
-    lblCaption(index) = St
+    lblCaption(Index) = St
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     frmObject_Loaded = False
 End Sub
 
-Private Sub lblData_Change(index As Integer)
+Private Sub lblData_Change(Index As Integer)
     If ChangingTypes = False Then
-        ObjData(index) = lblData(index)
+        ObjData(Index) = lblData(Index)
     End If
 End Sub
 
-Private Sub sclData_Change(index As Integer)
-    If cmbType.ListIndex = 11 And index = 2 Then    'Its AMMO!
-        Select Case sclData(index).value
+Private Sub sclData_Change(Index As Integer)
+    If cmbType.ListIndex = 11 And Index = 2 Then    'Its AMMO!
+        Select Case sclData(Index).value
         Case 0    'None
             lblCaption(2) = "None"
         Case 1    'Bow and Arrow
@@ -797,11 +797,11 @@ Private Sub sclData_Change(index As Integer)
             lblCaption(2) = "Fire Pillar (6)"
         End Select
     End If
-    lblData(index) = sclData(index)
+    lblData(Index) = sclData(Index)
 End Sub
 
-Private Sub sclData_Scroll(index As Integer)
-    sclData_Change (index)
+Private Sub sclData_Scroll(Index As Integer)
+    sclData_Change (Index)
 End Sub
 
 Private Sub sclLevel_Change()

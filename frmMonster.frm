@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmMonster 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Edit Monster]"
+   Caption         =   "Odyssey Realms [Edit Monster]"
    ClientHeight    =   7215
    ClientLeft      =   45
    ClientTop       =   330

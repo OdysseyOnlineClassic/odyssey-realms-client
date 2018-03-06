@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmAccount 
    BackColor       =   &H0061514B&
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [New Account]"
+   Caption         =   "Odyssey Realms [New Account]"
    ClientHeight    =   3285
    ClientLeft      =   135
    ClientTop       =   360
@@ -40,7 +40,7 @@ Begin VB.Form frmAccount
       Top             =   120
       Width           =   3015
    End
-   Begin VB.TextBox txtPass1 
+   Begin VB.TextBox txtPass 
       Appearance      =   0  'Flat
       BackColor       =   &H0044342E&
       ForeColor       =   &H009AADC2&
@@ -98,7 +98,7 @@ Begin VB.Form frmAccount
       Top             =   2760
       Width           =   1980
    End
-   Begin VB.Label Label4 
+   Begin VB.Label lblUsernameCriteria 
       Alignment       =   2  'Center
       BackColor       =   &H0061514B&
       Caption         =   $"frmAccount.frx":1CFA
@@ -118,7 +118,7 @@ Begin VB.Form frmAccount
       Top             =   600
       Width           =   5295
    End
-   Begin VB.Label Label3 
+   Begin VB.Label lblPass2 
       Alignment       =   1  'Right Justify
       BackColor       =   &H0061514B&
       Caption         =   "Re-Type Password:"
@@ -138,10 +138,10 @@ Begin VB.Form frmAccount
       Top             =   2160
       Width           =   2175
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblUser 
       Alignment       =   1  'Right Justify
       BackColor       =   &H0061514B&
-      Caption         =   "User:"
+      Caption         =   "Username:"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   12
@@ -158,7 +158,7 @@ Begin VB.Form frmAccount
       Top             =   120
       Width           =   2175
    End
-   Begin VB.Label Label2 
+   Begin VB.Label lblPass 
       Alignment       =   1  'Right Justify
       BackColor       =   &H0061514B&
       Caption         =   "Password:"

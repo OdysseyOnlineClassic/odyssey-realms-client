@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmMacros 
    BackColor       =   &H0061514B&
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Shortcuts]"
+   Caption         =   "Odyssey Realms [Shortcuts]"
    ClientHeight    =   5415
    ClientLeft      =   45
    ClientTop       =   330
@@ -706,7 +706,7 @@ Private Sub Form_Unload(Cancel As Integer)
     frmMacros_Loaded = False
 End Sub
 
-Private Sub txtMacro_KeyPress(index As Integer, KeyAscii As Integer)
+Private Sub txtMacro_KeyPress(Index As Integer, KeyAscii As Integer)
     If KeyAscii = 8 Or (KeyAscii >= 32 And KeyAscii <= 127) Then
         'Valid Key
     Else

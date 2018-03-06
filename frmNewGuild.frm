@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmNewGuild 
    BackColor       =   &H0061514B&
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [New Guild]"
+   Caption         =   "Odyssey Realms [New Guild]"
    ClientHeight    =   2250
    ClientLeft      =   60
    ClientTop       =   315

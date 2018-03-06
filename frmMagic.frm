@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmMagic 
-   Caption         =   "Edit Magic"
+   Caption         =   "Odyssey Realms [Edit Magic]"
    ClientHeight    =   6345
    ClientLeft      =   60
    ClientTop       =   450
@@ -380,7 +380,7 @@ Private Sub Form_Unload(Cancel As Integer)
     frmMagic_Loaded = False
 End Sub
 
-Private Sub optIconType_Click(index As Integer)
+Private Sub optIconType_Click(Index As Integer)
     RefreshIcon
 End Sub
 

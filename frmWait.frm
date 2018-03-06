@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmWait 
    BackColor       =   &H00004080&
    BorderStyle     =   0  'None
-   Caption         =   "The Odyssey Online Classic"
+   Caption         =   "Odyssey Realms"
    ClientHeight    =   585
    ClientLeft      =   0
    ClientTop       =   0

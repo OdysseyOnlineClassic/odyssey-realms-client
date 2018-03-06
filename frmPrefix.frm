@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmPrefix 
-   Caption         =   "The Odyssey Online Classic [Editing Prefix]"
+   Caption         =   "Odyssey Realms [Editing Prefix]"
    ClientHeight    =   5235
    ClientLeft      =   60
    ClientTop       =   450

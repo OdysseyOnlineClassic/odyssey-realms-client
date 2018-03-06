@@ -3,7 +3,7 @@ Begin VB.Form frmLogin
    Appearance      =   0  'Flat
    BackColor       =   &H0061514B&
    BorderStyle     =   0  'None
-   Caption         =   "The Odyssey Online Classic [Login]"
+   Caption         =   "Odyssey Realms [Login]"
    ClientHeight    =   3645
    ClientLeft      =   0
    ClientTop       =   -15
@@ -73,7 +73,7 @@ Begin VB.Form frmLogin
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   855
+      Height          =   1095
       Left            =   120
       TabIndex        =   7
       Top             =   1920
@@ -98,9 +98,9 @@ Begin VB.Form frmLogin
       Top             =   240
       Width           =   4215
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblLoginUsername 
       BackStyle       =   0  'Transparent
-      Caption         =   "User:"
+      Caption         =   "Username:"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   12
@@ -115,9 +115,9 @@ Begin VB.Form frmLogin
       Left            =   120
       TabIndex        =   1
       Top             =   840
-      Width           =   615
+      Width           =   1095
    End
-   Begin VB.Label Label2 
+   Begin VB.Label lblLoginPassword 
       BackColor       =   &H0044342E&
       BackStyle       =   0  'Transparent
       Caption         =   "Password:"

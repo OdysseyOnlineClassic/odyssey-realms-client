@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmHall 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Guild Hall]"
+   Caption         =   "Odyssey Realms [Guild Hall]"
    ClientHeight    =   3960
    ClientLeft      =   90
    ClientTop       =   345
@@ -109,7 +109,7 @@ Begin VB.Form frmHall
       Top             =   3360
       Width           =   1455
    End
-   Begin VB.Label Label7 
+   Begin VB.Label lblStartYTitle 
       Caption         =   "Start Y:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -126,7 +126,7 @@ Begin VB.Form frmHall
       Top             =   2760
       Width           =   975
    End
-   Begin VB.Label Label6 
+   Begin VB.Label lblStartXTitle 
       Caption         =   "Start X:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -137,13 +137,13 @@ Begin VB.Form frmHall
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   375
+      Height          =   495
       Left            =   120
       TabIndex        =   17
       Top             =   2400
       Width           =   975
    End
-   Begin VB.Label Label5 
+   Begin VB.Label lblStartMapTitle 
       Caption         =   "Start Map:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -214,7 +214,7 @@ Begin VB.Form frmHall
       Top             =   2760
       Width           =   495
    End
-   Begin VB.Label Label3 
+   Begin VB.Label lblUpkeepTitle 
       Caption         =   "Upkeep:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -231,7 +231,7 @@ Begin VB.Form frmHall
       Top             =   1560
       Width           =   855
    End
-   Begin VB.Label Label2 
+   Begin VB.Label lblPriceTitle 
       Caption         =   "Price:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -248,7 +248,7 @@ Begin VB.Form frmHall
       Top             =   1080
       Width           =   855
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblNameTitle 
       Caption         =   "Name:"
       BeginProperty Font 
          Name            =   "Times New Roman"
@@ -265,7 +265,7 @@ Begin VB.Form frmHall
       Top             =   600
       Width           =   855
    End
-   Begin VB.Label Label4 
+   Begin VB.Label lblNumberTitle 
       Caption         =   "Number:"
       BeginProperty Font 
          Name            =   "Times New Roman"

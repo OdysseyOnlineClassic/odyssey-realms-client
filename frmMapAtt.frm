@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmMapAtt 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Map Attribute]"
+   Caption         =   "Odyssey Realms [Map Attribute]"
    ClientHeight    =   3090
    ClientLeft      =   150
    ClientTop       =   225
@@ -868,10 +868,10 @@ Private Sub btnOk_Click()
     Case 17    'Directional Wall
         CurAttData(0) = 0
         For A = 0 To 7
-            If chkDirections(A).Value = 1 Then SetBit CurAttData(0), CByte(A)
+            If chkDirections(A).value = 1 Then SetBit CurAttData(0), CByte(A)
         Next A
-        CurAttData(1) = chkKeep.Value
-        CurAttData(2) = chkNoMonster.Value
+        CurAttData(1) = chkKeep.value
+        CurAttData(2) = chkNoMonster.value
         CurAttData(3) = 0
     Case 19    'Light Tile
         CurAttData(0) = sclRadius
@@ -889,22 +889,22 @@ Private Sub btnOk_Click()
         ClearBit CurAttData(2), 6
         ClearBit CurAttData(2), 7
     Case 20    'Dampening Tile
-        If chkAtt20Direction(0).Value = 1 Then
+        If chkAtt20Direction(0).value = 1 Then
             SetBit CurAttData(0), 0
         Else
             ClearBit CurAttData(0), 0
         End If
-        If chkAtt20Direction(1).Value = 1 Then
+        If chkAtt20Direction(1).value = 1 Then
             SetBit CurAttData(0), 1
         Else
             ClearBit CurAttData(0), 1
         End If
-        If chkAtt20Direction(2).Value = 1 Then
+        If chkAtt20Direction(2).value = 1 Then
             SetBit CurAttData(0), 2
         Else
             ClearBit CurAttData(0), 2
         End If
-        If chkAtt20Direction(3).Value = 1 Then
+        If chkAtt20Direction(3).value = 1 Then
             SetBit CurAttData(0), 3
         Else
             ClearBit CurAttData(0), 3
@@ -913,8 +913,8 @@ Private Sub btnOk_Click()
         ClearBit CurAttData(0), 5
         ClearBit CurAttData(0), 6
         ClearBit CurAttData(0), 7
-        CurAttData(1) = sclAtt20X.Value
-        CurAttData(2) = sclAtt20Y.Value
+        CurAttData(1) = sclAtt20X.value
+        CurAttData(2) = sclAtt20Y.value
         If chkAtt20Wall = 1 Then
             SetBit CurAttData(3), 0
         Else
@@ -951,22 +951,22 @@ Private Sub Form_Load()
         lblAtt = "2 - Warp"
         picAtt2.Visible = True
         If CurAtt = 2 Then
-            sclAtt2Map.Value = CurAttData(0) * 256 + CurAttData(1)
-            sclAtt2X.Value = CurAttData(2)
-            sclAtt2Y.Value = CurAttData(3)
+            sclAtt2Map.value = CurAttData(0) * 256 + CurAttData(1)
+            sclAtt2X.value = CurAttData(2)
+            sclAtt2Y.value = CurAttData(3)
         End If
     Case 3    'Key
         lblAtt = "3 - Key"
         picAtt3.Visible = True
         If CurAtt = 3 Then
-            sclAtt3Key.Value = CurAttData(1) * 256 + CurAttData(0)
+            sclAtt3Key.value = CurAttData(1) * 256 + CurAttData(0)
         End If
     Case 7    'Obj
         lblAtt = "7 - Object"
         picAtt7.Visible = True
         If CurAtt = 7 Then
-            sclAtt7Obj.Value = CurAttData(1) * 256 + CurAttData(0)
-            sclAtt7Val.Value = CurAttData(2) * 256 + CurAttData(3)
+            sclAtt7Obj.value = CurAttData(1) * 256 + CurAttData(0)
+            sclAtt7Val.value = CurAttData(2) * 256 + CurAttData(3)
         End If
     Case 8    'Touch Plate
         lblAtt = "8 - Touch Plate"
@@ -987,10 +987,10 @@ Private Sub Form_Load()
         picAtt17.Visible = True
         If CurAtt = 17 Then
             For A = 0 To 7
-                If ExamineBit(CurAttData(0), CByte(A)) = True Then chkDirections(A).Value = 1
+                If ExamineBit(CurAttData(0), CByte(A)) = True Then chkDirections(A).value = 1
             Next A
-            chkKeep.Value = CurAttData(1)
-            chkNoMonster.Value = CurAttData(2)
+            chkKeep.value = CurAttData(1)
+            chkNoMonster.value = CurAttData(2)
         End If
     Case 19    'Light
         lblAtt = "19 - Light"
@@ -998,21 +998,21 @@ Private Sub Form_Load()
         If CurAtt = 19 Then
             sclRadius = CurAttData(0)
             sclIntensity = CurAttData(1)
-            If ExamineBit(CurAttData(2), 0) = True Then chkWall.Value = 1
+            If ExamineBit(CurAttData(2), 0) = True Then chkWall.value = 1
         End If
     Case 20    'Light Dampening
         lblAtt = "20 - Light Dampening"
         picAtt20.Visible = True
         If CurAtt = 20 Then
-            If ExamineBit(CurAttData(0), 0) = True Then chkAtt20Direction(0).Value = 1
-            If ExamineBit(CurAttData(0), 1) = True Then chkAtt20Direction(1).Value = 1
-            If ExamineBit(CurAttData(0), 2) = True Then chkAtt20Direction(2).Value = 1
-            If ExamineBit(CurAttData(0), 3) = True Then chkAtt20Direction(3).Value = 1
+            If ExamineBit(CurAttData(0), 0) = True Then chkAtt20Direction(0).value = 1
+            If ExamineBit(CurAttData(0), 1) = True Then chkAtt20Direction(1).value = 1
+            If ExamineBit(CurAttData(0), 2) = True Then chkAtt20Direction(2).value = 1
+            If ExamineBit(CurAttData(0), 3) = True Then chkAtt20Direction(3).value = 1
             sclAtt20X = CurAttData(1)
             sclAtt20Y = CurAttData(2)
-            If ExamineBit(CurAttData(3), 0) = True Then chkAtt20Wall.Value = 1
-            If ExamineBit(CurAttData(3), 1) = True Then chkAtt20Outdoor.Value = 1
-            If ExamineBit(CurAttData(3), 2) = True Then chkAtt20Indoor.Value = 1
+            If ExamineBit(CurAttData(3), 0) = True Then chkAtt20Wall.value = 1
+            If ExamineBit(CurAttData(3), 1) = True Then chkAtt20Outdoor.value = 1
+            If ExamineBit(CurAttData(3), 2) = True Then chkAtt20Indoor.value = 1
         End If
     End Select
 End Sub

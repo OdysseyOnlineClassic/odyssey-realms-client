@@ -2,23 +2,103 @@ VERSION 5.00
 Begin VB.Form frmCredits 
    BackColor       =   &H0044342E&
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Credits]"
-   ClientHeight    =   9585
+   Caption         =   "Odyssey Realms [Credits]"
+   ClientHeight    =   9000
    ClientLeft      =   105
    ClientTop       =   330
-   ClientWidth     =   9915
+   ClientWidth     =   9015
    ControlBox      =   0   'False
    Icon            =   "frmCredits.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   639
+   ScaleHeight     =   600
    ScaleMode       =   3  'Pixel
-   ScaleWidth      =   661
+   ScaleWidth      =   601
    StartUpPosition =   2  'CenterScreen
-   Begin VB.Label lblSlasher 
+   Begin VB.Label lblOptima 
       BackColor       =   &H0044342E&
-      Caption         =   "Slasher"
+      Caption         =   "Optima"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Index           =   1
+      Left            =   3120
+      TabIndex        =   38
+      Top             =   4200
+      Width           =   615
+   End
+   Begin VB.Label lblVelius 
+      BackColor       =   &H0044342E&
+      Caption         =   "Velius"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Index           =   0
+      Left            =   120
+      TabIndex        =   37
+      Top             =   5280
+      Width           =   615
+   End
+   Begin VB.Label lblClassicQuests 
+      BackColor       =   &H0044342E&
+      Caption         =   "Classic Quests"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   14.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   -1  'True
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   375
+      Index           =   1
+      Left            =   120
+      TabIndex        =   36
+      Top             =   4680
+      Width           =   1965
+   End
+   Begin VB.Label lblDeadKitty 
+      BackColor       =   &H0044342E&
+      Caption         =   "Dead Kitty Registry"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   14.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   -1  'True
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   375
+      Index           =   1
+      Left            =   3120
+      TabIndex        =   35
+      Top             =   3360
+      Width           =   2445
+   End
+   Begin VB.Label lblBorfshwitz 
+      BackColor       =   &H0044342E&
+      Caption         =   "Patrick Bukowski (Borfshwitz)"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   9.75
@@ -32,9 +112,129 @@ Begin VB.Form frmCredits
       Height          =   255
       Index           =   1
       Left            =   120
-      TabIndex        =   29
-      Top             =   8280
+      TabIndex        =   34
+      Top             =   5040
+      Width           =   2655
+   End
+   Begin VB.Label lblUnknown 
+      BackColor       =   &H0044342E&
+      Caption         =   "Raymond Cox (Unknown)"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Index           =   0
+      Left            =   5880
+      TabIndex        =   33
+      Top             =   4440
       Width           =   2055
+   End
+   Begin VB.Label lblRebornSource 
+      BackColor       =   &H0044342E&
+      Caption         =   "Reborn Source"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   14.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   -1  'True
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   375
+      Index           =   1
+      Left            =   5880
+      TabIndex        =   32
+      Top             =   1680
+      Width           =   2325
+   End
+   Begin VB.Label lblTheZeus 
+      BackColor       =   &H0044342E&
+      Caption         =   "The Zeus"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Index           =   1
+      Left            =   3120
+      TabIndex        =   31
+      Top             =   2760
+      Width           =   855
+   End
+   Begin VB.Label lblGolbez 
+      BackColor       =   &H0044342E&
+      Caption         =   "Golbez"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Index           =   0
+      Left            =   3120
+      TabIndex        =   30
+      Top             =   2520
+      Width           =   615
+   End
+   Begin VB.Label lblRza 
+      BackColor       =   &H0044342E&
+      Caption         =   "Jason McDermott (Rza)"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Index           =   0
+      Left            =   5880
+      TabIndex        =   29
+      Top             =   2520
+      Width           =   2895
+   End
+   Begin VB.Label lblSlasher 
+      BackColor       =   &H0044342E&
+      Caption         =   "Jeremy McDermott (Slasher)"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   255
+      Index           =   1
+      Left            =   5880
+      TabIndex        =   28
+      Top             =   2760
+      Width           =   2895
    End
    Begin VB.Label lblOdysseyRealms 
       BackColor       =   &H0044342E&
@@ -49,10 +249,10 @@ Begin VB.Form frmCredits
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   495
-      Left            =   5280
-      TabIndex        =   28
-      Top             =   1680
+      Height          =   375
+      Left            =   3120
+      TabIndex        =   27
+      Top             =   4680
       Width           =   2085
    End
    Begin VB.Label lblPure 
@@ -70,9 +270,9 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   0
-      Left            =   120
-      TabIndex        =   27
-      Top             =   8040
+      Left            =   5880
+      TabIndex        =   26
+      Top             =   2280
       Width           =   2055
    End
    Begin VB.Label lblPengwy 
@@ -90,10 +290,10 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   1
-      Left            =   120
-      TabIndex        =   26
-      Top             =   7800
-      Width           =   2055
+      Left            =   3120
+      TabIndex        =   25
+      Top             =   3960
+      Width           =   1455
    End
    Begin VB.Label lblSteverino 
       BackColor       =   &H0044342E&
@@ -110,9 +310,9 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   0
-      Left            =   120
-      TabIndex        =   25
-      Top             =   7560
+      Left            =   3120
+      TabIndex        =   24
+      Top             =   3720
       Width           =   2055
    End
    Begin VB.Label lblMarco 
@@ -130,14 +330,14 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   1
-      Left            =   120
-      TabIndex        =   24
-      Top             =   7320
+      Left            =   5880
+      TabIndex        =   23
+      Top             =   4200
       Width           =   2535
    End
    Begin VB.Label lblJames 
       BackColor       =   &H0044342E&
-      Caption         =   "James Serine (Jim)"
+      Caption         =   "James Serine (DarkOne)"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   9.75
@@ -150,10 +350,10 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   0
-      Left            =   120
-      TabIndex        =   23
-      Top             =   7080
-      Width           =   2055
+      Left            =   5880
+      TabIndex        =   22
+      Top             =   3960
+      Width           =   2535
    End
    Begin VB.Label lblFank 
       BackColor       =   &H0044342E&
@@ -170,10 +370,10 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   1
-      Left            =   120
-      TabIndex        =   22
-      Top             =   6360
-      Width           =   2055
+      Left            =   3120
+      TabIndex        =   21
+      Top             =   2280
+      Width           =   855
    End
    Begin VB.Label lblJaron 
       BackColor       =   &H0044342E&
@@ -190,9 +390,9 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   0
-      Left            =   120
-      TabIndex        =   21
-      Top             =   6840
+      Left            =   5880
+      TabIndex        =   20
+      Top             =   2040
       Width           =   2055
    End
    Begin VB.Label lblProgramming 
@@ -208,13 +408,14 @@ Begin VB.Form frmCredits
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   495
-      Left            =   120
-      TabIndex        =   20
-      Top             =   5880
-      Width           =   2685
+      Height          =   375
+      Index           =   0
+      Left            =   5880
+      TabIndex        =   19
+      Top             =   3360
+      Width           =   2325
    End
-   Begin VB.Label lblA201 
+   Begin VB.Label lblA201Source 
       BackColor       =   &H0044342E&
       Caption         =   "A201 Source"
       BeginProperty Font 
@@ -227,11 +428,11 @@ Begin VB.Form frmCredits
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   495
-      Left            =   120
-      TabIndex        =   19
-      Top             =   4920
-      Width           =   2685
+      Height          =   375
+      Left            =   3120
+      TabIndex        =   18
+      Top             =   1680
+      Width           =   1605
    End
    Begin VB.Label lblGecky 
       BackColor       =   &H0044342E&
@@ -247,9 +448,9 @@ Begin VB.Form frmCredits
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   255
-      Left            =   150
-      TabIndex        =   18
-      Top             =   4320
+      Left            =   120
+      TabIndex        =   17
+      Top             =   3960
       Width           =   1815
    End
    Begin VB.Label lblArchbane 
@@ -266,14 +467,14 @@ Begin VB.Form frmCredits
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   255
-      Left            =   150
-      TabIndex        =   17
-      Top             =   4080
+      Left            =   120
+      TabIndex        =   16
+      Top             =   3720
       Width           =   2175
    End
    Begin VB.Label lblOriginalArt 
       BackColor       =   &H0044342E&
-      Caption         =   "Original Art"
+      Caption         =   "Art"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   14.25
@@ -284,11 +485,12 @@ Begin VB.Form frmCredits
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   495
+      Height          =   375
+      Index           =   0
       Left            =   120
-      TabIndex        =   16
-      Top             =   3600
-      Width           =   2805
+      TabIndex        =   15
+      Top             =   3360
+      Width           =   1605
    End
    Begin VB.Label lblLighting 
       BackColor       =   &H0044342E&
@@ -303,11 +505,11 @@ Begin VB.Form frmCredits
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   495
+      Height          =   375
       Left            =   120
-      TabIndex        =   15
-      Top             =   2640
-      Width           =   2895
+      TabIndex        =   14
+      Top             =   2520
+      Width           =   2775
    End
    Begin VB.Label lblTitle 
       Alignment       =   2  'Center
@@ -324,10 +526,10 @@ Begin VB.Form frmCredits
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   495
-      Left            =   0
-      TabIndex        =   14
-      Top             =   0
-      Width           =   9975
+      Left            =   1800
+      TabIndex        =   13
+      Top             =   120
+      Width           =   5055
    End
    Begin VB.Label lblHistory 
       BackColor       =   &H0044342E&
@@ -335,9 +537,9 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   855
       Left            =   120
-      TabIndex        =   13
+      TabIndex        =   12
       Top             =   720
-      Width           =   9735
+      Width           =   8655
    End
    Begin VB.Label lblOriginalGame 
       BackColor       =   &H0044342E&
@@ -352,9 +554,9 @@ Begin VB.Form frmCredits
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   495
+      Height          =   375
       Left            =   120
-      TabIndex        =   12
+      TabIndex        =   11
       Top             =   1680
       Width           =   1965
    End
@@ -373,21 +575,21 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   2
-      Left            =   5040
-      TabIndex        =   11
-      Top             =   2640
+      Left            =   3120
+      TabIndex        =   10
+      Top             =   5520
       Width           =   2415
    End
    Begin VB.Label lblVer 
       AutoSize        =   -1  'True
       BackColor       =   &H0044342E&
-      Caption         =   "Version B3"
+      Caption         =   "Odyssey Realms Version B4"
       ForeColor       =   &H009AADC2&
       Height          =   195
-      Left            =   9000
-      TabIndex        =   10
-      Top             =   9240
-      Width           =   765
+      Left            =   6720
+      TabIndex        =   9
+      Top             =   8640
+      Width           =   2100
    End
    Begin VB.Label lblThe4On 
       BackColor       =   &H0044342E&
@@ -404,9 +606,9 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   1
-      Left            =   120
-      TabIndex        =   9
-      Top             =   6600
+      Left            =   5880
+      TabIndex        =   8
+      Top             =   3720
       Width           =   1935
    End
    Begin VB.Label lblJay 
@@ -423,9 +625,9 @@ Begin VB.Form frmCredits
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   255
-      Left            =   5040
-      TabIndex        =   8
-      Top             =   2400
+      Left            =   3120
+      TabIndex        =   7
+      Top             =   5280
       Width           =   2535
    End
    Begin VB.Label lblQBcrusher 
@@ -443,9 +645,9 @@ Begin VB.Form frmCredits
       ForeColor       =   &H009AADC2&
       Height          =   255
       Index           =   0
-      Left            =   5040
-      TabIndex        =   7
-      Top             =   2160
+      Left            =   3120
+      TabIndex        =   6
+      Top             =   5040
       Width           =   2655
    End
    Begin VB.Label lblRemote 
@@ -462,9 +664,9 @@ Begin VB.Form frmCredits
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   255
-      Left            =   150
-      TabIndex        =   1
-      Top             =   5400
+      Left            =   3120
+      TabIndex        =   0
+      Top             =   2040
       Width           =   2265
    End
    Begin VB.Label lblVivi 
@@ -481,10 +683,10 @@ Begin VB.Form frmCredits
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   255
-      Left            =   150
-      TabIndex        =   2
-      Top             =   4560
-      Width           =   975
+      Left            =   120
+      TabIndex        =   1
+      Top             =   4200
+      Width           =   375
    End
    Begin VB.Label lblSmithy 
       BackColor       =   &H0044342E&
@@ -499,10 +701,10 @@ Begin VB.Form frmCredits
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   375
-      Left            =   150
-      TabIndex        =   6
-      Top             =   3120
+      Height          =   255
+      Left            =   120
+      TabIndex        =   5
+      Top             =   2880
       Width           =   1815
    End
    Begin VB.Label btnOk 
@@ -522,9 +724,9 @@ Begin VB.Form frmCredits
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   495
-      Left            =   3360
-      TabIndex        =   5
-      Top             =   8880
+      Left            =   3000
+      TabIndex        =   4
+      Top             =   8280
       Width           =   2775
    End
    Begin VB.Label lblBugaboo 
@@ -540,10 +742,10 @@ Begin VB.Form frmCredits
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   375
-      Left            =   150
-      TabIndex        =   4
-      Top             =   2160
+      Height          =   255
+      Left            =   120
+      TabIndex        =   3
+      Top             =   2040
       Width           =   2775
    End
    Begin VB.Label lblSpecialThanks 
@@ -561,30 +763,10 @@ Begin VB.Form frmCredits
       EndProperty
       ForeColor       =   &H009AADC2&
       Height          =   1095
-      Left            =   3120
-      TabIndex        =   3
-      Top             =   4680
+      Left            =   1320
+      TabIndex        =   2
+      Top             =   6840
       Width           =   6135
-   End
-   Begin VB.Label lblCreditsTitle 
-      Alignment       =   2  'Center
-      BackColor       =   &H0044342E&
-      Caption         =   "The Odyssey Online Classic"
-      BeginProperty Font 
-         Name            =   "Times New Roman"
-         Size            =   14.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   -1  'True
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H009AADC2&
-      Height          =   495
-      Left            =   0
-      TabIndex        =   0
-      Top             =   120
-      Width           =   9975
    End
 End
 Attribute VB_Name = "frmCredits"
@@ -602,3 +784,10 @@ Private Sub Form_Load()
     lblVer.Caption = "Version B" + CStr(ClientVer)
 End Sub
 
+Private Sub lblSteverino_Click(Index As Integer)
+
+End Sub
+
+Private Sub lblTitle_Click()
+
+End Sub

@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmOptions 
    BackColor       =   &H0044342E&
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Options]"
+   Caption         =   "Odyssey Realms [Options]"
    ClientHeight    =   4695
    ClientLeft      =   60
    ClientTop       =   315

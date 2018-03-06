@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmList 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic"
+   Caption         =   "Odyssey Realms"
    ClientHeight    =   5775
    ClientLeft      =   390
    ClientTop       =   45

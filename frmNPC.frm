@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmNPC 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Editing NPC]"
+   Caption         =   "Odyssey Realms [Editing NPC]"
    ClientHeight    =   6540
    ClientLeft      =   45
    ClientTop       =   330

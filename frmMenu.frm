@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmMenu 
    BackColor       =   &H0061514B&
    BorderStyle     =   0  'None
-   Caption         =   "The Odyssey Online Classic"
+   Caption         =   "Odyssey Realms"
    ClientHeight    =   3915
    ClientLeft      =   0
    ClientTop       =   0

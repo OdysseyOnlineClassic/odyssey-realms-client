@@ -3,7 +3,7 @@ Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frmServerList 
    BackColor       =   &H0061514B&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Odyssey - Select Server"
+   Caption         =   "Odyssey Realms [Server List]"
    ClientHeight    =   4530
    ClientLeft      =   45
    ClientTop       =   435
@@ -16,6 +16,14 @@ Begin VB.Form frmServerList
    ScaleHeight     =   4530
    ScaleWidth      =   3840
    StartUpPosition =   2  'CenterScreen
+   Begin MSWinsockLib.Winsock sckPing 
+      Index           =   9
+      Left            =   1200
+      Top             =   2400
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
    Begin MSWinsockLib.Winsock sckPing 
       Index           =   8
       Left            =   1080
@@ -181,7 +189,12 @@ Private Sub btnPlay_Click()
             CacheDirectory = GetCachePath + "\redrumpk"
             ServerIP = "libertyarchives.info"
             ServerPort = 5757
-        Case 8 '127.0.0.1
+        Case 8 'Greta
+            ServerDescription = "Greta"
+            CacheDirectory = GetCachePath + "\greta"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5758
+        Case 9 '127.0.0.1
             ServerDescription = "Local Host"
             CacheDirectory = GetCachePath + "\localhost"
             ServerIP = "127.0.0.1"
@@ -201,6 +214,7 @@ Private Sub btnPlay_Click()
     sckPing(6).Close
     sckPing(7).Close
     sckPing(8).Close
+    sckPing(9).Close
     On Error GoTo 0
     
     Unload Me
@@ -246,11 +260,14 @@ Private Sub Form_Load()
         lstServers.AddItem "REDRUM PK"
         lstServers.ItemData(lstServers.ListCount - 1) = 7
         
+        lstServers.AddItem "Greta"
+        lstServers.ItemData(lstServers.ListCount - 1) = 8
+        
     End If
     
     If Exists("Odyssey.vbp") Then
         lstServers.AddItem "---Local Host---"
-        lstServers.ItemData(lstServers.ListCount - 1) = 8
+        lstServers.ItemData(lstServers.ListCount - 1) = 9
     End If
        
        
@@ -294,10 +311,15 @@ Private Sub Form_Load()
     sckPing(7).RemotePort = 5757
     sckPing(7).connect
     
-    'LocalHost
-    sckPing(8).RemoteHost = "127.0.0.1"
-    sckPing(8).RemotePort = 5750
+    'Greta
+    sckPing(8).RemoteHost = "libertyarchives.info"
+    sckPing(8).RemotePort = 5758
     sckPing(8).connect
+    
+    'LocalHost
+    sckPing(9).RemoteHost = "127.0.0.1"
+    sckPing(9).RemotePort = 5750
+    sckPing(9).connect
     
     lstServers.ListIndex = 0
     

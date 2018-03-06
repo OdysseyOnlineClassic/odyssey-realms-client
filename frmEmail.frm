@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmEmail 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "Enter an e-mail address"
+   Caption         =   "Odyssey Realms [Submit Email]"
    ClientHeight    =   2910
    ClientLeft      =   45
    ClientTop       =   345
@@ -51,7 +51,7 @@ Begin VB.Form frmEmail
       Top             =   120
       Width           =   3015
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblEmailNote 
       Caption         =   $"frmEmail.frx":0000
       Height          =   1095
       Left            =   120
@@ -59,7 +59,7 @@ Begin VB.Form frmEmail
       Top             =   1080
       Width           =   5295
    End
-   Begin VB.Label Label3 
+   Begin VB.Label lblEmail2 
       Alignment       =   1  'Right Justify
       Caption         =   "Re-Type E-mail:"
       BeginProperty Font 
@@ -77,7 +77,7 @@ Begin VB.Form frmEmail
       Top             =   600
       Width           =   2175
    End
-   Begin VB.Label Label2 
+   Begin VB.Label lblEmail 
       Alignment       =   1  'Right Justify
       Caption         =   "New E-mail:"
       BeginProperty Font 

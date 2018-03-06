@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{871470D6-5AF6-4EE8-9C28-9F67DCB46490}#12.0#0"; "SCIVBX.OCX"
+Object = "{871470D6-5AF6-4EE8-9C28-9F67DCB46490}#12.0#0"; "SCIVBX.ocx"
 Begin VB.Form frmScript 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "The Odyssey Online Classic [Editing Script]"
+   Caption         =   "Odyssey Realms [Editing Script]"
    ClientHeight    =   8400
    ClientLeft      =   45
    ClientTop       =   630
