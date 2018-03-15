@@ -17,6 +17,14 @@ Begin VB.Form frmServerList
    ScaleWidth      =   3840
    StartUpPosition =   2  'CenterScreen
    Begin MSWinsockLib.Winsock sckPing 
+      Index           =   10
+      Left            =   1320
+      Top             =   2400
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
+   Begin MSWinsockLib.Winsock sckPing 
       Index           =   9
       Left            =   1200
       Top             =   2400
@@ -194,7 +202,12 @@ Private Sub btnPlay_Click()
             CacheDirectory = GetCachePath + "\greta"
             ServerIP = "libertyarchives.info"
             ServerPort = 5758
-        Case 9 '127.0.0.1
+        Case 9 'Odyssey Adventures
+            ServerDescription = "Odyssey Adventures"
+            CacheDirectory = GetCachePath + "\odysseyadventures"
+            ServerIP = "libertyarchives.info"
+            ServerPort = 5759
+        Case 10 '127.0.0.1
             ServerDescription = "Local Host"
             CacheDirectory = GetCachePath + "\localhost"
             ServerIP = "127.0.0.1"
@@ -215,6 +228,7 @@ Private Sub btnPlay_Click()
     sckPing(7).Close
     sckPing(8).Close
     sckPing(9).Close
+    sckPing(10).Close
     On Error GoTo 0
     
     Unload Me
@@ -262,12 +276,15 @@ Private Sub Form_Load()
         
         lstServers.AddItem "Greta"
         lstServers.ItemData(lstServers.ListCount - 1) = 8
+                
+        lstServers.AddItem "Odyssey Adventures"
+        lstServers.ItemData(lstServers.ListCount - 1) = 9
         
     End If
     
     If Exists("Odyssey.vbp") Then
         lstServers.AddItem "---Local Host---"
-        lstServers.ItemData(lstServers.ListCount - 1) = 9
+        lstServers.ItemData(lstServers.ListCount - 1) = 10
     End If
        
        
@@ -316,10 +333,15 @@ Private Sub Form_Load()
     sckPing(8).RemotePort = 5758
     sckPing(8).connect
     
-    'LocalHost
-    sckPing(9).RemoteHost = "127.0.0.1"
-    sckPing(9).RemotePort = 5750
+    'Odyssey Adventures
+    sckPing(9).RemoteHost = "libertyarchives.info"
+    sckPing(9).RemotePort = 5759
     sckPing(9).connect
+    
+    'LocalHost
+    sckPing(10).RemoteHost = "127.0.0.1"
+    sckPing(10).RemotePort = 5750
+    sckPing(10).connect
     
     lstServers.ListIndex = 0
     
