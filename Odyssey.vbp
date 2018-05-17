@@ -1,10 +1,10 @@
 Type=Exe
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\Windows\SysWOW64\stdole2.tlb#1\Windows\SysWOW64\stdole2.tlb#OLE Automation
-Reference=*\G{E1211242-8E94-11D1-8808-00C04FC2C602}#1.0#0#C:\Users\Admin\Saved Games\odyssey_realms_registry\client\dx7vb.dll#1\Windows\SysWow64\dx7vb.dll#DirectX 7 for Visual Basic Type Library
+Reference=*\G{E1211242-8E94-11D1-8808-00C04FC2C602}#1.0#0#C:\Windows\SysWow64\dx7vb.dll#1\Windows\SysWow64\dx7vb.dll#DirectX 7 for Visual Basic Type Library
 Object={F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0; COMDLG32.OCX
 Object={396F7AC0-A0DD-11D3-93EC-00C0DFE7442A}#1.0#0; vbalIml6.ocx
 Object={E910F8E1-8996-4EE9-90F1-3E7C64FA9829}#1.1#0; vbaListView6.ocx
-Object={871470D6-5AF6-4EE8-9C28-9F67DCB46490}#12.0#0; SCIVBX.ocx
+Object={871470D6-5AF6-4EE8-9C28-9F67DCB46490}#12.0#0; SCIVBX.OCX
 Object={248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0; MSWINSCK.OCX
 Object={EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}#1.1#0; ieframe.dll
 Module=modWinsock; winsock.bas

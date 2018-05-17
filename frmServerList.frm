@@ -207,7 +207,12 @@ Private Sub btnPlay_Click()
             CacheDirectory = GetCachePath + "\odysseyadventures"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5759
-        Case 10 '127.0.0.1
+        Case 10 'Roshar
+            ServerDescription = "Roshar"
+            CacheDirectory = GetCachePath + "\roshar"
+            ServerIP = "odysseyclassic.info"
+            ServerPort = 5761
+        Case 11 '127.0.0.1
             ServerDescription = "Local Host"
             CacheDirectory = GetCachePath + "\localhost"
             ServerIP = "127.0.0.1"
@@ -229,6 +234,8 @@ Private Sub btnPlay_Click()
     sckPing(8).Close
     sckPing(9).Close
     sckPing(10).Close
+    sckPing(11).Close
+
     On Error GoTo 0
     
     Unload Me
@@ -279,12 +286,15 @@ Private Sub Form_Load()
                 
         lstServers.AddItem "Odyssey Adventures"
         lstServers.ItemData(lstServers.ListCount - 1) = 9
+                
+        lstServers.AddItem "Roshar"
+        lstServers.ItemData(lstServers.ListCount - 1) = 10
         
     End If
     
     If Exists("Odyssey.vbp") Then
         lstServers.AddItem "---Local Host---"
-        lstServers.ItemData(lstServers.ListCount - 1) = 10
+        lstServers.ItemData(lstServers.ListCount - 1) = 11
     End If
        
        
@@ -338,10 +348,15 @@ Private Sub Form_Load()
     sckPing(9).RemotePort = 5759
     sckPing(9).connect
     
-    'LocalHost
-    sckPing(10).RemoteHost = "127.0.0.1"
-    sckPing(10).RemotePort = 5750
+    'Odyssey Adventures
+    sckPing(10).RemoteHost = "odysseyclassic.info"
+    sckPing(10).RemotePort = 5761
     sckPing(10).connect
+    
+    'LocalHost
+    sckPing(11).RemoteHost = "127.0.0.1"
+    sckPing(11).RemotePort = 5750
+    sckPing(11).connect
     
     lstServers.ListIndex = 0
     
