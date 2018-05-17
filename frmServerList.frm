@@ -4,7 +4,7 @@ Begin VB.Form frmServerList
    BackColor       =   &H0061514B&
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Odyssey Realms [Server List]"
-   ClientHeight    =   4530
+   ClientHeight    =   5055
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   3840
@@ -13,9 +13,17 @@ Begin VB.Form frmServerList
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   4530
+   ScaleHeight     =   5055
    ScaleWidth      =   3840
    StartUpPosition =   2  'CenterScreen
+   Begin MSWinsockLib.Winsock sckPing 
+      Index           =   11
+      Left            =   1440
+      Top             =   2400
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
    Begin MSWinsockLib.Winsock sckPing 
       Index           =   10
       Left            =   1320
@@ -117,7 +125,7 @@ Begin VB.Form frmServerList
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H009AADC2&
-      Height          =   3630
+      Height          =   4230
       ItemData        =   "frmServerList.frx":0E42
       Left            =   120
       List            =   "frmServerList.frx":0E49
@@ -144,7 +152,7 @@ Begin VB.Form frmServerList
       Height          =   375
       Left            =   1080
       TabIndex        =   1
-      Top             =   3960
+      Top             =   4560
       Width           =   1695
    End
 End
