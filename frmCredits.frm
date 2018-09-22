@@ -784,10 +784,3 @@ Private Sub Form_Load()
     lblVer.Caption = "Version B" + CStr(ClientVer)
 End Sub
 
-Private Sub lblSteverino_Click(Index As Integer)
-
-End Sub
-
-Private Sub lblTitle_Click()
-
-End Sub

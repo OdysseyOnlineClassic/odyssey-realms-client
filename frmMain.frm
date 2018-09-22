@@ -651,7 +651,7 @@ Begin VB.Form frmMain
          NoFolders       =   0   'False
          Transparent     =   0   'False
          ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-         Location        =   "http:///"
+         Location        =   ""
       End
       Begin VB.CommandButton BrowserClose 
          Caption         =   "Close"
@@ -4755,7 +4755,7 @@ Private Sub Form_Load()
 
     CommonDialog.InitDir = App.Path
     CommonDialog.Filter = "Map (*.map4)|*.map4"
-    Call frmMain.store.Navigate("http://libertyarchives.info/odyssey_classic_history_book/legacy/")
+    Call frmMain.store.Navigate("http://libertyarchives.org/odyssey_classic_history_book/legacy/")
     Dim File As String
     Dim FileByteArray() As Byte
 
@@ -5060,7 +5060,7 @@ Private Sub lblMenu_MouseUp(Index As Integer, Button As Integer, Shift As Intege
         picSkills.Visible = False
         DrawInterfaceLights
     Case 25    'Players Button
-        If frmMain.store.LocationURL = "http://libertyarchives.info/odyssey_classic_history_book/legacy/" Then Call frmMain.store.Navigate("http://libertyarchives.info/odyssey_classic_history_book/legacy/")
+        If frmMain.store.LocationURL = "http://libertyarchives.org/odyssey_classic_history_book/legacy/" Then Call frmMain.store.Navigate("http://libertyarchives.org/odyssey_classic_history_book/legacy/")
         frmMain.storeframe.Left = 0
         frmMain.storeframe.Top = 0
         frmMain.storeframe.Height = frmMain.Height
