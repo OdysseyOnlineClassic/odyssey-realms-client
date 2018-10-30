@@ -165,21 +165,21 @@ Option Explicit
 
 Private Sub btnPlay_Click()
     Select Case lstServers.ItemData(lstServers.ListIndex)
-        Case 0 'Classic
+        Case 0 '127.0.0.1
+            ServerDescription = "Local Host"
+            CacheDirectory = GetCachePath + "\localhost"
+            ServerIP = "127.0.0.1"
+            ServerPort = 5750
+        Case 1 'Classic
             ServerDescription = "Classic"
             CacheDirectory = GetCachePath + "\classic"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5750
-        Case 1 'God Sandbox
+        Case 2 'God Sandbox
             ServerDescription = "God Sandbox"
             CacheDirectory = GetCachePath + "\sandbox"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5751
-        Case 2 'Tales of Destiny
-            ServerDescription = "Tales of Destiny"
-            CacheDirectory = GetCachePath + "\talesofdestiny"
-            ServerIP = "odysseyclassic.info"
-            ServerPort = 5752
         Case 3 'Condemned
             ServerDescription = "Condemned"
             CacheDirectory = GetCachePath + "\condemned"
@@ -190,41 +190,41 @@ Private Sub btnPlay_Click()
             CacheDirectory = GetCachePath + "\ethia"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5754
-        Case 5 'Fankenstein
+        Case 5 'Tales of Destiny
+            ServerDescription = "Tales of Destiny"
+            CacheDirectory = GetCachePath + "\talesofdestiny"
+            ServerIP = "odysseyclassic.info"
+            ServerPort = 5752
+        Case 6 'Fankenstein
             ServerDescription = "Fankenstein"
             CacheDirectory = GetCachePath + "\fankenstein"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5755
-        Case 6 'Relentless
+        Case 7 'Relentless
             ServerDescription = "Relentless"
             CacheDirectory = GetCachePath + "\relentless"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5756
-        Case 7 'REDRUM PK
+        Case 8 'REDRUM PK
             ServerDescription = "REDRUM PK"
             CacheDirectory = GetCachePath + "\redrumpk"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5757
-        Case 8 'Greta
+        Case 9 'Greta
             ServerDescription = "Greta"
             CacheDirectory = GetCachePath + "\greta"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5758
-        Case 9 'Odyssey Adventures
+        Case 10 'Odyssey Adventures
             ServerDescription = "Odyssey Adventures"
             CacheDirectory = GetCachePath + "\odysseyadventures"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5759
-        Case 10 'Roshar
+        Case 11 'Roshar
             ServerDescription = "Roshar"
             CacheDirectory = GetCachePath + "\roshar"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5761
-        Case 11 '127.0.0.1
-            ServerDescription = "Local Host"
-            CacheDirectory = GetCachePath + "\localhost"
-            ServerIP = "127.0.0.1"
-            ServerPort = 5750
     End Select
     
     On Error Resume Next
@@ -264,63 +264,69 @@ Private Sub Form_Load()
     
     lstServers.Clear
     
-    lstServers.AddItem "Classic"
-    lstServers.ItemData(lstServers.ListCount - 1) = 0
+       
+    If Exists("Odyssey.vbp") Then
+        lstServers.AddItem "---Local Host---"
+        lstServers.ItemData(lstServers.ListCount - 1) = 0
+    End If
     
-    lstServers.AddItem "God Sandbox"
+    lstServers.AddItem "Classic"
     lstServers.ItemData(lstServers.ListCount - 1) = 1
     
+    lstServers.AddItem "God Sandbox"
+    lstServers.ItemData(lstServers.ListCount - 1) = 2
+    
     If Exists("Player_Made_Servers.txt") Then 'Player made servers
-        lstServers.AddItem "Tales of Destiny"
-        lstServers.ItemData(lstServers.ListCount - 1) = 2
-        
+            
         lstServers.AddItem "Condemned"
         lstServers.ItemData(lstServers.ListCount - 1) = 3
-        
+                
         lstServers.AddItem "Ethia"
         lstServers.ItemData(lstServers.ListCount - 1) = 4
         
-        lstServers.AddItem "Fankenstein"
-        lstServers.ItemData(lstServers.ListCount - 1) = 5
-        
-        lstServers.AddItem "Relentless"
-        lstServers.ItemData(lstServers.ListCount - 1) = 6
-        
-        lstServers.AddItem "REDRUM PK"
-        lstServers.ItemData(lstServers.ListCount - 1) = 7
-        
-        lstServers.AddItem "Greta"
-        lstServers.ItemData(lstServers.ListCount - 1) = 8
-                
-        lstServers.AddItem "Odyssey Adventures"
-        lstServers.ItemData(lstServers.ListCount - 1) = 9
-                
-        lstServers.AddItem "Roshar"
-        lstServers.ItemData(lstServers.ListCount - 1) = 10
-        
     End If
     
-    If Exists("Odyssey.vbp") Then
-        lstServers.AddItem "---Local Host---"
+    If Exists("delisted_servers.txt") Then 'Delisted Servers
+            
+        lstServers.AddItem "Tales of Destiny"
+        lstServers.ItemData(lstServers.ListCount - 1) = 5
+        
+        lstServers.AddItem "Fankenstein"
+        lstServers.ItemData(lstServers.ListCount - 1) = 6
+        
+        lstServers.AddItem "Relentless"
+        lstServers.ItemData(lstServers.ListCount - 1) = 7
+        
+        lstServers.AddItem "REDRUM PK"
+        lstServers.ItemData(lstServers.ListCount - 1) = 8
+        
+        lstServers.AddItem "Greta"
+        lstServers.ItemData(lstServers.ListCount - 1) = 9
+                
+        lstServers.AddItem "Odyssey Adventures"
+        lstServers.ItemData(lstServers.ListCount - 1) = 10
+                
+        lstServers.AddItem "Roshar"
         lstServers.ItemData(lstServers.ListCount - 1) = 11
+        
     End If
        
-       
-    'Classic
-    sckPing(0).RemoteHost = "odysseyclassic.info"
+        
+    'LocalHost
+    sckPing(0).RemoteHost = "127.0.0.1"
     sckPing(0).RemotePort = 5750
     sckPing(0).connect
     
-    'God Sandbox
+    'Classic
     sckPing(1).RemoteHost = "odysseyclassic.info"
-    sckPing(1).RemotePort = 5751
+    sckPing(1).RemotePort = 5750
     sckPing(1).connect
     
-    'Tales of Destiny
+    'God Sandbox
     sckPing(2).RemoteHost = "odysseyclassic.info"
-    sckPing(2).RemotePort = 5752
+    sckPing(2).RemotePort = 5751
     sckPing(2).connect
-    
+        
     'Condemned
     sckPing(3).RemoteHost = "odysseyclassic.info"
     sckPing(3).RemotePort = 5753
@@ -331,39 +337,39 @@ Private Sub Form_Load()
     sckPing(4).RemotePort = 5754
     sckPing(4).connect
     
-    'Fankenstein
+    'Tales of Destiny
     sckPing(5).RemoteHost = "odysseyclassic.info"
-    sckPing(5).RemotePort = 5755
+    sckPing(5).RemotePort = 5752
     sckPing(5).connect
 
-    'Relentless
+    'Fankenstein
     sckPing(6).RemoteHost = "odysseyclassic.info"
-    sckPing(6).RemotePort = 5756
+    sckPing(6).RemotePort = 5755
     sckPing(6).connect
-    
-    'REDRUM PK
+
+    'Relentless
     sckPing(7).RemoteHost = "odysseyclassic.info"
-    sckPing(7).RemotePort = 5757
+    sckPing(7).RemotePort = 5756
     sckPing(7).connect
     
-    'Greta
+    'REDRUM PK
     sckPing(8).RemoteHost = "odysseyclassic.info"
-    sckPing(8).RemotePort = 5758
+    sckPing(8).RemotePort = 5757
     sckPing(8).connect
     
-    'Odyssey Adventures
+    'Greta
     sckPing(9).RemoteHost = "odysseyclassic.info"
-    sckPing(9).RemotePort = 5759
+    sckPing(9).RemotePort = 5758
     sckPing(9).connect
     
     'Odyssey Adventures
     sckPing(10).RemoteHost = "odysseyclassic.info"
-    sckPing(10).RemotePort = 5761
+    sckPing(10).RemotePort = 5759
     sckPing(10).connect
     
-    'LocalHost
-    sckPing(11).RemoteHost = "127.0.0.1"
-    sckPing(11).RemotePort = 5750
+    'Roshar
+    sckPing(11).RemoteHost = "odysseyclassic.info"
+    sckPing(11).RemotePort = 5761
     sckPing(11).connect
     
     lstServers.ListIndex = 0

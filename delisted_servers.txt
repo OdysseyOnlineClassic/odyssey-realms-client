@@ -1,0 +1,15 @@
+This file allows you to view player made servers that have been delisted from the official server list. 
+These servers are probably not currently being hosted due to inactivity. 
+
+If you own one of these servers and want to continue development, stop by our Discord server and request it be relaunched. 
+If you are a regular player, you can likely delete this file to clean up the server list.
+
+Current delisted servers:
+
+- Tales of Destiny
+- Fankenstein
+- Relentless
+- REDRUM PK
+- Greta
+- Odyssey Adventures
+- Roshar

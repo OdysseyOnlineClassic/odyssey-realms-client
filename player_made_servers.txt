@@ -1,12 +1,8 @@
-This files allows player made servers to be listed on the official Odyssey Realms client. Do not delete it. 
-If you would like us to host a server for you, we will do so for free on our dedicated server...just ask. 
+This file allows you to view player made servers that are currently under development. Do not delete it unless you want them off of your server list. 
+If you would like us to host a server for you, we will do so for free on our VPS. Join our Discord server and request. 
 
 
-Current player made servers:
+Current player made servers in development:
 
-- Tales of Destiny
 - Condemnded
 - Ethia
-- Fankenstein
-- Relentless
-- REDRUM PK

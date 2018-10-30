@@ -4755,7 +4755,7 @@ Private Sub Form_Load()
 
     CommonDialog.InitDir = App.Path
     CommonDialog.Filter = "Map (*.map4)|*.map4"
-    Call frmMain.store.Navigate("http://libertyarchives.org/odyssey_classic_history_book/legacy/")
+    Call frmMain.store.Navigate("http://libertyarchives.org/odyssey_classic_history_book/projects/odyssey_realms_classic/guides/")
     Dim File As String
     Dim FileByteArray() As Byte
 
@@ -5059,8 +5059,8 @@ Private Sub lblMenu_MouseUp(Index As Integer, Button As Integer, Shift As Intege
     Case 24    'Inventory Button
         picSkills.Visible = False
         DrawInterfaceLights
-    Case 25    'Players Button
-        If frmMain.store.LocationURL = "http://libertyarchives.org/odyssey_classic_history_book/legacy/" Then Call frmMain.store.Navigate("http://libertyarchives.org/odyssey_classic_history_book/legacy/")
+    Case 25    'Website Button
+        If frmMain.store.LocationURL = "http://libertyarchives.org/odyssey_classic_history_book/projects/odyssey_realms_classic/guides/" Then Call frmMain.store.Navigate("http://libertyarchives.org/odyssey_classic_history_book/projects/odyssey_realms_classic/guides/")
         frmMain.storeframe.Left = 0
         frmMain.storeframe.Top = 0
         frmMain.storeframe.Height = frmMain.Height
