@@ -6,3 +6,5 @@ Current player made servers in development:
 
 - Condemnded
 - Ethia
+
+If you need to view delisted servers, extract delisted_servers.zip
