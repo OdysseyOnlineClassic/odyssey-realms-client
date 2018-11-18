@@ -4755,7 +4755,7 @@ Private Sub Form_Load()
 
     CommonDialog.InitDir = App.Path
     CommonDialog.Filter = "Map (*.map4)|*.map4"
-    Call frmMain.store.Navigate("http://libertyarchives.org/odyssey_classic_history_book/projects/odyssey_realms_classic/guides/")
+    Call frmMain.store.Navigate("http://libertyarchives.info/odyssey/projects/realms_classic/guides/")
     Dim File As String
     Dim FileByteArray() As Byte
 

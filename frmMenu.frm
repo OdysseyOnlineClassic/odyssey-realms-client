@@ -3,7 +3,7 @@ Begin VB.Form frmMenu
    BackColor       =   &H0061514B&
    BorderStyle     =   0  'None
    Caption         =   "Odyssey Realms"
-   ClientHeight    =   3915
+   ClientHeight    =   3645
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   4485
@@ -13,9 +13,32 @@ Begin VB.Form frmMenu
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3915
+   ScaleHeight     =   3645
    ScaleWidth      =   4485
    StartUpPosition =   2  'CenterScreen
+   Begin VB.Label lblMenu 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H0044342E&
+      BorderStyle     =   1  'Fixed Single
+      Caption         =   "More Servers"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   15.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H009AADC2&
+      Height          =   420
+      Index           =   6
+      Left            =   120
+      TabIndex        =   13
+      Top             =   3120
+      Width           =   4260
+   End
    Begin VB.Label lblCurrentServer 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
@@ -35,55 +58,12 @@ Begin VB.Form frmMenu
       Top             =   420
       Width           =   1575
    End
-   Begin VB.Label Label2 
-      Alignment       =   2  'Center
-      BackStyle       =   0  'Transparent
-      Caption         =   "Social Links"
-      BeginProperty Font 
-         Name            =   "Times New Roman"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H009AADC2&
-      Height          =   255
-      Left            =   1560
-      TabIndex        =   14
-      Top             =   2760
-      Width           =   1455
-   End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
       Appearance      =   0  'Flat
       BackColor       =   &H0044342E&
       BorderStyle     =   1  'Fixed Single
-      Caption         =   "Facebook Group"
-      BeginProperty Font 
-         Name            =   "Times New Roman"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H009AADC2&
-      Height          =   300
-      Index           =   15
-      Left            =   120
-      TabIndex        =   13
-      Top             =   3120
-      Width           =   1260
-   End
-   Begin VB.Label lblMenu 
-      Alignment       =   2  'Center
-      Appearance      =   0  'Flat
-      BackColor       =   &H0044342E&
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Facebook Page"
+      Caption         =   "Facebook"
       BeginProperty Font 
          Name            =   "Times New Roman"
          Size            =   8.25
@@ -96,10 +76,10 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   300
       Index           =   14
-      Left            =   3000
+      Left            =   2280
       TabIndex        =   12
-      Top             =   3120
-      Width           =   1260
+      Top             =   2760
+      Width           =   945
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -119,10 +99,10 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   300
       Index           =   13
-      Left            =   1560
+      Left            =   120
       TabIndex        =   11
-      Top             =   3120
-      Width           =   1260
+      Top             =   2760
+      Width           =   950
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -142,10 +122,10 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   300
       Index           =   12
-      Left            =   2280
+      Left            =   1200
       TabIndex        =   10
-      Top             =   3480
-      Width           =   1260
+      Top             =   2760
+      Width           =   950
    End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
@@ -208,10 +188,10 @@ Begin VB.Form frmMenu
       ForeColor       =   &H009AADC2&
       Height          =   300
       Index           =   8
-      Left            =   720
+      Left            =   3360
       TabIndex        =   7
-      Top             =   3480
-      Width           =   1260
+      Top             =   2760
+      Width           =   945
    End
    Begin VB.Label lblMenu 
       Alignment       =   2  'Center
@@ -411,6 +391,12 @@ Dim uDirectory As String
             uParams = 0&
             uDirectory = 0&
             RunShellExecute uTopic, uFile, uParams, uDirectory, 1
+        Case 6    'Registry
+            uTopic = "Open"
+            uFile = "registry.exe"
+            uParams = 0&
+            uDirectory = 0&
+            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
         Case 8    'Discord
             uTopic = "Open"
             uFile = TheDiscord
@@ -437,12 +423,6 @@ Dim uDirectory As String
         Case 14    'Facebook Page
             uTopic = "Open"
             uFile = TheFacebookPage
-            uParams = 0&
-            uDirectory = 0&
-            RunShellExecute uTopic, uFile, uParams, uDirectory, 1
-        Case 15    'Facebook Group
-            uTopic = "Open"
-            uFile = TheFacebookGroup
             uParams = 0&
             uDirectory = 0&
             RunShellExecute uTopic, uFile, uParams, uDirectory, 1
