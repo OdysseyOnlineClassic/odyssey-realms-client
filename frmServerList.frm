@@ -17,6 +17,14 @@ Begin VB.Form frmServerList
    ScaleWidth      =   3840
    StartUpPosition =   2  'CenterScreen
    Begin MSWinsockLib.Winsock sckPing 
+      Index           =   12
+      Left            =   1560
+      Top             =   2400
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
+   Begin MSWinsockLib.Winsock sckPing 
       Index           =   11
       Left            =   1440
       Top             =   2400
@@ -185,42 +193,47 @@ Private Sub btnPlay_Click()
             CacheDirectory = GetCachePath + "\ethia"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5754
-        Case 4 'Tales of Destiny
+        Case 4 'Carcassonne
+            ServerDescription = "Carcassonne"
+            CacheDirectory = GetCachePath + "\carcassonne"
+            ServerIP = "odysseyclassic.info"
+            ServerPort = 5762
+        Case 5 'Tales of Destiny
             ServerDescription = "Tales of Destiny"
             CacheDirectory = GetCachePath + "\talesofdestiny"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5752
-        Case 5 'Fankenstein
+        Case 6 'Fankenstein
             ServerDescription = "Fankenstein"
             CacheDirectory = GetCachePath + "\fankenstein"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5755
-        Case 6 'Relentless
+        Case 7 'Relentless
             ServerDescription = "Relentless"
             CacheDirectory = GetCachePath + "\relentless"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5756
-        Case 7 'REDRUM PK
+        Case 8 'REDRUM PK
             ServerDescription = "REDRUM PK"
             CacheDirectory = GetCachePath + "\redrumpk"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5757
-        Case 8 'Greta
+        Case 9 'Greta
             ServerDescription = "Greta"
             CacheDirectory = GetCachePath + "\greta"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5758
-        Case 9 'Odyssey Adventures
+        Case 10 'Odyssey Adventures
             ServerDescription = "Odyssey Adventures"
             CacheDirectory = GetCachePath + "\odysseyadventures"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5759
-        Case 10 'Roshar
+        Case 11 'Roshar
             ServerDescription = "Roshar"
             CacheDirectory = GetCachePath + "\roshar"
             ServerIP = "odysseyclassic.info"
             ServerPort = 5761
-        Case 11 '127.0.0.1
+        Case 12 '127.0.0.1
             ServerDescription = "Local Host"
             CacheDirectory = GetCachePath + "\localhost"
             ServerIP = "127.0.0.1"
@@ -243,6 +256,7 @@ Private Sub btnPlay_Click()
     sckPing(9).Close
     sckPing(10).Close
     sckPing(11).Close
+    sckPing(12).Close
 
     On Error GoTo 0
     
@@ -278,36 +292,40 @@ Private Sub Form_Load()
         lstServers.AddItem "Ethia"
         lstServers.ItemData(lstServers.ListCount - 1) = 3
         
+        
+        lstServers.AddItem "Carcassonne"
+        lstServers.ItemData(lstServers.ListCount - 1) = 4
+        
     End If
     
     If Exists("delisted_servers.txt") Then 'Delisted Servers
             
         lstServers.AddItem "Tales of Destiny"
-        lstServers.ItemData(lstServers.ListCount - 1) = 4
-        
-        lstServers.AddItem "Fankenstein"
         lstServers.ItemData(lstServers.ListCount - 1) = 5
         
-        lstServers.AddItem "Relentless"
+        lstServers.AddItem "Fankenstein"
         lstServers.ItemData(lstServers.ListCount - 1) = 6
         
-        lstServers.AddItem "REDRUM PK"
+        lstServers.AddItem "Relentless"
         lstServers.ItemData(lstServers.ListCount - 1) = 7
         
-        lstServers.AddItem "Greta"
+        lstServers.AddItem "REDRUM PK"
         lstServers.ItemData(lstServers.ListCount - 1) = 8
-                
-        lstServers.AddItem "Odyssey Adventures"
+        
+        lstServers.AddItem "Greta"
         lstServers.ItemData(lstServers.ListCount - 1) = 9
                 
-        lstServers.AddItem "Roshar"
+        lstServers.AddItem "Odyssey Adventures"
         lstServers.ItemData(lstServers.ListCount - 1) = 10
+                
+        lstServers.AddItem "Roshar"
+        lstServers.ItemData(lstServers.ListCount - 1) = 11
         
     End If
     
     If Exists("Odyssey.vbp") Then
         lstServers.AddItem "---Local Host---"
-        lstServers.ItemData(lstServers.ListCount - 1) = 11
+        lstServers.ItemData(lstServers.ListCount - 1) = 12
     End If
        
             
@@ -331,45 +349,51 @@ Private Sub Form_Load()
     sckPing(3).RemotePort = 5754
     sckPing(3).connect
     
-    'Tales of Destiny
+    
+    'Carcassonne
     sckPing(4).RemoteHost = "odysseyclassic.info"
-    sckPing(4).RemotePort = 5752
+    sckPing(4).RemotePort = 5762
     sckPing(4).connect
-
-    'Fankenstein
+    
+    'Tales of Destiny
     sckPing(5).RemoteHost = "odysseyclassic.info"
-    sckPing(5).RemotePort = 5755
+    sckPing(5).RemotePort = 5752
     sckPing(5).connect
 
-    'Relentless
+    'Fankenstein
     sckPing(6).RemoteHost = "odysseyclassic.info"
-    sckPing(6).RemotePort = 5756
+    sckPing(6).RemotePort = 5755
     sckPing(6).connect
-    
-    'REDRUM PK
+
+    'Relentless
     sckPing(7).RemoteHost = "odysseyclassic.info"
-    sckPing(7).RemotePort = 5757
+    sckPing(7).RemotePort = 5756
     sckPing(7).connect
     
-    'Greta
+    'REDRUM PK
     sckPing(8).RemoteHost = "odysseyclassic.info"
-    sckPing(8).RemotePort = 5758
+    sckPing(8).RemotePort = 5757
     sckPing(8).connect
     
-    'Odyssey Adventures
+    'Greta
     sckPing(9).RemoteHost = "odysseyclassic.info"
-    sckPing(9).RemotePort = 5759
+    sckPing(9).RemotePort = 5758
     sckPing(9).connect
     
-    'Roshar
+    'Odyssey Adventures
     sckPing(10).RemoteHost = "odysseyclassic.info"
-    sckPing(10).RemotePort = 5761
+    sckPing(10).RemotePort = 5759
     sckPing(10).connect
     
-    'LocalHost
-    sckPing(11).RemoteHost = "127.0.0.1"
-    sckPing(11).RemotePort = 5750
+    'Roshar
+    sckPing(11).RemoteHost = "odysseyclassic.info"
+    sckPing(11).RemotePort = 5761
     sckPing(11).connect
+    
+    'LocalHost
+    sckPing(12).RemoteHost = "127.0.0.1"
+    sckPing(12).RemotePort = 5750
+    sckPing(12).connect
     
     lstServers.ListIndex = 0
     
