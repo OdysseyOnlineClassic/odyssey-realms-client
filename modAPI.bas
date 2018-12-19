@@ -50,15 +50,15 @@ Public Declare Function GetCursorPos Lib "user32" (lpPoint As MouseLoc) As Long
 Public Declare Function ScreenToClient Lib "user32" (ByVal hwnd As Long, lpPoint As MouseLoc) As Long
 
 'FindWindow
-'Public Declare Function GetParent Lib "user32.dll" (ByVal hwnd As Long) As Long
-'Public Declare Function GetWindowThreadProcessId Lib "user32.dll" (ByVal hwnd As Long, ByRef lpdwProcessId As Long) As Long
-'Public Declare Function GetWindow Lib "user32.dll" (ByVal hwnd As Long, ByVal wCmd As Long) As Long
-'Public Declare Function CreateToolhelpSnapshot Lib "kernel32" Alias "CreateToolhelp32Snapshot" (ByVal lFlags As Long, lProcessID As Long) As Long
-'Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
-'Public Declare Function GetWindowText Lib "user32" Alias "GetWindowTextA" (ByVal hwnd As Long, ByVal lpString As String, ByVal cch As Long) As Long
-'Public Declare Function GetWindowTextLength Lib "user32" Alias "GetWindowTextLengthA" (ByVal hwnd As Long) As Long
-'Public Declare Function IsWindowEnabled Lib "user32" (ByVal hwnd As Long) As Long
-'Public Declare Function IsWindowVisible Lib "user32" (ByVal hwnd As Long) As Long
+Public Declare Function GetParent Lib "user32.dll" (ByVal hwnd As Long) As Long
+Public Declare Function GetWindowThreadProcessId Lib "user32.dll" (ByVal hwnd As Long, ByRef lpdwProcessId As Long) As Long
+Public Declare Function GetWindow Lib "user32.dll" (ByVal hwnd As Long, ByVal wCmd As Long) As Long
+Public Declare Function CreateToolhelpSnapshot Lib "kernel32" Alias "CreateToolhelp32Snapshot" (ByVal lFlags As Long, lProcessID As Long) As Long
+Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
+Public Declare Function GetWindowText Lib "user32" Alias "GetWindowTextA" (ByVal hwnd As Long, ByVal lpString As String, ByVal cch As Long) As Long
+Public Declare Function GetWindowTextLength Lib "user32" Alias "GetWindowTextLengthA" (ByVal hwnd As Long) As Long
+Public Declare Function IsWindowEnabled Lib "user32" (ByVal hwnd As Long) As Long
+Public Declare Function IsWindowVisible Lib "user32" (ByVal hwnd As Long) As Long
 
 'SetPriority
 Public Declare Function GetCurrentProcess Lib "kernel32" () As Long

@@ -448,7 +448,8 @@ Private Sub cmbClass_Click()
         lblMana = .StartMana
     End With
 
-    Select Case ClassIndex
+Select Case ClassIndex
+'Classic Classes
     Case 1    'Knight
         lblClassDescription = "The most powerful fighting class.  Knights are able to use the strongest equipment and focus on hand-to-hand combat.  Very highly recommended for new players."
     Case 2    'Mage
@@ -457,7 +458,16 @@ Private Sub cmbClass_Click()
         lblClassDescription = "Relies on stealth, speed, and cunning to make a mark on the world.  While moderately strong physically, Rogues have much more access to magic than Knights."
     Case 4    'Cleric
         lblClassDescription = "Focused on healing and support for questing groups and guilds.  Clerics are poor fighters, but have access to a wide variety of healing and support magic.  *NOT* recommended for new players."
-    End Select
+End Select
+    
+'Carcassonne Classes
+    'Case 1    'Demigod
+        'lblClassDescription = "Play as a minor deity with a balanced spell set and a larger health pool."
+    'Case 2    'Shaman
+        'lblClassDescription = "Play as a divine healer with a supportive spell set and a larger mana pool."
+    'Case 3    'Demon
+        'lblClassDescription = "Play as a fiend with an aggressive spell set and a larger energy pool."
+'End Select
 End Sub
 
 

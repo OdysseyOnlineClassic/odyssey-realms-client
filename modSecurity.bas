@@ -410,16 +410,16 @@ Private Function GetShortPath(ByVal strfilename As String) As String
     If Not lngRet = 0 Then GetShortPath = Left$(GetShortPath, lngRet)
 End Function
 
-'Public Function GetWindowTitle(ByVal hwnd As Long) As String
-    'On Error Resume Next
-    'Dim s As String, l As Integer
+Public Function GetWindowTitle(ByVal hwnd As Long) As String
+    On Error Resume Next
+    Dim s As String, l As Integer
 
-    'l = GetWindowTextLength(hwnd)
-    's = Space(l + 1)
+    l = GetWindowTextLength(hwnd)
+    s = Space(l + 1)
 
-    'GetWindowText hwnd, s, l + 1
-    'GetWindowTitle = Left$(s, l)
-'End Function
+    GetWindowText hwnd, s, l + 1
+    GetWindowTitle = Left$(s, l)
+End Function
 
 Function GetComputerID() As String
     Dim St1 As String, UniqueID As String
@@ -435,45 +435,45 @@ Function GetComputerID() As String
     End If
 End Function
 
-'Public Function GetCurrentWindows(Selection As Integer) As String
-    'Dim St1 As String, St2 As String, St3 As String, i As Integer, A As String, Z As Long, hw As Long
+Public Function GetCurrentWindows(Selection As Integer) As String
+    Dim St1 As String, St2 As String, St3 As String, i As Integer, A As String, Z As Long, hw As Long
     
-    'St1 = GetProcessList
+    St1 = GetProcessList
 
-    'For i = 1 To 1000
-        'A$ = GetWindowTitle(i)
-        'Z = FindWindow(vbNullString, A$)
-        'hw = frmMain.hwnd
-        'If Z <> 0 Then
-            'If A$ <> vbNullString And i <> hw Then
-                'If Len(A) < 200 Then
-                    'If IsWindowEnabled(Z) = 0 Then
-                        'If IsWindowVisible(Z) = 0 Then
-                            'St3 = St3 + A$ + ",  "
-                        'ElseIf IsWindowVisible(Z) = 1 Then
-                            'St2 = St2 + A$ + ",  "
-                        'End If
-                    'ElseIf IsWindowEnabled(Z) = 1 Then
-                        'If IsWindowVisible(Z) = 0 Then
-                            'St3 = St3 + A$ + ",  "
-                        'ElseIf IsWindowVisible(Z) = 1 Then
-                            'St2 = St2 + A$ + ",  "
-                        'End If
-                    'End If
-                'End If
-            'End If
-        'End If
-    'Next i
+    For i = 1 To 1000
+        A$ = GetWindowTitle(i)
+        Z = FindWindow(vbNullString, A$)
+        hw = frmMain.hwnd
+        If Z <> 0 Then
+            If A$ <> vbNullString And i <> hw Then
+                If Len(A) < 200 Then
+                    If IsWindowEnabled(Z) = 0 Then
+                        If IsWindowVisible(Z) = 0 Then
+                            St3 = St3 + A$ + ",  "
+                        ElseIf IsWindowVisible(Z) = 1 Then
+                            St2 = St2 + A$ + ",  "
+                        End If
+                    ElseIf IsWindowEnabled(Z) = 1 Then
+                        If IsWindowVisible(Z) = 0 Then
+                            St3 = St3 + A$ + ",  "
+                        ElseIf IsWindowVisible(Z) = 1 Then
+                            St2 = St2 + A$ + ",  "
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    Next i
 
-    'Select Case Selection
-        'Case 1:
-            'GetCurrentWindows = St1
-        'Case 2:
-            'GetCurrentWindows = St2
-        'Case 3:
-            'GetCurrentWindows = St3
-    'End Select
-'End Function
+    Select Case Selection
+        Case 1:
+            GetCurrentWindows = St1
+        Case 2:
+            GetCurrentWindows = St2
+        Case 3:
+            GetCurrentWindows = St3
+    End Select
+End Function
 
 Sub FindPrograms(St As String)
     

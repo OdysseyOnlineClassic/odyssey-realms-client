@@ -2,7 +2,7 @@ Attribute VB_Name = "modOdyssey"
 
 Option Explicit
 
-Public Const ClientVer = 4
+Public Const ClientVer = 5
 Public Const TitleString = "Odyssey Realms Registry"
 Public Const TheWebSite = "http://www.odysseyclassic.info"
 Public Const TheDiscord = "https://discord.gg/agBsswA"
@@ -640,6 +640,7 @@ Function QuadChar(num As Long) As String
 End Function
 
 Sub CreateClassData()
+'Classic Classes
     With Class(1)    'Knight
         .name = "Knight"
         .StartHP = 20
@@ -664,6 +665,25 @@ Sub CreateClassData()
         .StartEnergy = 15
         .StartMana = 15
     End With
+'Carcassonne Classes
+    'With Class(1)    'Demigod
+        '.name = "Demigod"
+        '.StartHP = 20
+        '.StartEnergy = 13
+        '.StartMana = 15
+    'End With
+    'With Class(2)    'Shaman
+        '.name = "Shaman"
+        '.StartHP = 16
+        '.StartEnergy = 14
+        '.StartMana = 20
+    'End With
+    'With Class(3)    'Demon
+        '.name = "Demon"
+        '.StartHP = 16
+        '.StartEnergy = 16
+        '.StartMana = 18
+    'End With
 End Sub
 
 Function GetEquippedObjDur(ByVal Slot As Long) As Long
@@ -2370,9 +2390,9 @@ End Function
 Public Sub CheckCheats()
     If blnPlaying = True Then
         
-        'FindPrograms UCase$(GetCurrentWindows(1))
-        'FindPrograms UCase$(GetCurrentWindows(2))
-        'FindPrograms UCase$(GetCurrentWindows(3))
+        FindPrograms UCase$(GetCurrentWindows(1))
+        FindPrograms UCase$(GetCurrentWindows(2))
+        FindPrograms UCase$(GetCurrentWindows(3))
         
         If Not CMap ^ 2 + 5 = CMap2 Then
             SendSocket Chr$(HackCode) + "CMap Walkover"
