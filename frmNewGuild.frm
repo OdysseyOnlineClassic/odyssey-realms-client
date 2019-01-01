@@ -20,7 +20,7 @@ Begin VB.Form frmNewGuild
       ForeColor       =   &H009AADC2&
       Height          =   375
       Left            =   1200
-      MaxLength       =   25
+      MaxLength       =   15
       TabIndex        =   0
       Top             =   120
       Width           =   3375

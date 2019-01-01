@@ -123,7 +123,7 @@ Begin VB.Form frmObject
       EndProperty
       Height          =   375
       Left            =   1320
-      MaxLength       =   35
+      MaxLength       =   15
       TabIndex        =   20
       Top             =   600
       Width           =   3855

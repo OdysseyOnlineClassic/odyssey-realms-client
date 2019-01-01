@@ -142,7 +142,7 @@ Begin VB.Form frmMagic
       EndProperty
       Height          =   375
       Left            =   1320
-      MaxLength       =   25
+      MaxLength       =   15
       TabIndex        =   0
       Text            =   " "
       Top             =   600

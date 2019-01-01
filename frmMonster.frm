@@ -246,7 +246,7 @@ Begin VB.Form frmMonster
       EndProperty
       Height          =   375
       Left            =   1200
-      MaxLength       =   35
+      MaxLength       =   15
       TabIndex        =   0
       Top             =   600
       Width           =   4215

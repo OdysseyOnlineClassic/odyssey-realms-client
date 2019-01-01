@@ -39,7 +39,7 @@ Begin VB.Form frmPrefix
    Begin VB.TextBox txtName 
       Height          =   285
       Left            =   1680
-      MaxLength       =   20
+      MaxLength       =   15
       TabIndex        =   17
       Top             =   480
       Width           =   2295
