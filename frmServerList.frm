@@ -112,16 +112,7 @@ Private Sub btnPlay_Click()
 End Sub
 
 Private Sub Form_Load()
-
-    'Override Code 'Skip server list for now
-    'ServerDescription = "Classic"
-    'CacheDirectory = "classic"
-    'ServerIP = "208.79.77.39"
-    'ServerPort = 5756
-    'Unload Me
-    'InitializeGame
-    'End Override Code
-    
+  
     lstServers.Clear
     
     lstServers.AddItem "Classic"
