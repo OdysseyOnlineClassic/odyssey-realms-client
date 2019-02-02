@@ -3,7 +3,7 @@ Option Explicit
 
 Sub LoadObject(TheObj As Integer)
     Dim St As String * 27
-    Open CacheDirectory + "/ocache.dat" For Random As #1 Len = 47
+    Open CacheDirectory + "/ocache.dat" For Random As #1 Len = 27
     Get #1, TheObj, St
     Close #1
     With Object(TheObj)
@@ -219,7 +219,7 @@ Sub LoadMonster(TheMonster As Integer)
     Close #1
     With Monster(TheMonster)
         .name = ClipString$(Mid$(St, 1, 15))
-        .Sprite = Asc(Mid$(St, 16, 1)) * 256 + Asc(Mid$(St, 317, 1))
+        .Sprite = Asc(Mid$(St, 16, 1)) * 256 + Asc(Mid$(St, 17, 1))
         .Version = Asc(Mid$(St, 18, 1))
         .MaxLife = GetInt(Mid$(St, 19, 2))
         .flags = Asc(Mid$(St, 21, 1))
@@ -300,13 +300,13 @@ Sub SavePrefix(ThePrefix As Byte)
 End Sub
 
 Sub SaveSuffix(TheSuffix As Byte)
-    Dim St1 As String * 20
-    Dim WritableData As String * 24
+    Dim St1 As String * 15
+    Dim WritableData As String * 19
     With ItemSuffix(TheSuffix)
         St1 = .name
         WritableData = St1 + Chr$(.Version) + Chr$(.ModificationType) + Chr$(.ModificationValue) + Chr$(.OccursNaturally)
     End With
-    Open CacheDirectory + "/itemsufcache.dat" For Random As #1 Len = 24
+    Open CacheDirectory + "/itemsufcache.dat" For Random As #1 Len = 19
     Put #1, TheSuffix, WritableData
     Close #1
 End Sub
